@@ -5,17 +5,20 @@ public class Alquiler {
 	private int id_cliente;
 	private String fecha;
 	private int num_horas;
+	private double precio_total;
 	public Alquiler() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Alquiler(int id_moto, int id_cliente, String fecha, int num_horas) {
+	public Alquiler(int id_moto, int id_cliente, String fecha, int num_horas, double precio_total) {
 		super();
 		this.id_moto = id_moto;
 		this.id_cliente = id_cliente;
 		this.fecha = fecha;
 		this.num_horas = num_horas;
+		this.precio_total = precio_total;
 	}
+
 	/**
 	 * @return the id_moto
 	 */
@@ -63,6 +66,18 @@ public class Alquiler {
 	 */
 	public void setNum_horas(int num_horas) {
 		this.num_horas = num_horas;
+	}
+	/**
+	 * @return the precio_total
+	 */
+	public double getPrecio_total() {
+		return precio_total;
+	}
+	/**
+	 * @param precio_total the precio_total to set
+	 */
+	public void setPrecio_total(double precio_total) {
+		this.precio_total = precio_total;
 	}
 	@Override
 	public String toString() {

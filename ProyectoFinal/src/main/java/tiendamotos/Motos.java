@@ -5,14 +5,16 @@ public class Motos {
 	private String matricula;
 	private String marca;
 	private String modelo;
-	private double cv;
-	private double cc;
+	private int cv;
+	private int cc;
 	private int num_plazas;
+	private double precio_hora;
 	public Motos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Motos(int id, String matricula, String marca, String modelo, double cv, double cc, int num_plazas) {
+	public Motos(int id, String matricula, String marca, String modelo, int cv, int cc, int num_plazas,
+			double precio_hora) {
 		super();
 		this.id = id;
 		this.matricula = matricula;
@@ -21,6 +23,7 @@ public class Motos {
 		this.cv = cv;
 		this.cc = cc;
 		this.num_plazas = num_plazas;
+		this.precio_hora = precio_hora;
 	}
 	/**
 	 * @return the id
@@ -73,25 +76,25 @@ public class Motos {
 	/**
 	 * @return the cv
 	 */
-	public double getCv() {
+	public int getCv() {
 		return cv;
 	}
 	/**
 	 * @param cv the cv to set
 	 */
-	public void setCv(double cv) {
+	public void setCv(int cv) {
 		this.cv = cv;
 	}
 	/**
 	 * @return the cc
 	 */
-	public double getCc() {
+	public int getCc() {
 		return cc;
 	}
 	/**
 	 * @param cc the cc to set
 	 */
-	public void setCc(double cc) {
+	public void setCc(int cc) {
 		this.cc = cc;
 	}
 	/**
@@ -106,10 +109,22 @@ public class Motos {
 	public void setNum_plazas(int num_plazas) {
 		this.num_plazas = num_plazas;
 	}
+	/**
+	 * @return the precio_hora
+	 */
+	public double getPrecio_hora() {
+		return precio_hora;
+	}
+	/**
+	 * @param precio_hora the precio_hora to set
+	 */
+	public void setPrecio_hora(double precio_hora) {
+		this.precio_hora = precio_hora;
+	}
 	@Override
 	public String toString() {
 		return "Motos [id=" + id + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", cv=" + cv
-				+ ", cc=" + cc + ", num_plazas=" + num_plazas + "]";
+				+ ", cc=" + cc + ", num_plazas=" + num_plazas + ", precio_hora=" + precio_hora + "]";
 	}
 	
 	

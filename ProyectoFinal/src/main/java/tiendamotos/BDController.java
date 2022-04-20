@@ -42,7 +42,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from clientes");
 			while (rs.next()==true) {
-				listclientes.add(new Clientes(rs.getInt("id_cliente"),rs.getString("dni"),rs.getString("nombre"),rs.getString("apellidos"),rs.getString("direccion"),rs.getInt("cp"),rs.getString("cp")));
+				listclientes.add(new Clientes(rs.getInt("id_cliente"),rs.getString("dni"),rs.getString("nombre"),rs.getString("apellidos"),rs.getString("direccion"),rs.getInt("cp"),rs.getString("provincia")));
 			}
 			miStatement.close();
 			rs.close();
@@ -60,7 +60,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from alquiler");
 			while (rs.next()==true) {
-				listalquiler.add(new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas")));
+				listalquiler.add(new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total")));
 			}
 			miStatement.close();
 			rs.close();
@@ -78,7 +78,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from motos");
 			while (rs.next()==true) {
-				listmotos.add(new Motos(rs.getInt("id_moto"),rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"),rs.getDouble("cv"),rs.getDouble("cc"),rs.getInt("num_plazas")));
+				listmotos.add(new Motos(rs.getInt("id_moto"),rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"),rs.getInt("cv"),rs.getInt("cc"),rs.getInt("num_plazas"),rs.getDouble("precio_hora")));
 			}
 			miStatement.close();
 			rs.close();
@@ -96,7 +96,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from clientes where id_cliente="+id_cliente);
 			while (rs.next()==true) {
-				cliente = new Clientes(rs.getInt("id_cliente"),rs.getString("dni"),rs.getString("nombre"),rs.getString("apellidos"),rs.getString("direccion"),rs.getInt("cp"),rs.getString("cp"));
+				cliente = new Clientes(rs.getInt("id_cliente"),rs.getString("dni"),rs.getString("nombre"),rs.getString("apellidos"),rs.getString("direccion"),rs.getInt("cp"),rs.getString("provincia"));
 			}
 			miStatement.close();
 			rs.close();
@@ -114,7 +114,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_cliente="+id_cliente);
 			while (rs.next()==true) {
-				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"));
+				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total"));
 			}
 			miStatement.close();
 			rs.close();
@@ -132,7 +132,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_moto="+id_moto);
 			while (rs.next()==true) {
-				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"));
+				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total"));
 			}
 			miStatement.close();
 			rs.close();
@@ -150,7 +150,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_moto="+id_moto +" and id_cliente="+id_cliente);
 			while (rs.next()==true) {
-				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"));
+				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total"));
 			}
 			miStatement.close();
 			rs.close();
@@ -168,7 +168,7 @@ public class BDController {
 			Statement miStatement = this.conexion.createStatement();
 			ResultSet rs = miStatement.executeQuery("Select * from motos where id_moto="+id_moto);
 			while (rs.next()==true) {
-				moto = new Motos(rs.getInt("id_moto"),rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"),rs.getDouble("cv"),rs.getDouble("cc"),rs.getInt("num_plazas"));
+				moto = new Motos(rs.getInt("id_moto"),rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"),rs.getInt("cv"),rs.getInt("cc"),rs.getInt("num_plazas"),rs.getDouble("precio_hora"));
 			}
 			miStatement.close();
 			rs.close();
@@ -288,16 +288,47 @@ public class BDController {
 		return lastid;
 	}
 	
-	public void altamoto(int id_moto,String matricula,String marca,String modelo,double cv,double cc,int num_plazas) {
+	public void altamoto(int id_moto,String matricula,String marca,String modelo,int cv,int cc,int num_plazas,double precio_hora) {
 		try {
 			Statement miStatement = this.conexion.createStatement();
-			String cadena = "Insert into motos (id_moto,matricula,marca,modelo,cv,cc,num_plazas) values ("+id_moto+",'"+matricula+"','"+marca+"','"+modelo+"',"+cv+","+cc+","+num_plazas+")";
+			String cadena = "Insert into motos (id_moto,matricula,marca,modelo,cv,cc,num_plazas,precio_hora) values ("+id_moto+",'"+matricula+"','"+marca+"','"+modelo+"',"+cv+","+cc+","+num_plazas+","+precio_hora+")";
 			miStatement.executeUpdate(cadena);
 			miStatement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Error en bdcontrole metodo altamoto");
+		}
+	}
+	
+	public int lastid_clientes() {
+		int lastid = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_cliente from clientes ORDER BY id_cliente DESC limit 1;");
+			while (rs.next()==true) {
+				lastid = rs.getInt("id_cliente");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo lastid_clientes");
+		}
+		return lastid;
+	}
+	
+	public void altacliente(int id_cliente,String dni,String nombre,String apellidos,String direccion,int cp,String provincia) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Insert into clientes (id_cliente,dni,nombre,apellidos,direccion,cp,provincia) values ("+id_cliente+",'"+dni+"','"+nombre+"','"+apellidos+"','"+direccion+"',"+cp+",'"+provincia+"')";
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo altacliente");
 		}
 	}
 }

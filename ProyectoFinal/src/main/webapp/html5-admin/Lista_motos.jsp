@@ -85,6 +85,7 @@
 										<th>CV</th>
 										<th>CC</th>
 										<th>Numero plazas</th>
+										<th>Precio hora</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -99,6 +100,7 @@
 										<td><%=listmotos.get(i).getCv()%></td>
 										<td><%=listmotos.get(i).getCc()%></td>
 										<td><%=listmotos.get(i).getNum_plazas()%></td>
+										<td><%=listmotos.get(i).getPrecio_hora()%></td>
 									</tr>
 									<%} %>
 								</tbody>

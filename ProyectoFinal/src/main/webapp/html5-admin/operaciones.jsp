@@ -72,13 +72,24 @@
 			String matricula = request.getParameter("matricula");
 			String marca = request.getParameter("marca");
 			String modelo = request.getParameter("modelo");
-			double cv = Double.parseDouble(request.getParameter("cv"));
-			double cc = Double.parseDouble(request.getParameter("cc"));
+			int cv = Integer.parseInt(request.getParameter("cv"));
+			int cc = Integer.parseInt(request.getParameter("cc"));
 			int num_plazas = Integer.parseInt(request.getParameter("num_plazas"));
 			int id_moto = cont.lastid_motos() + 1;
-			cont.altamoto(id_moto, matricula,marca,modelo, cv, cc, num_plazas);
+			double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
+			cont.altamoto(id_moto, matricula,marca,modelo, cv, cc, num_plazas,precio_hora);
 			mensaje="Alta moto realizada satisfactoriamente.";
 			break;
+		case "alta_cliente":
+			String dni = request.getParameter("dni");
+			String nombre = request.getParameter("nombre");
+			String apellidos = request.getParameter("apellidos");
+			String direccion = request.getParameter("direccion");
+			int cp = Integer.parseInt(request.getParameter("cp"));
+			String provincia = request.getParameter("provincia");
+			int id_cliente = cont.lastid_clientes() + 1;
+			cont.altacliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
+			mensaje="Alta de cliente realizada con exito";
 		}
 		%>
 			<!--Forms-->

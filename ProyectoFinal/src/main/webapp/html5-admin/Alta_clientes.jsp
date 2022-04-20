@@ -63,47 +63,37 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Tables-->
-			
+			<!--Forms-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
 						<div class="card-title">
-						<%
-						BDController cont = new BDController();
-						ArrayList<Alquiler> listalquileres = cont.damealquiler();
-						%>
-							<h3>Lista de alquileres</h3>
+							<h3>Alta Cliente</h3>
 						</div>
 						<div class="card-block">
-							<table>
-								<thead>
-									<tr>
-										<th>Id moto</th>
-										<th>Id cliente</th>
-										<th>Fecha y hora</th>
-										<th>Numero de horas</th>
-										<th>Precio total</th>
-									</tr>
-								</thead>
-								<tbody>
-								<%
-								for (int i = 0;i<listalquileres.size();i++){
-								%>
-									<tr>
-										<td><%=listalquileres.get(i).getId_moto()%></td>
-										<td><%=listalquileres.get(i).getId_cliente()%></td>
-										<td><%=listalquileres.get(i).getFecha()%></td>
-										<td><%=listalquileres.get(i).getNum_horas()%></td>
-										<td><%=listalquileres.get(i).getPrecio_total()%></td>
-									</tr>
-									<%} %>
-								</tbody>
-							</table>
+							<form action="operaciones.jsp?tipo=alta_cliente" method="post">
+								<fieldset>
+									<label for="nameField">DNI</label>
+									<input type="text" placeholder="12345678X" id="dni" name="dni" maxlength="9">
+									<label for="nameField">Nombre</label>
+									<input type="text" placeholder="Juan" id="nombre" name="nombre" maxlength="9">
+									<label for="nameField">Apellidos</label>
+									<input type="text" placeholder="Perez Bonet" id="apellidos" name="apellidos" maxlength="15">
+									<label for="nameField">Dirección</label>
+									<input type="text" placeholder="Carrera Madrid, 61" id="direccion" name="direccion" maxlength="15">
+									<label for="nameField">Codigo postal</label>
+									<input type="number" placeholder="37799" id="cp" name="cp" maxlength="5" min="0">
+									<label for="nameField">Provincia</label>
+									<input type="text" placeholder="Salamanca" id="provincia" name="provincia" maxlength="15">
+									<input class="button-primary" type="submit" value="Dar de alta" style="display:block;" >
+								</fieldset>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>
