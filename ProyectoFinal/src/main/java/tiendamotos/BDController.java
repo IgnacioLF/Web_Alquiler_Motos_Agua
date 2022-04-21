@@ -331,4 +331,17 @@ public class BDController {
 			System.out.println("Error en bdcontrole metodo altacliente");
 		}
 	}
+	
+	public void altaalquiler(int id_moto,int id_cliente,String fecha_hora,int num_horas,double precio_total) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Insert into alquiler (id_moto,id_cliente,fecha_hora,num_horas,precio_total) values ("+id_moto+","+id_cliente+",'"+fecha_hora+"',"+num_horas+","+precio_total+")";
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo altaalquiler");
+		}
+	}
 }

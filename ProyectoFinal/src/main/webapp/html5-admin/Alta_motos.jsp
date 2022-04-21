@@ -86,7 +86,7 @@
 									<label for="nameField">Numero de plazas</label>
 									<input type="number" placeholder="00" id="num_plazas" name="num_plazas" maxlength="2" min="1">
 									<label for="nameField">Precio hora</label>
-									<input type="number" placeholder="00" id="precio_hora" name="precio_hora" maxlength="10" min="1">
+									<input type="number" placeholder="00" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
 									<input class="button-primary" type="submit" value="Dar de alta" style="display:block;" >
 								</fieldset>
 							</form>

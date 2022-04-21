@@ -69,27 +69,49 @@
 		String mensaje = "";
 		switch (tipo) {
 		case "alta_moto":
-			String matricula = request.getParameter("matricula");
-			String marca = request.getParameter("marca");
-			String modelo = request.getParameter("modelo");
-			int cv = Integer.parseInt(request.getParameter("cv"));
-			int cc = Integer.parseInt(request.getParameter("cc"));
-			int num_plazas = Integer.parseInt(request.getParameter("num_plazas"));
-			int id_moto = cont.lastid_motos() + 1;
-			double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
-			cont.altamoto(id_moto, matricula,marca,modelo, cv, cc, num_plazas,precio_hora);
-			mensaje="Alta moto realizada satisfactoriamente.";
+			if (request.getParameter("matricula")=="" || request.getParameter("marca")=="" || request.getParameter("modelo")=="" || request.getParameter("cv")=="" ||request.getParameter("cc")==""|| request.getParameter("num_plazas")=="" || request.getParameter("precio_hora")==""){
+				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";	
+			} else{
+				String matricula = request.getParameter("matricula");
+				String marca = request.getParameter("marca");
+				String modelo = request.getParameter("modelo");
+				int cv = Integer.parseInt(request.getParameter("cv"));
+				int cc = Integer.parseInt(request.getParameter("cc"));
+				int num_plazas = Integer.parseInt(request.getParameter("num_plazas"));
+				int id_moto = cont.lastid_motos() + 1;
+				double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
+				cont.altamoto(id_moto, matricula,marca,modelo, cv, cc, num_plazas,precio_hora);
+				mensaje="Alta moto realizada satisfactoriamente.";
+			}
 			break;
 		case "alta_cliente":
-			String dni = request.getParameter("dni");
-			String nombre = request.getParameter("nombre");
-			String apellidos = request.getParameter("apellidos");
-			String direccion = request.getParameter("direccion");
-			int cp = Integer.parseInt(request.getParameter("cp"));
-			String provincia = request.getParameter("provincia");
-			int id_cliente = cont.lastid_clientes() + 1;
-			cont.altacliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
-			mensaje="Alta de cliente realizada con exito";
+			if (request.getParameter("dni")==""||request.getParameter("nombre")==""||request.getParameter("apellidos")==""||request.getParameter("direccion")==""||request.getParameter("cp")==""||request.getParameter("provincia")==""){
+				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";	
+			} else {
+				String dni = request.getParameter("dni");
+				String nombre = request.getParameter("nombre");
+				String apellidos = request.getParameter("apellidos");
+				String direccion = request.getParameter("direccion");
+				int cp = Integer.parseInt(request.getParameter("cp"));
+				String provincia = request.getParameter("provincia");
+				int id_cliente = cont.lastid_clientes() + 1;
+				cont.altacliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
+				mensaje="Alta de cliente realizada con exito";
+			}
+			break;
+		case "alta_alquileres":
+			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha_hora")==""||request.getParameter("num_horas")==""||request.getParameter("precio_total")==""){
+				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";
+			} else {
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				String fecha_hora = request.getParameter("fecha_hora");
+				int num_horas = Integer.parseInt(request.getParameter("num_horas"));
+				double precio_total = Double.parseDouble(request.getParameter("precio_total"));
+				cont.altaalquiler(id_moto, id_cliente, fecha_hora, num_horas, precio_total);
+				mensaje="Alta de alquiler realizada con exito";
+			}
+			break;
 		}
 		%>
 			<!--Forms-->
