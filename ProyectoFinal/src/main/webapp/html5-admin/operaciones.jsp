@@ -112,6 +112,61 @@
 				mensaje="Alta de alquiler realizada con exito";
 			}
 			break;
+		case "baja_moto":
+			if (request.getParameter("id_moto")==""){
+				mensaje = "Error debe seleccionar una moto para poder realizar la operación";
+			} else {
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				if (cont.existealquilerfromidmoto(id_moto)){
+					cont.bajaalquilerfrommoto(id_moto);
+				}
+				cont.bajamoto(id_moto);
+				mensaje="Baja moto realizada con exito";
+			}
+			break;
+		case "baja_cliente":
+			if (request.getParameter("id_cliente")==""){
+				mensaje="Error debe seleccionar un cliente para poder realizar la operación";
+			} else  {
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				if (cont.existealquilerfromidcliente(id_cliente)){
+					cont.bajaalquilerfromcliente(id_cliente);
+				}
+				cont.bajacliente(id_cliente);
+				mensaje="Baja cliente realizada con exito";
+			}
+			break;
+		case "baja_alquileres":
+			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha_hora")==""){
+				mensaje="Error debe rellenar todos los campos para poder realizar la operacion";
+			} else {
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				String fecha = request.getParameter("fecha_hora");
+				if (cont.existealquilerfromall(id_cliente, id_moto,fecha)){
+					cont.bajaalquilerfromall(id_cliente, id_moto, fecha);
+					mensaje="Baja alquiler realizada satisfactoriamente";
+				} else {
+					mensaje="Error no se puede realizar la baja porque no existe ningun alquiler con esos valores";
+				}
+			}
+			break;
+		case "modificar_moto":
+			if(request.getParameter("matricula")=="" || request.getParameter("marca")=="" || request.getParameter("modelo")=="" || request.getParameter("cv")=="" ||request.getParameter("cc")==""|| request.getParameter("num_plazas")=="" || request.getParameter("precio_hora")==""){
+				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";	
+			} else {
+				String matricula = request.getParameter("matricula");
+				String marca = request.getParameter("marca");
+				String modelo = request.getParameter("modelo");
+				int cv = Integer.parseInt(request.getParameter("cv"));
+				int cc = Integer.parseInt(request.getParameter("cc"));
+				int num_plazas = Integer.parseInt(request.getParameter("num_plazas"));
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
+				cont.updatemoto(id_moto, matricula, marca, modelo, cv, cc, num_plazas, precio_hora);
+				mensaje="Moto modificada satisfactoriamente";
+			}
+			break;
 		}
 		%>
 			<!--Forms-->

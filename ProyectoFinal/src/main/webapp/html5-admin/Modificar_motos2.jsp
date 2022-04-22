@@ -63,49 +63,44 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Tables-->
-			
+			<!--Forms-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
 						<div class="card-title">
+							<h3>Modificar Moto</h3>
+						</div>
 						<%
 						BDController cont = new BDController();
-						ArrayList<Alquiler> listalquileres = cont.damealquiler();
+						Motos moto = cont.damemotoformidmoto(Integer.parseInt(request.getParameter("id_moto")));
 						%>
-							<h3>Lista de alquileres</h3>
-						</div>
 						<div class="card-block">
-							<table>
-								<thead>
-									<tr>
-										<th>Moto</th>
-										<th>Cliente</th>
-										<th>Fecha y hora</th>
-										<th>Numero de horas</th>
-										<th>Precio total</th>
-									</tr>
-								</thead>
-								<tbody>
-								<%
-								for (int i = 0;i<listalquileres.size();i++){
-									Motos tempmoto = cont.damemotoformidmoto(listalquileres.get(i).getId_moto());
-									Clientes tempcliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente());
-								%>
-									<tr>
-										<td><img src="../images/motos/<%=listalquileres.get(i).getId_moto()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempmoto.getMarca()%> <%=tempmoto.getModelo()%> (<%=tempmoto.getMatricula()%>)</span></td>
-										<td><img src="../images/clientes/<%=tempcliente.getId()%>.jpg" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempcliente.getNombre()%> <%=tempcliente.getApellidos()%></span></td>
-										<td><%=listalquileres.get(i).getFecha()%></td>
-										<td><%=listalquileres.get(i).getNum_horas()%></td>
-										<td><%=listalquileres.get(i).getPrecio_total()%></td>
-									</tr>
-									<%} %>
-								</tbody>
-							</table>
+							<form action="operaciones.jsp?tipo=modificar_moto" method="post">
+								<fieldset>
+									<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:60px;height:60px;">
+									<label for="nameField">Matricula</label>
+									<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
+									<label for="nameField">Marca</label>
+									<input type="text" value="<%=moto.getMarca()%>" id="marca" name="marca" maxlength="10">
+									<label for="nameField">Modelo</label>
+									<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
+									<label for="nameField">CV</label>
+									<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
+									<label for="nameField">CC</label>
+									<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
+									<label for="nameField">Numero de plazas</label>
+									<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
+									<label for="nameField">Precio hora</label>
+									<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
+									<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
+								</fieldset>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

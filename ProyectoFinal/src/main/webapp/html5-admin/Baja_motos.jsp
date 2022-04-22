@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -20,6 +21,9 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+	
+		<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
+		<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,53 +67,42 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Tables-->
-			
+			<!--Forms-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
 						<div class="card-title">
-						<%
-						BDController cont = new BDController();
-						ArrayList<Alquiler> listalquileres = cont.damealquiler();
-						%>
-							<h3>Lista de alquileres</h3>
+							<h3>Baja Moto</h3>
 						</div>
 						<div class="card-block">
-							<table>
-								<thead>
-									<tr>
-										<th>Moto</th>
-										<th>Cliente</th>
-										<th>Fecha y hora</th>
-										<th>Numero de horas</th>
-										<th>Precio total</th>
-									</tr>
-								</thead>
-								<tbody>
-								<%
-								for (int i = 0;i<listalquileres.size();i++){
-									Motos tempmoto = cont.damemotoformidmoto(listalquileres.get(i).getId_moto());
-									Clientes tempcliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente());
-								%>
-									<tr>
-										<td><img src="../images/motos/<%=listalquileres.get(i).getId_moto()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempmoto.getMarca()%> <%=tempmoto.getModelo()%> (<%=tempmoto.getMatricula()%>)</span></td>
-										<td><img src="../images/clientes/<%=tempcliente.getId()%>.jpg" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempcliente.getNombre()%> <%=tempcliente.getApellidos()%></span></td>
-										<td><%=listalquileres.get(i).getFecha()%></td>
-										<td><%=listalquileres.get(i).getNum_horas()%></td>
-										<td><%=listalquileres.get(i).getPrecio_total()%></td>
-									</tr>
-									<%} %>
-								</tbody>
-							</table>
+						<%
+						BDController cont = new BDController();
+						ArrayList<Motos> listmotos = cont.damemotos();
+						%>
+							<form action="operaciones.jsp?tipo=baja_moto" method="post">
+								<fieldset>
+									<label for="nameField">Moto</label>
+									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
+										    <option value="">Seleccione una moto</option>
+										<%for (int i = 0;i<listmotos.size();i++){ %>
+											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
+										<%} %>
+									</select>
+									<input class="button-primary" type="submit" value="Dar de baja" style="margin-top: 2rem;display:block;" >
+								</fieldset>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
+	<script src="../assets/js/dropdown.js"></script>
+	<script src="../assets/js/dd.min.js?ver=4.0"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

@@ -344,4 +344,101 @@ public class BDController {
 			System.out.println("Error en bdcontrole metodo altaalquiler");
 		}
 	}
+	
+	public void bajamoto(int id_moto) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Delete from motos where id_moto = "+id_moto ;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo bajamoto");
+		}
+	}
+	
+	public void bajacliente(int id_cliente) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Delete from clientes where id_cliente = "+id_cliente ;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo bajacliente");
+		}
+	}
+	
+	public void bajaalquilerfromcliente(int id_cliente) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Delete from alquiler where id_cliente = "+id_cliente ;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo bajaalquilerfromcliente");
+		}
+	}
+	
+	public void bajaalquilerfrommoto(int id_moto) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Delete from alquiler where id_moto = "+id_moto ;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo bajaalquilerfrommoto");
+		}
+	}
+	
+	public void bajaalquilerfromall(int id_moto , int id_cliente,String fecha) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "Delete from alquiler where id_moto = "+id_moto+" and id_cliente="+id_cliente+"and fecha_hora="+fecha;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo bajaalquilerfromall");
+		}
+	}
+	
+	public boolean existealquilerfromall(int id_cliente,int id_moto,String fecha) {
+		boolean resp = false;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_cliente="+id_cliente+" and id_moto="+id_moto+" and fecha_hora='"+fecha+"'");
+			while (rs.next()==true) {
+				resp = true;
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo existealquilerfromids");
+		}
+		return resp;
+	}
+	
+	public void updatemoto(int id_moto,String matricula,String marca,String modelo,int cv,int cc,int num_plazas,double precio_hora) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "UPDATE motos set matricula='"+matricula+"', marca='"+marca+"', modelo='"+modelo+"', cv="+cv+", cc="+cc+", num_plazas="+num_plazas+", precio_hora="+precio_hora+" WHERE id_moto="+id_moto;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo updatemoto");
+		}
+	}
+	
 }
