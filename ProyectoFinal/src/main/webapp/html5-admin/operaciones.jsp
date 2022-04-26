@@ -167,6 +167,21 @@
 				mensaje="Moto modificada satisfactoriamente";
 			}
 			break;
+		case "modificar_cliente":
+			if (request.getParameter("dni")==""||request.getParameter("nombre")==""||request.getParameter("apellidos")==""||request.getParameter("direccion")==""||request.getParameter("cp")==""||request.getParameter("provincia")==""){
+				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";	
+			} else {
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				String dni = request.getParameter("dni");
+				String nombre = request.getParameter("nombre");
+				String apellidos = request.getParameter("apellidos");
+				String direccion = request.getParameter("direccion");
+				int cp = Integer.parseInt(request.getParameter("cp"));
+				String provincia = request.getParameter("provincia");
+				cont.updatecliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
+				mensaje="Cliente modificao correctamete";
+			}
+			
 		}
 		%>
 			<!--Forms-->

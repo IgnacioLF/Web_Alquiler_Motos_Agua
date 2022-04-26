@@ -68,30 +68,36 @@
 				<div class="column ">
 					<div class="card">
 						<div class="card-title">
-							<h3>Modificar Moto</h3>
+							<h3>Modificar Alquiler</h3>
 						</div>
 						<%
 						BDController cont = new BDController();
-						Motos moto = cont.damemotoformidmoto(Integer.parseInt(request.getParameter("id_moto")));
+						ArrayList<Clientes> listclientes = cont.dameclientes();
+						ArrayList<Motos> listmotos = cont.damemotos();
 						%>
 						<div class="card-block">
-							<form action="operaciones.jsp?tipo=modificar_moto&id_moto=<%=moto.getId()%>" method="post">
+							<form action="operaciones.jsp?tipo=modificar_alquileres&id_moto=<%=moto.getId()%>" method="post">
 								<fieldset>
-									<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:60px;height:60px;">
-									<label for="nameField">Matricula</label>
-									<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
-									<label for="nameField">Marca</label>
-									<input type="text" value="<%=moto.getMarca()%>" id="marca" name="marca" maxlength="10">
-									<label for="nameField">Modelo</label>
-									<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
-									<label for="nameField">CV</label>
-									<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
-									<label for="nameField">CC</label>
-									<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
-									<label for="nameField">Numero de plazas</label>
-									<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
-									<label for="nameField">Precio hora</label>
-									<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
+									<label for="nameField">Moto</label>
+									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
+										    <option value="">Seleccione una moto</option>
+										<%for (int i = 0;i<listmotos.size();i++){ %>
+											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
+										<%} %>
+									</select>
+									<label for="nameField">Cliente</label>
+									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
+										    <option value="">Seleccione un cliente</option>
+										<%for (int i = 0;i<listclientes.size();i++){ %>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.jpg"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+										<%} %>
+									</select>	
+									<label for="nameField">Fecha y hora</label>
+									<input type="datetime-local" placeholder="00/00/0000 00:00" id="fecha_hora" name="fecha_hora" maxlength="10">
+									<label for="nameField">Nuemero de horas</label>
+									<input type="number" placeholder="0" id="num_horas" name="num_horas" maxlength="3" min="0">
+									<label for="nameField">Precio total</label>
+									<input type="number" placeholder="00" id="precio_total" name="precio_total" maxlength="10" min="1" step="any">
 									<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
 								</fieldset>
 							</form>

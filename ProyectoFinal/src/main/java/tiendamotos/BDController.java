@@ -441,4 +441,17 @@ public class BDController {
 		}
 	}
 	
+	public void updatecliente(int id_cliente,String dni,String nombre,String apellidos,String direccion, int cp , String provincia) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "UPDATE clientes set dni='"+dni+"',nombre='"+nombre+"',apellidos='"+apellidos+"',direccion='"+direccion+"',cp="+cp+",provincia='"+provincia+"' WHERE id_cliente="+id_cliente;
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo updatecliente");
+		}
+	}
+	
 }

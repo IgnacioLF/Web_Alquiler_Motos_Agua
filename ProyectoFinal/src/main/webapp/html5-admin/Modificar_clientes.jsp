@@ -20,6 +20,8 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
+	<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -68,31 +70,23 @@
 				<div class="column ">
 					<div class="card">
 						<div class="card-title">
-							<h3>Modificar Moto</h3>
-						</div>
-						<%
+							<h3>Modificar Cliente</h3>
+							<%
 						BDController cont = new BDController();
-						Motos moto = cont.damemotoformidmoto(Integer.parseInt(request.getParameter("id_moto")));
+						ArrayList<Clientes> listclientes = cont.dameclientes();
 						%>
+						</div>
 						<div class="card-block">
-							<form action="operaciones.jsp?tipo=modificar_moto&id_moto=<%=moto.getId()%>" method="post">
+							<form action="Modificar_clientes2.jsp?tipo=modificar_cliente" method="post">
 								<fieldset>
-									<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:60px;height:60px;">
-									<label for="nameField">Matricula</label>
-									<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
-									<label for="nameField">Marca</label>
-									<input type="text" value="<%=moto.getMarca()%>" id="marca" name="marca" maxlength="10">
-									<label for="nameField">Modelo</label>
-									<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
-									<label for="nameField">CV</label>
-									<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
-									<label for="nameField">CC</label>
-									<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
-									<label for="nameField">Numero de plazas</label>
-									<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
-									<label for="nameField">Precio hora</label>
-									<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
-									<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
+									<label for="nameField">Cliente</label>
+									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
+										    <option value="">Seleccione un cliente</option>
+										<%for (int i = 0;i<listclientes.size();i++){ %>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.jpg"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+										<%} %>
+									</select>
+									<input class="button-primary" type="submit" value="Continuar" style="margin-top: 2rem;display:block;" >
 								</fieldset>
 							</form>
 						</div>
@@ -105,6 +99,8 @@
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
+	<script src="../assets/js/dropdown.js"></script>
+	<script src="../assets/js/dd.min.js?ver=4.0"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");
