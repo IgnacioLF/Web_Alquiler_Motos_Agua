@@ -81,7 +81,7 @@
 						ArrayList<Clientes> listclientes = cont.dameclientes();
 						ArrayList<Motos> listmotos = cont.damemotos();
 						%>
-							<form action="operaciones.jsp?tipo=baja_alquileres" method="post">
+							<form action="operaciones.jsp?tipo=modificar_alquileres" method="post">
 								<fieldset>
 									<label for="nameField">Moto</label>
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">

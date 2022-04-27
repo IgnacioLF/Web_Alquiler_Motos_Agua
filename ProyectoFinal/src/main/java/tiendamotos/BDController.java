@@ -454,4 +454,22 @@ public class BDController {
 		}
 	}
 	
+	public Alquiler damealquilerfromall(int id_cliente,int id_moto,String fecha_hora){
+		Alquiler alquiler = new Alquiler();
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_cliente="+id_cliente+"and id_moto="+id_moto+"and fecha_hora="+fecha_hora);
+			while (rs.next()==true) {
+				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total"));
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo damealquilerfromall");
+		}
+		return alquiler;
+	}
+	
 }

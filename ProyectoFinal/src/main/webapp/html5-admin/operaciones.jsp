@@ -181,7 +181,17 @@
 				cont.updatecliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
 				mensaje="Cliente modificao correctamete";
 			}
-			
+		case "modificar_alquileres":
+			if (request.getParameter("id_cliente")==""||request.getParameter("id_moto")==""||request.getParameter("fecha_hora")==""){
+				mensaje="Debe rellenar todos los campos";
+			} else {
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				String fecha_hora = request.getParameter("fecha_hora");
+				if (cont.existealquilerfromall(id_cliente, id_moto, fecha_hora)){
+					response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha_hora="+fecha_hora);
+				}
+			}
 		}
 		%>
 			<!--Forms-->

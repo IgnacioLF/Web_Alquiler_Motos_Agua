@@ -20,6 +20,8 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+			<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
+		<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,32 +74,43 @@
 						</div>
 						<%
 						BDController cont = new BDController();
+						int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+						int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+						Motos mymoto = cont.damemotoformidmoto(id_moto);
+						Clientes mycliente = cont.dameclientefromid(id_cliente);
+						String fecha_hora = request.getParameter("fecha_hora");
 						ArrayList<Clientes> listclientes = cont.dameclientes();
 						ArrayList<Motos> listmotos = cont.damemotos();
+						Alquiler myalquiler = cont.damealquilerfromall(id_cliente, id_moto, fecha_hora);
 						%>
 						<div class="card-block">
-							<form action="operaciones.jsp?tipo=modificar_alquileres&id_moto=<%=moto.getId()%>" method="post">
+							<form action="operaciones.jsp?tipo=modificar_alquileres" method="post">
 								<fieldset>
 									<label for="nameField">Moto</label>
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="">Seleccione una moto</option>
-										<%for (int i = 0;i<listmotos.size();i++){ %>
+										    <option value="<%=id_moto%>" data-image="../images/motos/<%=id_moto%>.png"><%=mymoto.getMarca()%> <%=mymoto.getModelo()%> (<%=mymoto.getMatricula()%>)</option>
+										<%for (int i = 0;i<listmotos.size();i++){ 
+										
+										if (listmotos.get(i).getId()!=id_moto){
+										%>
 											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
-										<%} %>
+										<%}} %>
 									</select>
 									<label for="nameField">Cliente</label>
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="">Seleccione un cliente</option>
-										<%for (int i = 0;i<listclientes.size();i++){ %>
+										    <option value="<%=id_cliente%>" data-image="../images/clientes/<%=id_cliente%>.jpg"><%=mycliente.getNombre()%> <%=mycliente.getApellidos()%></option>
+										<%for (int i = 0;i<listclientes.size();i++){
+											if (listclientes.get(i).getId()!=id_cliente){
+											%>
 											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.jpg"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
-										<%} %>
+										<%}} %>
 									</select>	
 									<label for="nameField">Fecha y hora</label>
-									<input type="datetime-local" placeholder="00/00/0000 00:00" id="fecha_hora" name="fecha_hora" maxlength="10">
+									<input type="datetime-local" value="<%=fecha_hora%>" id="fecha_hora" name="fecha_hora" maxlength="10">
 									<label for="nameField">Nuemero de horas</label>
-									<input type="number" placeholder="0" id="num_horas" name="num_horas" maxlength="3" min="0">
+									<input type="number" value="<%=myalquiler.getNum_horas() %>" id="num_horas" name="num_horas" maxlength="3" min="0">
 									<label for="nameField">Precio total</label>
-									<input type="number" placeholder="00" id="precio_total" name="precio_total" maxlength="10" min="1" step="any">
+									<input type="number" value="<%=myalquiler.getPrecio_total() %>" id="precio_total" name="precio_total" maxlength="10" min="1" step="any">
 									<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
 								</fieldset>
 							</form>
@@ -111,6 +124,8 @@
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
+		<script src="../assets/js/dropdown.js"></script>
+	<script src="../assets/js/dd.min.js?ver=4.0"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");
