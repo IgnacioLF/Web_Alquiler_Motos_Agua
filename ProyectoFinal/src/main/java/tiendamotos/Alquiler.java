@@ -79,6 +79,24 @@ public class Alquiler {
 	public void setPrecio_total(double precio_total) {
 		this.precio_total = precio_total;
 	}
+	
+	public String damesolofecha() {
+		String[] partes = this.fecha.split(" ");
+		return partes[0];
+	}
+	
+	public int damehoraentrada() {
+		String[] partes = this.fecha.split(" ");
+	return	Integer.parseInt(partes[1]);
+	}
+	
+	public int damehorasalida() {
+		String[] partes = this.fecha.split(" ");
+		String[] splithoras = partes[1].split(":");
+		int hora = Integer.parseInt(splithoras[0]);
+		hora = hora + this.num_horas;
+	return	hora;
+	}
 	@Override
 	public String toString() {
 		return "Alquiler [id_moto=" + id_moto + ", id_cliente=" + id_cliente + ", fecha=" + fecha + ", num_horas="
