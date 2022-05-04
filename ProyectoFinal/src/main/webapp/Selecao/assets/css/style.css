@@ -61,6 +61,42 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+
+.motosaguaeuros{
+  font-size: 20px !important;
+  top: -15px !important;
+  left: -3px !important;
+}
+
+.motosaguaprecio {
+  font-size: 36px !important;
+  color: #ef6603 !important;
+  font-weight: 600 !important;
+  font-family: "Poppins", sans-serif !important;
+  margin-bottom: 20px !important;
+}
+.motoaguahoras{
+  color: #bababa !important;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+}
+
+
+/* table*/
+table.roundedCorners { 
+  border: 1px solid DarkOrange;
+  border-radius: 13px; 
+  border-spacing: 0;
+  }
+table.roundedCorners td, 
+table.roundedCorners th { 
+  border-bottom: 1px solid DarkOrange;
+  padding: 10px; 
+  }
+table.roundedCorners tr:last-child > td {
+  border-bottom: none;
+}
+
 /*--------------------------------------------------------------
 # Disable AOS delay on mobile
 --------------------------------------------------------------*/
