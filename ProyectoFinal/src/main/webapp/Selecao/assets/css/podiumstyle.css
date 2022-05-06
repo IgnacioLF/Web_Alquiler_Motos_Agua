@@ -11,6 +11,13 @@
     display: none;
   }
   
+  .imagenclientespodio {
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin: 0 auto;
+  }
+
+
   .btn-verdetalles-podio{
     background: #fff;
     display: inline-block;
@@ -112,6 +119,27 @@
     transform: scale(0.9);
     align-items: center;
     z-index: 1;
+  }
+
+  .podioclientes ul {
+    margin: 2.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .podioclientes ul li {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .podioclientes ul li.price {
+    font-size: 3rem;
+    color: hsl(232, 13%, 33%);
+    padding-bottom: 2rem;
   }
 
   .podiomotos ul {
