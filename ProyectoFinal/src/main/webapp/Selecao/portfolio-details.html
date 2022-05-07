@@ -51,30 +51,14 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto active white" href="index.html#hero">Home</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#about">Quienes somos</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#motosagua">Motos de agua</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#clientes">Todos los clientes</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#podiomotos">Motos más alquiladas</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#podioclientes">Mejores clientes</a></li>
+          <li><a class="nav-link scrollto white" href="index.html#contact">Contacto</a></li>
+      
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -89,10 +73,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
+          <h1 style="font-size: 2rem; font-weight: bold;">Detalles de la Moto</h1>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Portfolio Details</li>
+            <li>Marca Modelo</li>
           </ol>
         </div>
 
@@ -105,20 +89,20 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                  <img src="assets/img/1.png" alt="">
                 </div>
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                <div class="swiper-slide" style="padding-left: 0.5rem; padding-right: 0.5rem;">
+                  <img class="imagenborder" src="assets/img/1_1.jpg" alt="">
                 </div>
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                <div class="swiper-slide " style="padding-left: 0.5rem; padding-right: 0.5rem;">
+                  <img class="imagenborder" src="assets/img/1_1_1.jpg" alt="">
                 </div>
 
               </div>
@@ -127,21 +111,50 @@
           </div>
 
           <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
+            <div class="portfolio-info detalles">
+              <h2>Marca modelo</h2>
               <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                <li><strong>CV</strong>: 000</li>
+                <li><strong>CC</strong>: 000</li>
+                <li><strong>Número de plazas</strong>: 00</li>
+                <li class="masgrande"><h4 class="motosaguaprecio"><sup class="motosaguaeuros">€</sup>00<span class="motoaguahorasindetails"> / Hora</span></h4></li>
               </ul>
             </div>
-            <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div>
+          </div>
+          <div class="portfolio-description" style="display: flex;flex-direction: column;align-items: center;">
+            <h2>Historial de clientes</h2>
+            <table class="roundedCorners" style="display: flex;">
+              <tr>
+                <th>Cliente</th>
+                <th>Fecha y hora</th>
+                <th>Numero de horas</th>
+                <th>Precio total</th>
+              </tr>
+              <tr>
+                <td>imgcliente + nombre y Apellidos</td>
+                <td>Fecha y hora del aquiler</td>
+                <td>Nº de horas del alquiler</td>
+                <td>Precio total del alquiler</td>
+              </tr>
+              <tr>
+                <td>imgcliente + nombre y Apellidos</td>
+                <td>Fecha y hora del aquiler</td>
+                <td>Nº de horas del alquiler</td>
+                <td>Precio total del alquiler</td>
+              </tr>
+              <tr>
+                <td>imgcliente + nombre y Apellidos</td>
+                <td>Fecha y hora del aquiler</td>
+                <td>Nº de horas del alquiler</td>
+                <td>Precio total del alquiler</td>
+              </tr>
+              <tr>
+                <td>imgcliente + nombre y Apellidos</td>
+                <td>Fecha y hora del aquiler</td>
+                <td>Nº de horas del alquiler</td>
+                <td>Precio total del alquiler</td>
+              </tr>
+            </table>
           </div>
 
         </div>

@@ -81,22 +81,81 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300 !important;
 }
 
+.motoaguahorasindetails{
+  color: #000000 !important;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+}
+
+.motosaguaprecioindetails {
+  font-size: 36px !important;
+  color: #ef6603 !important;
+  font-weight: 600 !important;
+  font-family: "Poppins", sans-serif !important;
+  margin-bottom: 20px !important;
+}
+
+.motosaguaeurosdetails{
+  font-size: 20px !important;
+  top: -15px !important;
+  left: -3px !important;
+}
+
+.masgrande{
+  padding-top: 2rem;
+  margin-left: 5rem;
+  transform: scale(1.5);
+}
+
 
 /* table*/
 table.roundedCorners { 
   border: 1px solid DarkOrange;
-  border-radius: 13px; 
+  border-radius: 20px; 
   border-spacing: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   }
 table.roundedCorners td, 
 table.roundedCorners th { 
-  border-bottom: 1px solid DarkOrange;
+  border-bottom: 1px solid #ef6603;
   padding: 10px; 
+
   }
 table.roundedCorners tr:last-child > td {
   border-bottom: none;
 }
+table th,td{
+  text-align: center;
+}
+table th{
+  color: #ef6603;
+  border-radius: 20px; 
+}
 
+.detalles{
+  align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100% ;
+}
+.detalles li{
+  font-size: 1.2rem;
+}
+.detalles h2 {
+  color: #ef6603;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.imagenborder{
+  border: 3px solid #ef6603;
+  border-radius: 25px; 
+  overflow: hidden
+}
 /*--------------------------------------------------------------
 # Disable AOS delay on mobile
 --------------------------------------------------------------*/
