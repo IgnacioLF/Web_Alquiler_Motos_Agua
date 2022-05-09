@@ -98,7 +98,7 @@
 									</select>
 									<label for="nameField">Cliente</label>
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="<%=id_cliente%>" data-image="../images/clientes/<%=id_cliente%>.jpg"><%=mycliente.getNombre()%> <%=mycliente.getApellidos()%></option>
+										    <option value="<%=id_cliente%>" data-image="../images/clientes/<%=id_cliente%>.png"><%=mycliente.getNombre()%> <%=mycliente.getApellidos()%></option>
 										<%for (int i = 0;i<listclientes.size();i++){
 											if (listclientes.get(i).getId()!=id_cliente){
 											%>

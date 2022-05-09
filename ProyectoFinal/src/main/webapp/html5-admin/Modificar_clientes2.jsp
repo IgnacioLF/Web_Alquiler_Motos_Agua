@@ -77,7 +77,7 @@
 						<div class="card-block">
 							<form action="operaciones.jsp?tipo=modificar_cliente&id_cliente=<%=cliente.getId()%>" method="post">
 								<fieldset>
-									<img src="../images/clientes/<%=cliente.getId()%>.jpg" alt="" style="width:60px;height:60px;">
+									<img src="../images/clientes/<%=cliente.getId()%>.png" alt="" style="width:100px;height:100px; margin-bottom: 1rem;">
 									<label for="nameField">DNI</label>
 									<input type="text" value="<%=cliente.getDni() %>" id="dni" name="dni" maxlength="9">
 									<label for="nameField">Nombre</label>

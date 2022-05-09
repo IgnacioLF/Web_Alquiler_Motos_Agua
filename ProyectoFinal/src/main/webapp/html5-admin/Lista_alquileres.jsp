@@ -93,8 +93,8 @@
 									Clientes tempcliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente());
 								%>
 									<tr>
-										<td><img src="../images/motos/<%=listalquileres.get(i).getId_moto()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempmoto.getMarca()%> <%=tempmoto.getModelo()%> (<%=tempmoto.getMatricula()%>)</span></td>
-										<td><img src="../images/clientes/<%=tempcliente.getId()%>.jpg" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem;"><%=tempcliente.getNombre()%> <%=tempcliente.getApellidos()%></span></td>
+										<td ><div style="align-items: center;display: flex;"><img src="../images/motos/<%=listalquileres.get(i).getId_moto()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem; text-align: center;"><%=tempmoto.getMarca()%> <%=tempmoto.getModelo()%> (<%=tempmoto.getMatricula()%>)</span></div></td>
+										<td ><div style="align-items: center;display: flex;"><img src="../images/clientes/<%=tempcliente.getId()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem; text-align: center;" ><%=tempcliente.getNombre()%> <%=tempcliente.getApellidos()%></span></div></td>
 										<td><%=listalquileres.get(i).getFecha()%></td>
 										<td><%=listalquileres.get(i).getNum_horas()%></td>
 										<td><%=listalquileres.get(i).getPrecio_total()%></td>

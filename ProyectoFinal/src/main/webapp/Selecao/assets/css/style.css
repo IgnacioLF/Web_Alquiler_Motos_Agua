@@ -30,6 +30,10 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
+.myjustifycontentbetwen{
+  justify-content: center!important;
+  /* justify-content: space-between!important; */
+}
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -61,6 +65,28 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+.imagencentrallogo{
+  width: 16rem; 
+  height:9rem; 
+  margin-top: 4.5rem;
+}
+@media screen and (max-width: 1440px) {
+  .imagencentrallogo{
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .imagencentrallogo{
+    width: 14rem; 
+    height:7rem; 
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 980px) {
+  .imagencentrallogo{
+    display: none;
+  }
+}
 
 .motosaguaeuros{
   font-size: 20px !important;
@@ -168,7 +194,7 @@ table th{
 # Header
 --------------------------------------------------------------*/
 #header {
-  height: 70px;
+  height: 100px;
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -180,6 +206,16 @@ table th{
 #header.header-scrolled {
   background: #00a690;
 }
+#header.header-scrolled div nav ul li a{
+  color: white !important;
+}
+
+#header.header-scrolled .logo {
+  display: block;
+}
+#header.header-scrolled .myjustifycontentbetwen{
+  justify-content: space-between!important;
+}
 #header .logo h1 {
   font-size: 28px;
   margin: 0;
@@ -188,6 +224,9 @@ table th{
   font-weight: 700;
   letter-spacing: 1px;
 }
+.logo{
+  display: none;
+}
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #fff;
   text-decoration: none;
@@ -195,7 +234,10 @@ table th{
 #header .logo img {
   padding: 0;
   margin: 0;
-  max-height: 40px;
+  max-height: 80px;
+}
+#header nav ul li a {
+  color: #ef6603 ;
 }
 
 /*--------------------------------------------------------------
@@ -236,6 +278,7 @@ table th{
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   background: #ef6603;
+  color: #fff !important;
 }
 .navbar .dropdown ul {
   display: block;
@@ -411,7 +454,7 @@ table th{
 }
 #hero .carousel-container {
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   align-items: center;
   flex-direction: column;
   text-align: center;
