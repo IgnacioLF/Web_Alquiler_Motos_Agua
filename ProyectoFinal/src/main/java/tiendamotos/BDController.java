@@ -471,5 +471,145 @@ public class BDController {
 		}
 		return alquiler;
 	}
+	public int dametop1mot(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_moto from alquiler GROUP by id_moto ORDER BY SUM(num_horas) DESC limit 1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_moto");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop1mot");
+		}
+		return respuesta;
+	}
 	
+	public int dametop2mot(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_moto from alquiler GROUP by id_moto ORDER BY SUM(num_horas) DESC limit 1,1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_moto");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop2mot");
+		}
+		return respuesta;
+	}
+	
+	public int dametop3mot(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_moto from alquiler GROUP by id_moto ORDER BY SUM(num_horas) DESC limit 2,1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_moto");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop3mot");
+		}
+		return respuesta;
+	}
+	
+	public int dametotalhorasalquilerfromid_moto(int id_moto) {
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT SUM(num_horas) from alquiler WHERE id_moto="+id_moto);
+			while (rs.next()==true) {
+				respuesta = rs.getInt("SUM(num_horas)");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametotalhorasalquilerfromid_moto");
+		}
+		return respuesta;
+	}
+	
+	public int dametop1cliente(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_cliente from alquiler GROUP BY id_cliente ORDER BY COUNT(id_cliente) DESC limit 1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_cliente");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop1cliente");
+		}
+		return respuesta;
+	}
+	public int dametop2cliente(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_cliente from alquiler GROUP BY id_cliente ORDER BY COUNT(id_cliente) DESC limit 1,1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_cliente");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop2cliente");
+		}
+		return respuesta;
+	}
+	public int dametop3cliente(){
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT id_cliente from alquiler GROUP BY id_cliente ORDER BY COUNT(id_cliente) DESC limit 2,1;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("id_cliente");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametop3cliente");
+		}
+		return respuesta;
+	}
+	
+	public int dametotalalquilerescliente(int id_cliente) {
+		int respuesta = 0;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("SELECT count(id_cliente) from alquiler WHERE id_cliente="+id_cliente+" GROUP BY id_cliente;");
+			while (rs.next()==true) {
+				respuesta = rs.getInt("count(id_cliente)");
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dametotalalquilerescliente");
+		}
+		return respuesta;
+	}
 }

@@ -1,3 +1,7 @@
+<%@ page import="tiendamotos.*" %>
+<%@ page import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +58,7 @@
           <li><a class="nav-link scrollto" href="#about">Quienes somos</a></li>
           <li><a class="nav-link scrollto" href="#motosagua">Motos de agua</a></li>
           <li><a class="nav-link scrollto" href="#clientes">Todos los clientes</a></li>
-          <li><a class="nav-link scrollto" href="#podiomotos">Motos m√°s alquiladas</a></li>
+          <li><a class="nav-link scrollto" href="#podiomotos">Motos m·s alquiladas</a></li>
           <li><a class="nav-link scrollto" href="#podioclientes">Mejores clientes</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
         </ul>
@@ -93,7 +97,7 @@
   </section><!-- End Hero -->
 
   <main id="main">
-
+<%BDController cont = new BDController(); %>
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -112,7 +116,7 @@
             <ul>
               <li><i class="ri-check-double-line"></i> Observar la naturaleza marina</li>
               <li><i class="ri-check-double-line"></i> Pasar un buen rato con familiares o amigos</li>
-              <li><i class="ri-check-double-line"></i> liberaci√≥n de estr√©s</li>
+              <li><i class="ri-check-double-line"></i> liberaciÛn de estrÈs</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
@@ -137,42 +141,20 @@
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
             <!-- Start moto item -->
+       		<%
+				ArrayList<Motos> listmotos = cont.damemotos();
+				for (int i = 0;i<listmotos.size();i++){
+			%>
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-                <h3>Marca</h3>
-                <h4 style="margin-bottom: 1rem;">Modelo</h4>
-                <h4 class="motosaguaprecio"><sup class="motosaguaeuros">‚Ç¨</sup>00<span class="motoaguahoras"> / Hora</span></h4>
+                <img src="assets/img/motos/<%=listmotos.get(i).getId()%>.png"  alt="" style="width: 200px;">
+                <h3><%=listmotos.get(i).getMarca()%></h3>
+                <h4 style="margin-bottom: 1rem;"><%=listmotos.get(i).getModelo()%></h4>
+                <h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=listmotos.get(i).getPrecio_hora()%><span class="motoaguahoras"> / Hora</span></h4>
                 <a href="#" class="btn-verdetalles" >Ver detalles</a>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-                <h3>Marca</h3>
-                <h4 style="margin-bottom: 1rem;">Modelo</h4>
-                <h4 class="motosaguaprecio"><sup class="motosaguaeuros">‚Ç¨</sup>00<span class="motoaguahoras"> / Hora</span></h4>
-                <a href="#" class="btn-verdetalles" >Ver detalles</a>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-                <h3>Marca</h3>
-                <h4 style="margin-bottom: 1rem;">Modelo</h4>
-                <h4 class="motosaguaprecio"><sup class="motosaguaeuros">‚Ç¨</sup>00<span class="motoaguahoras"> / Hora</span></h4>
-                <a href="#" class="btn-verdetalles" >Ver detalles</a>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-                <h3>Marca</h3>
-                <h4 style="margin-bottom: 1rem;">Modelo</h4>
-                <h4 class="motosaguaprecio"><sup class="motosaguaeuros">‚Ç¨</sup>00<span class="motoaguahoras"> / Hora</span></h4>
-                <a href="#" class="btn-verdetalles" >Ver detalles</a>
-              </div>
-            </div>
+            <%} %>
             <!-- End moto item -->
           </div>
           <div class="swiper-pagination"></div>
@@ -193,14 +175,19 @@
     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
       <div class="swiper-wrapper">
         <!-- Start cliente item -->
+        <%
+        ArrayList<Clientes> listclientes = cont.dameclientes();
+        for (int i = 0;i<listclientes.size();i++){
+        %>
         <div class="swiper-slide">
           <div class="testimonial-item">
-            <img src="assets/img/cliente.jpg" class="testimonial-img" alt="" style="width: 200px;">
-            <h3 style="margin-top: 1.5rem;">Nombre</h3>
-            <h4 style="margin-bottom: 1.5rem;">Apellidos</h4>
-            <a href="#" class="btn-verdetalles" >Ver m√°s</a>
+            <img src="assets/img/clientes/<%=listclientes.get(i).getId()%>.png" class="testimonial-img" alt="" style="width: 200px;">
+            <h3 style="margin-top: 1.5rem;"><%=listclientes.get(i).getNombre()%></h3>
+            <h4 style="margin-bottom: 1.5rem;"><%=listclientes.get(i).getApellidos()%></h4>
+            <a href="#" class="btn-verdetalles" >Ver m·s</a>
           </div>
         </div>
+        <%} %>
         <!-- End cliente item -->
       </div>
       <div class="swiper-pagination"></div>
@@ -214,37 +201,42 @@
 <section id="podiomotos" class="podiomotos" >
   <div class="container">
     <div class="section-title" data-aos="zoom-out">
-      <h2>Motos m√°s alquiladas</h2>
-      <p>Nuestras motos m√°s alquiladas</p>
+      <h2>Motos m·s alquiladas</h2>
+      <p>Nuestras motos m·s alquiladas</p>
     </div>
+    <%
+   	Motos top1moto = cont.damemotoformidmoto(cont.dametop1mot());
+    Motos top2moto = cont.damemotoformidmoto(cont.dametop2mot());
+    Motos top3moto = cont.damemotoformidmoto(cont.dametop3mot());
+    %>
     <div class="cards" style="margin-top: 3rem;">
       <div class="card silver shadow">
         <ul>
-          <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-          <li class="pack marca">Marca</li>
-          <li class="pack modelo bottom-bar">Modelo</li>
-          <li class="bottom-bar">Matricula : ######</li>
-          <li class="bottom-bar">Horas Alquilada : ####</li>
+          <img src="assets/img/motos/<%=top2moto.getId()%>.png"  alt="" style="width: 200px;">
+          <li class="pack marca"><%=top2moto.getMarca() %></li>
+          <li class="pack modelo bottom-bar"><%=top2moto.getModelo() %></li>
+          <li class="bottom-bar">Matricula : <%=top2moto.getMatricula() %></li>
+          <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top2moto.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
       <div class="card gold">
         <ul>
-          <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-          <li class="pack marca">Marca</li>
-          <li class="pack modelo bottom-bar">Modelo</li>
-          <li class="bottom-bar">Matricula : ######</li>
-          <li class="bottom-bar">Horas Alquilada : ####</li>
+          <img src="assets/img/motos/<%=top1moto.getId()%>.png"  alt="" style="width: 200px;">
+          <li class="pack marca"><%=top1moto.getMarca() %></li>
+          <li class="pack modelo bottom-bar"><%=top1moto.getModelo() %></li>
+          <li class="bottom-bar">Matricula : <%=top1moto.getMatricula() %></li>
+          <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top1moto.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
       <div class="card bronce shadow">
         <ul>
-          <img src="assets/img/motoejemplo.png"  alt="" style="width: 200px;">
-          <li class="pack marca">Marca</li>
-          <li class="pack modelo bottom-bar">Modelo</li>
-          <li class="bottom-bar">Matricula : ######</li>
-          <li class="bottom-bar">Horas Alquilada : ####</li>
+          <img src="assets/img/motos/<%=top3moto.getId()%>.png"  alt="" style="width: 200px;">
+          <li class="pack marca"><%=top3moto.getMarca() %></li>
+          <li class="pack modelo bottom-bar"><%=top3moto.getModelo() %></li>
+          <li class="bottom-bar">Matricula : <%=top3moto.getMatricula() %></li>
+          <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top3moto.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
@@ -260,31 +252,36 @@
       <h2>Mejores clientes</h2>
       <p>Nuestros mejores clientes</p>
     </div>
+    <%
+    Clientes top1cliente = cont.dameclientefromid(cont.dametop1cliente());
+    Clientes top2cliente = cont.dameclientefromid(cont.dametop2cliente());
+    Clientes top3cliente = cont.dameclientefromid(cont.dametop3cliente());
+    %>
     <div class="cards" style="margin-top: 3rem;">
       <div class="card silver shadow">
         <ul>
-          <img src="assets/img/cliente.jpg" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
-          <li class="pack marca">Nombre</li>
-          <li class="pack modelo bottom-bar">Apellidos</li>
-          <li class="bottom-bar">Alquileres realizados : ####</li>
+          <img src="assets/img/clientes/<%=top2cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+          <li class="pack marca"><%=top2cliente.getNombre() %></li>
+          <li class="pack modelo bottom-bar"><%=top2cliente.getApellidos() %></li>
+          <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top2cliente.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
       <div class="card gold">
         <ul>
-          <img src="assets/img/cliente.jpg" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
-          <li class="pack marca">Nombre</li>
-          <li class="pack modelo bottom-bar">Apellidos</li>
-          <li class="bottom-bar">Alquileres realizados : ####</li>
+          <img src="assets/img/clientes/<%=top1cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+          <li class="pack marca"><%=top1cliente.getNombre() %></li>
+          <li class="pack modelo bottom-bar"><%=top1cliente.getApellidos() %></li>
+          <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top1cliente.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
       <div class="card bronce shadow">
         <ul>
-          <img src="assets/img/cliente.jpg" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
-          <li class="pack marca">Nombre</li>
-          <li class="pack modelo bottom-bar">Apellidos</li>
-          <li class="bottom-bar">Alquileres realizados : ####</li>
+          <img src="assets/img/clientes/<%=top3cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+          <li class="pack marca"><%=top3cliente.getNombre() %></li>
+          <li class="pack modelo bottom-bar"><%=top3cliente.getApellidos() %></li>
+          <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top3cliente.getId()) %></li>
           <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
@@ -292,37 +289,6 @@
   </div>
 </section>
 <!-- End podio clientes-->
-
-  
-  <!--  <section id="tabla_clientes" class="features" style="display: flex;align-items: center;justify-content: center;">
-      <table class="roundedCorners">
-        <tr>
-          <th>Table Header</th>
-          <th>Table Header</th>
-          <th>Table Header</th>
-        </tr>
-        <tr>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </table>
-    </section> -->
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
@@ -338,19 +304,19 @@
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Localizaci√≥n:</h4>
+                <h4>LocalizaciÛn:</h4>
                 <p>##################</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
-                <h4>Correo el√©ctronico:</h4>
+                <h4>Correo elÈctronico:</h4>
                 <p>info@example.com</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
-                <h4>Tel√©fono:</h4>
+                <h4>TelÈfono:</h4>
                 <p>+1 5589 55488 55s</p>
               </div>
 
@@ -431,5 +397,6 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+
 
 </html>
