@@ -177,8 +177,14 @@ table th{
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
+.colorblue{
+  background-color :#00a690 !important;
+}
+.colororange{
+  color: #ef6603;
+}
 .imagenborder{
-  border: 3px solid #ef6603;
+  border: 3px solid #ef6603 !important;
   border-radius: 25px; 
   overflow: hidden
 }
@@ -238,6 +244,9 @@ table th{
 }
 #header nav ul li a {
   color: #ef6603 ;
+}
+.colorwhite{
+  color: #fff !important;
 }
 
 /*--------------------------------------------------------------
@@ -646,6 +655,7 @@ section {
 --------------------------------------------------------------*/
 .about {
   padding-top: 80px;
+  padding-bottom: 0px;
 }
 .about .content h3 {
   font-weight: 600;
