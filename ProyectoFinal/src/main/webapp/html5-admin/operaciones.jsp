@@ -220,6 +220,16 @@
 					response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha_hora="+fecha_hora);
 				}
 			}
+		case "alta_alquiler1":
+			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha")==""||request.getParameter("num_horas")==""){
+				mensaje="Debe rellenar todos los campos";
+			} else {
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+				String fecha = request.getParameter("fecha");
+				int num_horas = Integer.parseInt(request.getParameter("num_horas"));
+				response.sendRedirect("Alta_alquiler2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&num_horas="+num_horas);
+			}
 		}
 		%>
 			<!--Forms-->

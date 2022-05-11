@@ -79,16 +79,10 @@
 						boolean click = false;
 						BDController cont = new BDController();
 						ArrayList<Clientes> listclientes = cont.dameclientes();
-						ArrayList<Motos> listmotos = cont.damemotos();
+						ArrayList<Motos> listmotos = cont.damemotos();	
 						%>
-							<form action="operaciones.jsp?tipo=alta_alquileres" method="post">
+							<form action="operaciones.jsp?tipo=alta_alquiler1" method="post">
 								<fieldset>
-							
-									<select name="select2" size="3" style="height: 7rem;width: 15rem;">
-									  <option style="background-color: rgb(255,0,0);text-align: center;">12:00-13:00</option>
-									  <option style="text-align: center;">13:00-14:00</option>
-									  <option style="text-align: center;">14:00-15:00</option>
-									</select>
 									<label for="nameField">Moto</label>
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione una moto</option>
@@ -103,40 +97,24 @@
 											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%} %>
 									</select>
-									<label for="nameField">Nuemero de horas</label>
-									<input type="number" placeholder="0" id="num_horas" name="num_horas" maxlength="3" min="0">	
 									<label for="nameField">Fecha</label>
 									<input type="date" placeholder="00/00/0000" id="fecha" name="fecha" maxlength="10" >
-									<label for="nameField">Horas</label>
-									<select type="number" name="hora_inicio" id="hora_inicio">
-											<option value="">Seleccione la hora de inicio</option>
-   											<option value="11">11:00</option>
-   											<option value="12">12:00</option>
-    										<option value="13">13:00</option>
-    										<option value="14">14:00</option>
-   											<option value="15">15:00</option>
-   											<option value="16">16:00</option>
-   											<option value="17">17:00</option>
-   											<option value="18">18:00</option>
-   											<option value="19">19:00</option>
-  									</select>
-									<label for="nameField">Precio total</label>
-									<input type="number" placeholder="00" id="precio_total" name="precio_total" maxlength="10" min="1" step="any">
-									<input class="button-primary" type="submit" value="Dar de alta" style="display:block;" >
+									<label for="nameField">Nuemero de horas</label>
+									<input type="number" placeholder="0" id="num_horas" name="num_horas" maxlength="1" min="0">	
+									<input class="button-primary" type="submit" value="Continuar" style="display:block; margin-top:1rem;" >
 								</fieldset>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
 	<script src="../assets/js/dropdown.js"></script>
 	<script src="../assets/js/dd.min.js?ver=4.0"></script>
+	<script src="../assets/js/myjs.js"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

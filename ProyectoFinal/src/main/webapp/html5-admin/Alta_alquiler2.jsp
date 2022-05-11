@@ -1,7 +1,10 @@
 <%@ page import="tiendamotos.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
     
 <html lang="en">
 <head>
@@ -78,51 +81,84 @@
 						<%
 						boolean click = false;
 						BDController cont = new BDController();
-						ArrayList<Clientes> listclientes = cont.dameclientes();
-						ArrayList<Motos> listmotos = cont.damemotos();
+						String id_cliente = request.getParameter("id_cliente");
+						String id_motoo = request.getParameter("id_moto");
+						String fecha = request.getParameter("fecha");
+						Date thedate = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+						SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE");
+						String dianombre = sdf2.format(thedate);
+						String num_horas = request.getParameter("num_horas");
+						String[] fechaenpartes = fecha.split("-");
+						String mes = "";
+						int nummes = Integer.parseInt(fechaenpartes[1]);
+						switch (nummes) {
+						case 1 :
+							mes = "Enero";
+							break;
+						case 2 :
+							mes = "Febrero";
+							break;
+						case 3 :
+							mes = "Marzo";
+							break;
+						case 4 :
+							mes = "Abril";
+							break;
+						case 5 :
+							mes = "Mayo";
+							break;
+						case 6 :
+							mes = "Junio";
+							break;
+						case 7 :
+							mes = "Julio";
+							break;
+						case 8 :
+							mes = "Agosto";
+							break;
+						case 9 :
+							mes = "Septiembre";
+							break;
+						case 10 :
+							mes = "Octubre";
+							break;
+						case 11 :
+							mes = "Noviembre";
+							break;
+						case 12 :
+							mes = "Diciembre";
+							break;
+						}
 						%>
-							<form action="operaciones.jsp?tipo=alta_alquileres" method="post">
-								<fieldset>
-							
-									<select name="select2" size="3" style="height: 7rem;width: 15rem;">
-									  <option style="background-color: rgb(255,0,0);text-align: center;">12:00-13:00</option>
-									  <option style="text-align: center;">13:00-14:00</option>
-									  <option style="text-align: center;">14:00-15:00</option>
-									</select>
-									<label for="nameField">Moto</label>
-									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="">Seleccione una moto</option>
-										<%for (int i = 0;i<listmotos.size();i++){ %>
-											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
-										<%} %>
-									</select>
-									<label for="nameField">Cliente</label>
-									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="">Seleccione un cliente</option>
-										<%for (int i = 0;i<listclientes.size();i++){ %>
-											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
-										<%} %>
-									</select>
-									<label for="nameField">Nuemero de horas</label>
-									<input type="number" placeholder="0" id="num_horas" name="num_horas" maxlength="3" min="0">	
-									<label for="nameField">Fecha</label>
-									<input type="date" placeholder="00/00/0000" id="fecha" name="fecha" maxlength="10" >
-									<label for="nameField">Horas</label>
-									<select type="number" name="hora_inicio" id="hora_inicio">
-											<option value="">Seleccione la hora de inicio</option>
-   											<option value="11">11:00</option>
-   											<option value="12">12:00</option>
-    										<option value="13">13:00</option>
-    										<option value="14">14:00</option>
-   											<option value="15">15:00</option>
-   											<option value="16">16:00</option>
-   											<option value="17">17:00</option>
-   											<option value="18">18:00</option>
-   											<option value="19">19:00</option>
-  									</select>
-									<label for="nameField">Precio total</label>
-									<input type="number" placeholder="00" id="precio_total" name="precio_total" maxlength="10" min="1" step="any">
-									<input class="button-primary" type="submit" value="Dar de alta" style="display:block;" >
+							<form action="Alta_alquiler2.jsp?tipo=alta_alquilere" method="post">
+								<fieldset >
+								<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
+								 <table style="with:0% !importan;">
+									<thead>
+										<tr>
+											<th>Hora Inicio</th>
+											<th>Estado</th>
+										</tr>
+									</thead>
+								<tbody>
+									<tr>
+										<td>11:00</td>
+										<td>Ocupado</td>
+									</tr>
+									<tr>
+										<td>11:00</td>
+										<td>Ocupado</td>
+									</tr>
+									<tr>
+										<td>11:00</td>
+										<td>Ocupado</td>
+									</tr>
+									<tr>
+										<td>11:00</td>
+										<td>Ocupado</td>
+									</tr>
+								</tbody>
+							</table>
 								</fieldset>
 							</form>
 						</div>
@@ -137,6 +173,7 @@
 	<script src="js/chart-data.js"></script>
 	<script src="../assets/js/dropdown.js"></script>
 	<script src="../assets/js/dd.min.js?ver=4.0"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");
