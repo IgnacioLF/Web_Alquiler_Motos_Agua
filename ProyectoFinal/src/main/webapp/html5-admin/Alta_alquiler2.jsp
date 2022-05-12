@@ -82,7 +82,9 @@
 						boolean click = false;
 						BDController cont = new BDController();
 						String id_cliente = request.getParameter("id_cliente");
-						String id_motoo = request.getParameter("id_moto");
+						Clientes currentcliente = cont.dameclientefromid(Integer.parseInt(id_cliente));
+						String id_moto = request.getParameter("id_moto");
+						Motos currentmoto = cont.damemotoformidmoto(Integer.parseInt(id_moto));
 						String fecha = request.getParameter("fecha");
 						Date thedate = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
 						SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE");
@@ -132,7 +134,21 @@
 						%>
 							<form action="Alta_alquiler2.jsp?tipo=alta_alquilere" method="post">
 								<fieldset >
-								<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
+								<h2>Datos seleccionados:</h2>
+								<a href="Alta_alquiler.jsp"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
+								<div style="display:flex; flex-direccion:row; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem;">
+									<h3>Cantidad de horas : <strong><%=num_horas %></strong></h3>
+									<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
+									<div style="displat:flex;">
+										<img src="../images/clientes/<%=id_cliente%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
+										<h4><%=currentcliente.getNombre() %></h4>
+									</div>
+									<div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
+										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
+										<h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
+									</div>
+								</div>
+								<h2>Seleccione hora de inicio:</h2>
 								 <table style="with:0% !importan;">
 									<thead>
 										<tr>
