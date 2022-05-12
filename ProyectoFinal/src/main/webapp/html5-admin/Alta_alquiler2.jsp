@@ -131,13 +131,21 @@
 							mes = "Diciembre";
 							break;
 						}
+						
+						ArrayList<Alquiler> listalquiledemoto = cont.damealquileresfromidmoto(Integer.parseInt(id_moto));
+						ArrayList<Alquiler> listalquiledemoto_currentfecha = new ArrayList<Alquiler>();
+						for (int i = 0;i<listalquiledemoto.size();i++){
+							if (listalquiledemoto.get(i).damesolofecha().equals(fecha)){
+								listalquiledemoto_currentfecha.add(listalquiledemoto.get(i));
+							}
+						}
 						%>
 							<form action="Alta_alquiler2.jsp?tipo=alta_alquilere" method="post">
 								<fieldset >
 								<h2>Datos seleccionados:</h2>
 								<a href="Alta_alquiler.jsp"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
-								<div style="display:flex; flex-direccion:row; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem;">
-									<h3>Cantidad de horas : <strong><%=num_horas %></strong></h3>
+								<div style="display:flex; flex-direccion:row; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
+									<h3>Horas : <strong><%=num_horas %></strong></h3>
 									<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
 									<div style="displat:flex;">
 										<img src="../images/clientes/<%=id_cliente%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
@@ -149,30 +157,37 @@
 									</div>
 								</div>
 								<h2>Seleccione hora de inicio:</h2>
-								 <table style="with:0% !importan;">
+								 <table style="width:60% !important;">
 									<thead>
 										<tr>
-											<th>Hora Inicio</th>
-											<th>Estado</th>
+											<th style="text-align: center;">Hora Inicio</th>
+											<th style="text-align: center;">Estado</th>
 										</tr>
 									</thead>
 								<tbody>
-									<tr>
-										<td>11:00</td>
-										<td>Ocupado</td>
-									</tr>
-									<tr>
-										<td>11:00</td>
-										<td>Ocupado</td>
-									</tr>
-									<tr>
-										<td>11:00</td>
-										<td>Ocupado</td>
-									</tr>
-									<tr>
-										<td>11:00</td>
-										<td>Ocupado</td>
-									</tr>
+									<%
+									int hora_tabla = 11;
+									do {
+										boolean ocupado=false;
+										%>
+											<tr>
+												<td style="text-align: center;"><%=hora_tabla %>:00-<%=(hora_tabla+1)%>:00</td>
+												<%
+												for (int i = 0;i<listalquiledemoto_currentfecha.size();i++){
+													if (listalquiledemoto_currentfecha.get(i).damehoraentrada()<=hora_tabla&&listalquiledemoto_currentfecha.get(i).damehorasalida()>hora_tabla){
+														ocupado=true;
+													}
+												}
+												if (ocupado==true){ %>
+												<td style="background-color: red; text-align: center;"><a href="#"><strong style="color:black !important;">Ocupado</strong></a></td>
+												<%}else{ %>
+												<td style="background-color: greenyellow; text-align: center;"><a href="#"><strong style="color:black !important;">Disponible</strong></a></td>
+												<%} %>
+											</tr>
+										<% 
+										hora_tabla=hora_tabla+1;
+									}while(hora_tabla<20);
+									%>
 								</tbody>
 							</table>
 								</fieldset>

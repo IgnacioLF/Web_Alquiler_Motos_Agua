@@ -87,7 +87,9 @@ public class Alquiler {
 	
 	public int damehoraentrada() {
 		String[] partes = this.fecha.split(" ");
-	return	Integer.parseInt(partes[1]);
+		String[] splithoras = partes[1].split(":");
+		int hora = Integer.parseInt(splithoras[0]);
+	return	hora;
 	}
 	
 	public int damehorasalida() {
