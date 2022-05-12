@@ -97,8 +97,21 @@
 											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%} %>
 									</select>
-									<label for="nameField">Fecha y hora</label>
-									<input type="datetime-local" placeholder="00/00/0000 00:00" id="fecha_hora" name="fecha_hora" maxlength="10">
+									<label for="nameField">Fecha</label>
+									<input type="date" placeholder="00/00/0000 00:00" id="fecha" name="fecha" maxlength="10">
+									<label for="nameField">Horas Inicio</label>
+									<select type="number" name="hora_inicio" id="hora_inicio">
+											<option value="">Seleccione la hora de inicio</option>
+   											<option value="11">11:00</option>
+   											<option value="12">12:00</option>
+    										<option value="13">13:00</option>
+    										<option value="14">14:00</option>
+   											<option value="15">15:00</option>
+   											<option value="16">16:00</option>
+   											<option value="17">17:00</option>
+   											<option value="18">18:00</option>
+   											<option value="19">19:00</option>
+  									</select>
 									<input class="button-primary" type="submit" value="Dar de baja" style="display:block;" >
 								</fieldset>
 							</form>

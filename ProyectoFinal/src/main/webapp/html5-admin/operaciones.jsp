@@ -99,47 +99,6 @@
 				mensaje="Alta de cliente realizada con exito";
 			}
 			break;
-		case "alta_alquileres":
-			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha")==""||request.getParameter("num_horas")==""||request.getParameter("precio_total")==""||request.getParameter("hora_inicio")==""){
-				mensaje = "Error debe rellenar todos los campos para poder realizar la operacion";
-			}else {
-				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
-				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				String myfecha = request.getParameter("fecha");
-				String hora_inicio = request.getParameter("hora_inicio");
-				String fecha = myfecha +" " +hora_inicio+":00:00";
-				int num_horas = Integer.parseInt(request.getParameter("num_horas"));
-				double precio_total = Double.parseDouble(request.getParameter("precio_total"));
-				
-				if ((Integer.parseInt(hora_inicio)+num_horas)>20){
-					mensaje="El alquiler no se pude realizar porque el cerramos a las 20:00";
-				} else{
-				boolean ocupada = false;
-				cont.altaalquiler(id_moto, id_cliente, fecha, num_horas, precio_total);
-				ArrayList<Alquiler> alquileres = cont.damealquileresfromidmoto(id_moto);
-				int hora_fin = Integer.parseInt(hora_inicio)+num_horas;
-				for (int i = 0;i<alquileres.size();i++){
-					if (alquileres.get(i).damesolofecha().equals(myfecha)){
-						if (alquileres.get(i).damehoraentrada()>=Integer.parseInt(hora_inicio)&&alquileres.get(i).damehorasalida()<=Integer.parseInt(hora_inicio)){
-							ocupada=true;
-						}
-						if (alquileres.get(i).damehoraentrada()>=hora_fin&&alquileres.get(i).damehorasalida()<=hora_fin){
-							
-						}
-					}
-				}
-				if (ocupada=true){
-					mensaje="No se ha podido realizar el alta porque la moto esa sindo utilizada en esas horas";
-				}
-				
-				
-				String a = alquileres.get(0).getFecha() + " ---- " + alquileres.get(0).damehoraentrada() + " ----- " + alquileres.get(0).damehorasalida();
-				
-				mensaje=a;
-			//	mensaje="Alta de alquiler realizada con exito";
-				}
-			}
-			break;
 		case "baja_moto":
 			if (request.getParameter("id_moto")==""){
 				mensaje = "Error debe seleccionar una moto para poder realizar la operación";
@@ -165,14 +124,16 @@
 			}
 			break;
 		case "baja_alquileres":
-			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha_hora")==""){
+			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha")==""||request.getParameter("hora_inicio")==""){
 				mensaje="Error debe rellenar todos los campos para poder realizar la operacion";
 			} else {
 				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
 				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				String fecha = request.getParameter("fecha_hora");
-				if (cont.existealquilerfromall(id_cliente, id_moto,fecha)){
-					cont.bajaalquilerfromall(id_cliente, id_moto, fecha);
+				String fecha = request.getParameter("fecha");
+				String hora_inicio = request.getParameter("hora_inicio");
+				String myfecha = fecha +" " +hora_inicio+":00:0";
+				if (cont.existealquilerfromall(id_cliente, id_moto,myfecha)){
+					cont.bajaalquilerfromall(id_moto, id_cliente,myfecha);
 					mensaje="Baja alquiler realizada satisfactoriamente";
 				} else {
 					mensaje="Error no se puede realizar la baja porque no existe ningun alquiler con esos valores";
@@ -260,7 +221,7 @@
 			}
 			
 			if (error==false) {
-				String myfecha = fecha +" " +hora_inicio+":00:00";
+				String myfecha = fecha +" " +hora_inicio+":00:0";
 				cont.altaalquiler(id_moto, id_cliente, myfecha, Integer.parseInt(num_horas), preciototal);
 				mensaje="Alta realizada exitosamente";
 			}

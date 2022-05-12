@@ -400,7 +400,8 @@ public class BDController {
 	public void bajaalquilerfromall(int id_moto , int id_cliente,String fecha) {
 		try {
 			Statement miStatement = this.conexion.createStatement();
-			String cadena = "Delete from alquiler where id_moto = "+id_moto+" and id_cliente="+id_cliente+"and fecha_hora="+fecha;
+			String cadena = "Delete from alquiler where id_moto = "+id_moto+" and id_cliente="+id_cliente+" and fecha_hora='"+fecha+"'";
+			System.out.println(cadena);
 			miStatement.executeUpdate(cadena);
 			miStatement.close();
 		} catch (SQLException e) {
