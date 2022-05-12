@@ -57,7 +57,7 @@
 				<li><a href="Baja_clientes.jsp"><em class="fa fa-warning"></em> Baja Cliente</a></li>
 				<li><a href="Modificar_clientes.jsp"><em class="fa fa-pencil-square-o"></em> Modificar Cliente</a></li>
 				<li><a href="Lista_alquileres.jsp"><em class="fa fa-table"></em> Lista Alquileres</a></li>
-				<li><a href="Alta_alquileres.jsp"><em class="fa fa fa-clone"></em> Alta Alquiler</a></li>
+				<li><a href="Alta_alquiler.jsp"><em class="fa fa fa-clone"></em> Alta Alquiler</a></li>
 				<li><a href="Baja_alquileres.jsp"><em class="fa fa-warning"></em> Baja Alquiler</a></li>
 				<li><a href="Modificar_alquileres.jsp"><em class="fa fa-pencil-square-o"></em> Modificar Alquiler</a></li>
 			</ul>
@@ -209,6 +209,7 @@
 				cont.updatecliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
 				mensaje="Cliente modificao correctamete";
 			}
+			break;
 		case "modificar_alquileres":
 			if (request.getParameter("id_cliente")==""||request.getParameter("id_moto")==""||request.getParameter("fecha_hora")==""){
 				mensaje="Debe rellenar todos los campos";
@@ -220,6 +221,7 @@
 					response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha_hora="+fecha_hora);
 				}
 			}
+			break;
 		case "alta_alquiler1":
 			if (request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha")==""||request.getParameter("num_horas")==""){
 				mensaje="Debe rellenar todos los campos";
@@ -228,8 +230,41 @@
 				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
 				String fecha = request.getParameter("fecha");
 				int num_horas = Integer.parseInt(request.getParameter("num_horas"));
-				response.sendRedirect("Alta_alquiler2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&num_horas="+num_horas);
+				response.sendRedirect("Alta_alquiler2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&num_horas="+num_horas+"&tipo=seleccion");
 			}
+			break;
+		case "alta_alquiler2":
+			int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+			int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+			String fecha = request.getParameter("fecha");
+			String num_horas = request.getParameter("num_horas");
+			int hora_inicio = Integer.parseInt(request.getParameter("hora_inicio"));
+			int hora_final = hora_inicio+Integer.parseInt(num_horas);
+			Motos currentmoto = cont.damemotoformidmoto(id_moto);
+			double preciototal = currentmoto.getPrecio_hora() * Double.parseDouble(num_horas);
+			ArrayList<Alquiler> listalquiledemoto = cont.damealquileresfromidmoto(id_moto);
+			boolean error = false;
+			if (hora_final>20){
+				response.sendRedirect("Alta_alquiler2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&num_horas="+num_horas+"&tipo=error");
+				error=true;
+				break;
+			}
+			for (int i = 0;i<listalquiledemoto.size();i++){
+				if (listalquiledemoto.get(i).damesolofecha().equals(fecha)){
+					if (hora_inicio<listalquiledemoto.get(i).damehoraentrada()&&hora_final>listalquiledemoto.get(i).damehoraentrada()){
+						response.sendRedirect("Alta_alquiler2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&num_horas="+num_horas+"&tipo=error");
+						error=true;
+						break;
+					}
+				}
+			}
+			
+			if (error==false) {
+				String myfecha = fecha +" " +hora_inicio+":00:00";
+				cont.altaalquiler(id_moto, id_cliente, myfecha, Integer.parseInt(num_horas), preciototal);
+				mensaje="Alta realizada exitosamente";
+			}
+			break;
 		}
 		%>
 			<!--Forms-->

@@ -27,6 +27,7 @@
 	
 		<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
 		<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -140,8 +141,13 @@
 							}
 						}
 						%>
-							<form action="Alta_alquiler2.jsp?tipo=alta_alquilere" method="post">
+							
 								<fieldset >
+								<%
+								String tipo = request.getParameter("tipo");
+								if (tipo.equalsIgnoreCase("error")){ %>
+									<div class="alert background-danger"><em class="fa fa-times-circle"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error no hay suficientes horas disponibles desde la hora de inicio que seleccionaste <i class="bi bi-exclamation-triangle"></i></div>
+								<%}%>
 								<h2>Datos seleccionados:</h2>
 								<a href="Alta_alquiler.jsp"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
 								<div style="display:flex; flex-direccion:row; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
@@ -179,9 +185,9 @@
 													}
 												}
 												if (ocupado==true){ %>
-												<td style="background-color: red; text-align: center;"><a href="#"><strong style="color:black !important;">Ocupado</strong></a></td>
+												<td style="background-color: red; text-align: center;"><strong style="color:black !important;">Ocupado</strong></td>
 												<%}else{ %>
-												<td style="background-color: greenyellow; text-align: center;"><a href="#"><strong style="color:black !important;">Disponible</strong></a></td>
+												<td style="background-color: greenyellow; text-align: center;"><a href="operaciones.jsp?tipo=alta_alquiler2&id_cliente=<%=id_cliente%>&id_moto=<%=id_moto%>&num_horas=<%=num_horas%>&hora_inicio=<%=hora_tabla%>&fecha=<%=fecha%>"><strong style="color:black !important;">Disponible</strong></a></td>
 												<%} %>
 											</tr>
 										<% 
@@ -190,8 +196,13 @@
 									%>
 								</tbody>
 							</table>
-								</fieldset>
-							</form>
+							
+							<%
+							double preciototal = currentmoto.getPrecio_hora() * Double.parseDouble(num_horas);
+							%>
+							<h2>Precio Total : <strong style="color:#35cebe;"><%=preciototal %>  &euro;</strong></h2>
+							
+							</fieldset>
 						</div>
 					</div>
 				</div>
