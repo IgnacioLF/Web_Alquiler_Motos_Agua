@@ -110,7 +110,7 @@
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6">
             <p>
-              Somos una empresa que se dedica al alquiler de motos acuatias en la zona de  ????.
+              Somos una empresa que se dedica al alquiler de motos acuatias en la zona de  Elche.
               Realizando esta actividad podras:
             </p>
             <ul>
@@ -119,16 +119,16 @@
               <li><i class="ri-check-double-line"></i> liberación de estrés</li>
             </ul>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              todo(MAPA DE LA ZONA)
+          <div class="col-lg-6 pt-4 pt-lg-0 ">
+            <p class="imagenborder"  style="border:0; width: 600px; height: 250px;" >
+              <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12542.829790459788!2d-0.5515419666530866!3d38.193469163785075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd624d355822971b%3A0x80f0f27d253df8bd!2sRent%20of%20boats!5e0!3m2!1ses!2ses!4v1652197097585!5m2!1ses!2ses" style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
+            
           </div>
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
 
     <!-- ======= Motos de agua Section ======= -->
     <section id="motosagua" class="testimonials">
@@ -151,7 +151,7 @@
                 <h3><%=listmotos.get(i).getMarca()%></h3>
                 <h4 style="margin-bottom: 1rem;"><%=listmotos.get(i).getModelo()%></h4>
                 <h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=listmotos.get(i).getPrecio_hora()%><span class="motoaguahoras"> / Hora</span></h4>
-                <a href="#" class="btn-verdetalles" >Ver detalles</a>
+                <a href="Detalles_moto.jsp?id_moto=<%=listmotos.get(i).getId() %>" class="btn-verdetalles" >Ver detalles</a>
               </div>
             </div>
             <%} %>
@@ -217,7 +217,7 @@
           <li class="pack modelo bottom-bar"><%=top2moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top2moto.getMatricula() %></li>
           <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top2moto.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
+          <li><a href="Detalles_moto.jsp?id_moto=<%=top2moto.getId()%>" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
       <div class="card gold">
@@ -227,7 +227,7 @@
           <li class="pack modelo bottom-bar"><%=top1moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top1moto.getMatricula() %></li>
           <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top1moto.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
+          <li><a href="Detalles_moto.jsp?id_moto=<%=top1moto.getId()%>" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
       <div class="card bronce shadow">
@@ -237,7 +237,7 @@
           <li class="pack modelo bottom-bar"><%=top3moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top3moto.getMatricula() %></li>
           <li class="bottom-bar">Horas Alquilada : <%=cont.dametotalhorasalquilerfromid_moto(top3moto.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver detalles</a></li>
+          <li><a href="Detalles_moto.jsp?id_moto=<%=top1moto.getId()%>" class="btn-verdetalles-podio" >Ver detalles</a></li>
         </ul>
       </div>
     </div>
@@ -305,19 +305,19 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Localización:</h4>
-                <p>##################</p>
+                <p>Muelle Norte S/N Puerto Deportivo, 2, 03130 Santa Pola, Alicante</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Correo eléctronico:</h4>
-                <p>info@example.com</p>
+                <p>infoelchemotos@gmail.com</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Teléfono:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p>680643079</p>
               </div>
 
             </div>
@@ -361,25 +361,17 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <h3>Selecao</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      <a href="index.html"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
+      <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
+      <a href="#" class="colororange">Entrar como administrador</a>
+      <div class="social-links" style="margin-top:1rem ;">
+        <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram colorblue"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus colorblue"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin colorblue"><i class="bx bxl-linkedin"></i></a>
       </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Selecao</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+  
     </div>
   </footer><!-- End Footer -->
 
