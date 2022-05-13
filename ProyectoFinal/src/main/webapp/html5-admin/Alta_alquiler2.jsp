@@ -151,15 +151,15 @@
 								
 								<h2>Datos seleccionados:</h2>
 								<a href="Alta_alquiler.jsp"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
-								<div style="display:flex; flex-direccion:row; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
+								<div style="display:flex; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
 									<h3>Horas : <strong><%=num_horas %></strong></h3>
 									<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
-									<div style="displat:flex;">
+									<div style="display:flex ; flex-direction:column; align-items: center;">
 										<img src="../images/clientes/<%=id_cliente%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
 										<h4><%=currentcliente.getNombre() %></h4>
 									</div>
 									<div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
-										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
+										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:120px;height:100px; margin-bottom: 0.2rem;">
 										<h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
 									</div>
 								</div>
