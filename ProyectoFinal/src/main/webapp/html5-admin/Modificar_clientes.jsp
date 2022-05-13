@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
 	<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -71,11 +72,15 @@
 					<div class="card">
 						<div class="card-title">
 							<h3>Modificar Cliente</h3>
+							
 							<%
 						BDController cont = new BDController();
 						ArrayList<Clientes> listclientes = cont.dameclientes();
 						%>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe seleccionar un cliente para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<div class="card-block">
 							<form action="Modificar_clientes2.jsp?tipo=modificar_cliente" method="post">
 								<fieldset>

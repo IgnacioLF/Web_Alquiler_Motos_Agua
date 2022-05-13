@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
 	<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,7 +76,11 @@
 						BDController cont = new BDController();
 						ArrayList<Motos> listmotos = cont.damemotos();
 						%>
+						
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe seleccionar una moto para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<div class="card-block">
 							<form action="Modificar_motos2.jsp?tipo=modificar_moto" method="post">
 								<fieldset>

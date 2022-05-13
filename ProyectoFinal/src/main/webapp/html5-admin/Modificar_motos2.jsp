@@ -20,6 +20,7 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,32 +71,39 @@
 						<div class="card-title">
 							<h3>Modificar Moto</h3>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe rellenar todos los campos para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<%
 						BDController cont = new BDController();
-						Motos moto = cont.damemotoformidmoto(Integer.parseInt(request.getParameter("id_moto")));
-						%>
-						<div class="card-block">
-							<form action="operaciones.jsp?tipo=modificar_moto&id_moto=<%=moto.getId()%>" method="post">
-								<fieldset>
-									<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:60px;height:60px;">
-									<label for="nameField">Matricula</label>
-									<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
-									<label for="nameField">Marca</label>
-									<input type="text" value="<%=moto.getMarca()%>" id="marca" name="marca" maxlength="10">
-									<label for="nameField">Modelo</label>
-									<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
-									<label for="nameField">CV</label>
-									<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
-									<label for="nameField">CC</label>
-									<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
-									<label for="nameField">Numero de plazas</label>
-									<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
-									<label for="nameField">Precio hora</label>
-									<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
-									<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
-								</fieldset>
-							</form>
-						</div>
+						if ((request.getParameter("id_moto")!=null&&request.getParameter("id_moto")!="")||request.getParameter("error")!=null){
+							Motos moto = cont.damemotoformidmoto(Integer.parseInt(request.getParameter("id_moto")));
+							%>
+							<div class="card-block">
+								<form action="operaciones.jsp?tipo=modificar_moto&id_moto=<%=moto.getId()%>" method="post">
+									<fieldset>
+										<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:150px;height:150px;">
+										<label for="nameField">Matricula</label>
+										<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
+										<label for="nameField">Marca</label>
+										<input type="text" value="<%=moto.getMarca()%>" id="marca" name="marca" maxlength="10">
+										<label for="nameField">Modelo</label>
+										<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
+										<label for="nameField">CV</label>
+										<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
+										<label for="nameField">CC</label>
+										<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
+										<label for="nameField">Numero de plazas</label>
+										<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
+										<label for="nameField">Precio hora</label>
+										<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
+										<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
+									</fieldset>
+								</form>
+							</div>
+							<%}else{
+								response.sendRedirect("Modificar_motos.jsp?error=true");
+							}%>
 					</div>
 				</div>
 			</div>

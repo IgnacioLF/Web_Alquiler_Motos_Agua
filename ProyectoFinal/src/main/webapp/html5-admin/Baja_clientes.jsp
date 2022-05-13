@@ -24,6 +24,7 @@
 	
 		<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
 		<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,6 +75,9 @@
 						<div class="card-title">
 							<h3>Baja Cliente</h3>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe seleccionar a un cliente para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<div class="card-block">
 						<%
 						BDController cont = new BDController();
@@ -85,7 +89,7 @@
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione un cliente</option>
 										<%for (int i = 0;i<listclientes.size();i++){ %>
-											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.jpg"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%} %>
 									</select>	
 									<input class="button-primary" type="submit" value="Dar de baja" style="margin-top: 2rem;display:block;" >

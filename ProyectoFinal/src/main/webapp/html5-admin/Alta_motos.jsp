@@ -20,6 +20,7 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,6 +71,9 @@
 						<div class="card-title">
 							<h3>Alta Moto</h3>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe rellenar todos los campos para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<div class="card-block">
 							<form action="operaciones.jsp?tipo=alta_moto" method="post">
 								<fieldset>

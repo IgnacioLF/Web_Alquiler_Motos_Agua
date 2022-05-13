@@ -20,6 +20,7 @@
 	
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,8 +71,13 @@
 						<div class="card-title">
 							<h3>Modificar Cliente</h3>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe rellenar todos los campos para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<%
 						BDController cont = new BDController();
+						
+						if ((request.getParameter("id_cliente")!=null&request.getParameter("id_cliente")!="")||request.getParameter("error")!=null){
 						Clientes cliente = cont.dameclientefromid(Integer.parseInt(request.getParameter("id_cliente")));
 						%>
 						<div class="card-block">
@@ -159,6 +165,11 @@
 								</fieldset>
 							</form>
 						</div>
+						
+						<%}else {
+							response.sendRedirect("Modificar_clientes.jsp?error=true");
+							}%>
+						
 					</div>
 				</div>
 			</div>
