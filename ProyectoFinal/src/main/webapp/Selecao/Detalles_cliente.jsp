@@ -8,12 +8,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<%
+<%
 	BDController cont = new BDController();
-	String id_moto = request.getParameter("id_moto");
-	Motos currentmoto = cont.damemotoformidmoto(Integer.parseInt(id_moto));
+	String id_cliente = request.getParameter("id_cliente");
+	Clientes currentcliente = cont.dameclientefromid(Integer.parseInt(id_cliente));
 	%>
-  <title>Detalles - <%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></title>
+  <title>Detalles - <%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,6 +36,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/podiumstyle.css" rel="stylesheet">
 </head>
 
 <body>
@@ -71,10 +72,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h1 style="font-size: 2rem; font-weight: bold;">Detalles de la Moto</h1>
+          <h1 style="font-size: 2rem; font-weight: bold;">Detalles del cliente</h1>
           <ol>
             <li><a href="index.jsp">Home</a></li>
-            <li><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></li>
+            <li><%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></li>
           </ol>
         </div>
 
@@ -87,68 +88,57 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-7">
+          <div class="col-lg-6">
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div class="align-items-center">
 
-                <div class="swiper-slide">
-                  <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="">
+                <div class="swiper-slide " style="display: flex;align-items: center;justify-content: center;">
+                  <img class="imagenclientespodio" src="assets/img/clientes/<%=currentcliente.getId() %>.png" alt="" style="border: 7px solid #ef6603; width: 356px; height: 365px; ">
                 </div>
-
-                <div class="swiper-slide" style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%=currentmoto.getId() %>_<%=currentmoto.getId() %>.png" alt="">
-                </div>
-
-                <div class="swiper-slide " style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%=currentmoto.getId() %>_<%=currentmoto.getId() %>_<%=currentmoto.getId() %>.png" alt="">
-                </div>
-
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
 
-          <div class="col-lg-5">
-            <div class="portfolio-info detalles">
-              <h2><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h2>
+          <div class="col-lg-6">
+            <div class="portfolio-info detalles" style="align-items: start;">
+              <h2><%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></h2>
               <ul>
-                <li><strong>CV</strong>: <%=currentmoto.getCv() %></li>
-                <li><strong>CC</strong>: <%=currentmoto.getCc() %></li>
-                <li><strong>Número de plazas</strong>: <%=currentmoto.getNum_plazas() %></li>
-                <li class="masgrande"><h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=currentmoto.getPrecio_hora() %><span class="motoaguahorasindetails"> / Hora</span></h4></li>
-                <a href="#" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a>
+                <li><strong>DNI</strong>: <%=currentcliente.getDni() %></li>
+                <li><strong>Dirección</strong>: <%=currentcliente.getDireccion() %></li>
+                <li><strong>Código postal</strong>: <%=currentcliente.getCp() %></li>
+                <li><strong>Provincia</strong>: <%=currentcliente.getProvincia() %></li>
+                
               </ul>
             </div>
           </div>
           <div class="portfolio-description" style="display: flex;flex-direction: column;align-items: center;">
-            <h2>Historial de clientes</h2>
-            <%
-            	ArrayList<Alquiler> listalquileres = cont.damealquileresfromidmoto(currentmoto.getId());
-            %>
+            <h2>Historial de alquileres</h2>
             <table class="roundedCorners" style="display: flex;">
               <tr>
-                <th>Cliente</th>
-                <th>Fecha y hora</th>
+                <th>Moto</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Matricula</th>
+                <th>Fecha_hora</th>
                 <th>Numero de horas</th>
                 <th>Precio total</th>
               </tr>
               <%
-              for (int i = 0;i<listalquileres.size();i++){
+              ArrayList<Alquiler> listalquiler_cliente = cont.damealquileresfromidcliente(currentcliente.getId());
+              for (int i = 0;i<listalquiler_cliente.size();i++){
+            	  Motos currentalquilermoto = cont.damemotoformidmoto(listalquiler_cliente.get(i).getId_moto());
               %>
               <tr>
-                <td><div style="display:flex; flex-direction: column; align-items: center;">
-                <img src="assets/img/clientes/<%=listalquileres.get(i).getId_cliente()%>.png" alt="" style="width:80px;height:80px; margin-bottom: 0.2rem;">
-                
-                <%Clientes alquiler_cliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente()); %>
-                 <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %>
-                </div></td>
-                <td><%=listalquileres.get(i).getFecha() %></td>
-                <td><%=listalquileres.get(i).getNum_horas() %> horas</td>
-                <td><%=listalquileres.get(i).getPrecio_total() %>&euro;</td>
+                <td><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></td>
+                <td><%=currentalquilermoto.getMarca() %></td>
+                <td><%=currentalquilermoto.getModelo() %></td>
+                <td><%=currentalquilermoto.getMatricula() %></td>
+                <td><%=listalquiler_cliente.get(i).getFecha() %></td>
+                <td><%=listalquiler_cliente.get(i).getNum_horas() %></td>
+                <td><%=listalquiler_cliente.get(i).getPrecio_total() %>&euro;</td>
               </tr>
-              <%
-              }
-              %>
+              <%} %>
             </table>
           </div>
 

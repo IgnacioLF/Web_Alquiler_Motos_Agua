@@ -144,6 +144,24 @@ public class BDController {
 		return listalquiler;
 	}
 	
+	public ArrayList<Alquiler> damealquileresfromidcliente(int id_cliente){
+		ArrayList<Alquiler> listalquiler = new ArrayList<Alquiler>();
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_cliente="+id_cliente);
+			while (rs.next()==true) {
+				listalquiler.add( new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total")));
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo damealquileresfromidcliente");
+		}
+		return listalquiler;
+	}
+	
 	public Alquiler damealquilerfromids(int id_cliente,int id_moto){
 		Alquiler alquiler = new Alquiler();
 		try {

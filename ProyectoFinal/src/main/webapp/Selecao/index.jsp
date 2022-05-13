@@ -184,7 +184,7 @@
             <img src="assets/img/clientes/<%=listclientes.get(i).getId()%>.png" class="testimonial-img" alt="" style="width: 200px;">
             <h3 style="margin-top: 1.5rem;"><%=listclientes.get(i).getNombre()%></h3>
             <h4 style="margin-bottom: 1.5rem;"><%=listclientes.get(i).getApellidos()%></h4>
-            <a href="#" class="btn-verdetalles" >Ver más</a>
+            <a href="Detalles_cliente.jsp?id_cliente=<%=listclientes.get(i).getId() %>" class="btn-verdetalles" >Ver más</a>
           </div>
         </div>
         <%} %>
@@ -264,7 +264,7 @@
           <li class="pack marca"><%=top2cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top2cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top2cliente.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
+          <li><a href="Detalles_cliente.jsp?id_cliente=<%=top2cliente.getId() %>" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
       <div class="card gold">
@@ -273,7 +273,7 @@
           <li class="pack marca"><%=top1cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top1cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top1cliente.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
+          <li><a href="Detalles_cliente.jsp?id_cliente=<%=top1cliente.getId() %>" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
       <div class="card bronce shadow">
@@ -282,7 +282,7 @@
           <li class="pack marca"><%=top3cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top3cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top3cliente.getId()) %></li>
-          <li><a href="#" class="btn-verdetalles-podio" >Ver mas</a></li>
+          <li><a href="Detalles_cliente.jsp?id_cliente=<%=top3cliente.getId() %>" class="btn-verdetalles-podio" >Ver mas</a></li>
         </ul>
       </div>
     </div>
@@ -361,7 +361,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <a href="index.html"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
+      <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
       <a href="#" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
