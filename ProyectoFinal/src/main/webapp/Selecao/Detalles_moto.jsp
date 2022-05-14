@@ -116,7 +116,7 @@
                 <li><strong>CC</strong>: <%=currentmoto.getCc() %></li>
                 <li><strong>Número de plazas</strong>: <%=currentmoto.getNum_plazas() %></li>
                 <li class="masgrande"><h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=currentmoto.getPrecio_hora() %><span class="motoaguahorasindetails"> / Hora</span></h4></li>
-                <a href="#" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a>
+                <a href="Alquilar_moto.jsp?id_moto=<%=currentmoto.getId() %>" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a>
               </ul>
             </div>
           </div>

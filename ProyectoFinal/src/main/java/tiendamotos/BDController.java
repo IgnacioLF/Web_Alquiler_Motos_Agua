@@ -108,6 +108,24 @@ public class BDController {
 		return cliente;
 	}
 	
+	public Clientes dameclientefromdni(String dni){
+		Clientes cliente = new Clientes();
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from clientes where dni='"+dni+"'");
+			while (rs.next()==true) {
+				cliente = new Clientes(rs.getInt("id_cliente"),rs.getString("dni"),rs.getString("nombre"),rs.getString("apellidos"),rs.getString("direccion"),rs.getInt("cp"),rs.getString("provincia"));
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo dameclientefromid");
+		}
+		return cliente;
+	}
+	
 	public Alquiler damealquilerfromidcliente(int id_cliente){
 		Alquiler alquiler = new Alquiler();
 		try {
@@ -643,5 +661,40 @@ public class BDController {
 			e.printStackTrace();
 			System.out.println("Error en bdcontrole metodo updatealquiler");
 		}
+	}
+	public boolean existeclientefromdni(String dni) {
+		boolean resp = false;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from clientes where dni='"+dni+"'");
+			while (rs.next()==true) {
+				resp = true;
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo existeclientefromdni");
+		}
+		return resp;
+	}
+	
+	public boolean existeclientefromdniwithall(String dni,String nombre,String apellidos,String direccion,String cp,String provincia) {
+		boolean resp = false;
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from clientes where dni='"+dni+"' and nombre='"+nombre+"' and apellidos='"+apellidos+"' and direccion='"+direccion+"' and cp='"+cp+"' and provincia='"+provincia+"'");
+			while (rs.next()==true) {
+				resp = true;
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo existeclientefromdniwithall");
+		}
+		return resp;
 	}
 }
