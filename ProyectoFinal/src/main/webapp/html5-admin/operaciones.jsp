@@ -175,13 +175,17 @@
 			break;
 		case "modificar_alquileres":
 			if (request.getParameter("id_cliente")==""||request.getParameter("id_moto")==""||request.getParameter("fecha_hora")==""){
-				mensaje="Debe rellenar todos los campos";
+				response.sendRedirect("Modificar_alquileres.jsp?error=true");
 			} else {
 				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
 				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
-				String fecha_hora = request.getParameter("fecha_hora");
-				if (cont.existealquilerfromall(id_cliente, id_moto, fecha_hora)){
-					response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha_hora="+fecha_hora);
+				String fecha = request.getParameter("fecha");
+				String hora_inicio = request.getParameter("hora_inicio");
+				String myfecha = fecha +" " +hora_inicio+":00:0";
+				if (cont.existealquilerfromall(id_cliente, id_moto, myfecha)){
+					response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente+"&id_moto="+id_moto+"&fecha="+fecha+"&hora_inicio="+hora_inicio);
+				} else {
+					response.sendRedirect("Modificar_alquileres.jsp?error2=true");
 				}
 			}
 			break;
@@ -225,6 +229,117 @@
 				String myfecha = fecha +" " +hora_inicio+":00:0";
 				cont.altaalquiler(id_moto, id_cliente, myfecha, Integer.parseInt(num_horas), preciototal);
 				mensaje="Alta realizada exitosamente";
+			}
+			break;
+		case "modificar_alquileres2":
+			if(request.getParameter("id_moto")==""||request.getParameter("id_cliente")==""||request.getParameter("fecha")==""||request.getParameter("num_horas")==""||request.getParameter("num_horas").equalsIgnoreCase("0")){
+				int id_cliente_old = Integer.parseInt(request.getParameter("id_cliente_old"));
+				int id_moto_old = Integer.parseInt(request.getParameter("id_moto_old"));
+				String fecha_old = request.getParameter("fecha_old");
+				String hora_inicio_old = request.getParameter("hora_inicio_old");
+				String hora_inicio_new = hora_inicio_old;
+				if (request.getParameter("hora_inicio")!=null){
+					hora_inicio_new = request.getParameter("hora_inicio");
+				}
+				response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente_old+"&id_moto="+id_moto_old+"&fecha="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&hora_inicio="+hora_inicio_new+"&error=true");
+			} else{
+				int id_cliente_new = Integer.parseInt(request.getParameter("id_cliente"));
+				int id_moto_new = Integer.parseInt(request.getParameter("id_moto"));
+				String fecha_new = request.getParameter("fecha");
+				String num_horas_new = request.getParameter("num_horas");
+				String hora_inicio_old = request.getParameter("hora_inicio_old");
+				int id_cliente_old = Integer.parseInt(request.getParameter("id_cliente_old"));
+				int id_moto_old = Integer.parseInt(request.getParameter("id_moto_old"));
+				String fecha_old = request.getParameter("fecha_old");
+				int hora_inicio_new = Integer.parseInt(request.getParameter("hora_inicio"));
+				Motos currentmoto_new = cont.damemotoformidmoto(id_moto_new);
+				int hora_final_new = hora_inicio_new+Integer.parseInt(num_horas_new);
+				double precio_total_new = currentmoto_new.getPrecio_hora() * Double.parseDouble(num_horas_new);
+				if (request.getParameter("cambiar_hora")!=null){
+					response.sendRedirect("Modificar_alquileres3.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&num_horas="+num_horas_new+"&fecha="+fecha_new+"&hora_inicio_old="+hora_inicio_old+"&id_moto_old="+id_moto_old+"&id_cliente_old="+id_cliente_old+"&fecha_old="+fecha_old+"&hora_inicio="+hora_inicio_new);
+				} else {
+					ArrayList<Alquiler> listalquiledemoto_new = cont.damealquileresfromidmoto(id_moto_new);
+					boolean error_new = false;
+					if (hora_final_new>20){
+						response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error2=true"+"&hora_inicio="+hora_inicio_new);
+						error_new=true;
+					}
+					String myfecha_old = fecha_old +" " +hora_inicio_old+":00:00.0";
+					if (id_moto_old==id_moto_new){
+						for (int i = 0;i<listalquiledemoto_new.size();i++){
+							if ((listalquiledemoto_new.get(i).getId_cliente()==id_cliente_old&&listalquiledemoto_new.get(i).getFecha().equalsIgnoreCase(myfecha_old))==false){
+								if (listalquiledemoto_new.get(i).damesolofecha().equals(fecha_new)){
+									if (hora_inicio_new<listalquiledemoto_new.get(i).damehoraentrada()&&hora_final_new>listalquiledemoto_new.get(i).damehoraentrada()){
+										response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error2=true"+"&hora_inicio="+hora_inicio_new);
+										error_new=true;
+									}
+								}
+							}
+						}
+					} else {
+						for (int i = 0;i<listalquiledemoto_new.size();i++){
+							if (listalquiledemoto_new.get(i).damesolofecha().equals(fecha_new)){
+								if (hora_inicio_new<listalquiledemoto_new.get(i).damehoraentrada()&&hora_final_new>listalquiledemoto_new.get(i).damehoraentrada()){
+									response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error2=true"+"&hora_inicio="+hora_inicio_new);
+									error_new=true;
+								}
+							}
+						}
+					}
+					if (error_new==false) {
+						String myfecha_new = fecha_new +" " +hora_inicio_new+":00:00.0";
+						cont.updatealquiler(id_moto_new, id_cliente_new, myfecha_new, Integer.parseInt(num_horas_new), precio_total_new, id_moto_old, id_cliente_old, myfecha_old);
+						// TODO mensaje de exito
+					}
+				}
+			}
+			break;
+		case "modificar_alquiler3":
+			int id_cliente_new = Integer.parseInt(request.getParameter("id_cliente"));
+			int id_moto_new = Integer.parseInt(request.getParameter("id_moto"));
+			String fecha_new = request.getParameter("fecha");
+			String num_horas_new = request.getParameter("num_horas");
+			int hora_inicio_new = Integer.parseInt(request.getParameter("hora_inicio"));
+			int hora_final_new = hora_inicio_new+Integer.parseInt(num_horas_new);
+			Motos currentmoto_new = cont.damemotoformidmoto(id_moto_new);
+			double preciototal_new = currentmoto_new.getPrecio_hora() * Double.parseDouble(num_horas_new);
+			ArrayList<Alquiler> listalquiledemoto_new = cont.damealquileresfromidmoto(id_moto_new);
+			int id_cliente_old = Integer.parseInt(request.getParameter("id_cliente_old"));
+			int id_moto_old = Integer.parseInt(request.getParameter("id_moto_old"));
+			String fecha_old = request.getParameter("fecha_old");
+			String hora_inicio_old = request.getParameter("hora_inicio_old");
+			boolean error_new = false;
+			if (hora_final_new>20){
+				response.sendRedirect("Modificar_alquileres3.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error=true");
+				error_new=true;
+				break;
+			}
+			String myfecha_old = fecha_old +" " +hora_inicio_old+":00:00.0";
+			if (id_moto_old==id_moto_new){
+				for (int i = 0;i<listalquiledemoto_new.size();i++){
+					if ((listalquiledemoto_new.get(i).getId_cliente()==id_cliente_old&&listalquiledemoto_new.get(i).getFecha().equalsIgnoreCase(myfecha_old))==false){
+						if (listalquiledemoto_new.get(i).damesolofecha().equals(fecha_new)){
+							if (hora_inicio_new<listalquiledemoto_new.get(i).damehoraentrada()&&hora_final_new>listalquiledemoto_new.get(i).damehoraentrada()){
+								response.sendRedirect("Modificar_alquileres3.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error=true");
+								error_new=true;
+								break;
+							}
+						}
+					}
+				}
+			} else {
+				for (int i = 0;i<listalquiledemoto_new.size();i++){
+					if (listalquiledemoto_new.get(i).damesolofecha().equals(fecha_new)){
+						if (hora_inicio_new<listalquiledemoto_new.get(i).damehoraentrada()&&hora_final_new>listalquiledemoto_new.get(i).damehoraentrada()){
+							response.sendRedirect("Modificar_alquileres3.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&error=true");
+							error_new=true;
+							break;
+						}
+					}
+				}
+			}
+			if (error_new==false) {
+				response.sendRedirect("Modificar_alquileres2.jsp?id_cliente="+id_cliente_new+"&id_moto="+id_moto_new+"&fecha="+fecha_new+"&num_horas="+num_horas_new+"&id_cliente_old="+id_cliente_old+"&id_moto_old="+id_moto_old+"&fecha_old="+fecha_old+"&hora_inicio_old="+hora_inicio_old+"&hora_inicio_new="+hora_inicio_new);
 			}
 			break;
 		}

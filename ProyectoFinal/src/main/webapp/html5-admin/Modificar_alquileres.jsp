@@ -24,6 +24,7 @@
 	
 		<link rel="stylesheet" href="../assets/css/dd.css?v=4.0">
 		<link rel="stylesheet" type="text/css" href="../assets/css/flags.css?v=1.0" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,6 +75,12 @@
 						<div class="card-title">
 							<h3>Modificar Alquiler</h3>
 						</div>
+						<%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe rellenar todos los campos para poder realizar la operación <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
+						<%if(request.getParameter("error2")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error los datos seleccionados no pertenecen a ningun alquiler <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
 						<div class="card-block">
 						<%
 						BDController cont = new BDController();

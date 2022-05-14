@@ -419,7 +419,6 @@ public class BDController {
 		try {
 			Statement miStatement = this.conexion.createStatement();
 			String cadena = "Delete from alquiler where id_moto = "+id_moto+" and id_cliente="+id_cliente+" and fecha_hora='"+fecha+"'";
-			System.out.println(cadena);
 			miStatement.executeUpdate(cadena);
 			miStatement.close();
 		} catch (SQLException e) {
@@ -477,7 +476,8 @@ public class BDController {
 		Alquiler alquiler = new Alquiler();
 		try {
 			Statement miStatement = this.conexion.createStatement();
-			ResultSet rs = miStatement.executeQuery("Select * from alquiler where id_cliente="+id_cliente+"and id_moto="+id_moto+"and fecha_hora="+fecha_hora);
+			String cadena = "Select * from alquiler where id_cliente="+id_cliente+" and id_moto="+id_moto+" and fecha_hora='"+fecha_hora+"'";
+			ResultSet rs = miStatement.executeQuery(cadena);
 			while (rs.next()==true) {
 				alquiler =new Alquiler(rs.getInt("id_moto"),rs.getInt("id_cliente"),rs.getString("fecha_hora"),rs.getInt("num_horas"),rs.getDouble("precio_total"));
 			}
@@ -630,5 +630,18 @@ public class BDController {
 			System.out.println("Error en bdcontroler metodo dametotalalquilerescliente");
 		}
 		return respuesta;
+	}
+	
+	public void updatealquiler(int id_moto,int id_cliente,String fecha_hora,int num_horas,double precio_total,int id_moto_old, int id_cliente_old, String fecha_hora_old) {
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			String cadena = "UPDATE alquiler set id_moto="+id_moto+",id_cliente="+id_cliente+", fecha_hora='"+fecha_hora+"', num_horas="+num_horas+", precio_total="+precio_total+" WHERE id_moto="+id_moto_old+" and id_cliente="+id_cliente_old+" and fecha_hora='"+fecha_hora_old+"'";
+			miStatement.executeUpdate(cadena);
+			miStatement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontrole metodo updatealquiler");
+		}
 	}
 }

@@ -94,7 +94,7 @@
 								for (int i = 0;i<listmotos.size();i++){
 								%>
 									<tr>
-										<td><img src="../images/motos/<%=listmotos.get(i).getId()%>.png" alt="" style="width:60px;height:60px;"></td>
+										<td><img src="../images/motos/<%=listmotos.get(i).getId()%>.png" alt="" style="width:80px;height:60px;"></td>
 										<td><%=listmotos.get(i).getId()%></td>
 										<td><%=listmotos.get(i).getMatricula()%></td>
 										<td><%=listmotos.get(i).getMarca()%></td>
