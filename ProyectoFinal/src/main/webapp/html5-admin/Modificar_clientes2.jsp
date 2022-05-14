@@ -5,62 +5,40 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>HTML5 Admin Template</title>
-	<!-- Google Fonts -->
+	<title>Panel de administrador - Modificar cliente</title>
+	<link href="../images/favicon.png" rel="icon">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
-	
-	<!-- Template Styles -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<!-- CSS Reset -->
-	<link rel="stylesheet" href="css/normalize.css">
-	
-	<!-- Milligram CSS minified -->
-	<link rel="stylesheet" href="css/milligram.min.css">
-	
-	<!-- Main Styles -->
-	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/milligram.min.css">
+	<link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-	<div class="navbar">
-		<div class="row">
-			<div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
-			<div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
-				<input type="text" name="" value="" placeholder="Buscar..." />
-			</div>
-			<div class="column column-30">
-				<div class="user-section"><a href="#">
-					<img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
-					<div class="username">
-						<h4>Administrador</h4>
-					</div>
-				</a></div>
-			</div>
+	<div class="navbar" style="background-color:#00a690; height: 90px; padding:0px;">
+		<div style="display:flex; justify-content: center; margin-top:1rem;">
+			 <a href="Index.jsp"><img src="../images/logo.png" style="width: 11rem; height:7rem;"></a>
 		</div>
 	</div>
 	<div class="row">
-		<div id="sidebar" class="column">
-			<h5>Menu</h5>
+		<div id="sidebar" class="column" style="margin-top:7rem;width: 17% !important; ">
+			<div style="display:flex; justify-content: center;">
+				<h4><strong>Menu</strong></h4>
+			</div>
 			<ul>
-				<li><a href="index.html"><em class="fa fa-home"></em>Principal</a></li>
-				<li><a href="Lista_motos.jsp"><em class="fa fa-table"></em> Lista Motos</a></li>
-				<li><a href="Alta_motos.jsp"><em class="fa fa fa-clone"></em> Alta Moto</a></li>
-				<li><a href="Baja_motos.jsp"><em class="fa fa-warning"></em> Baja Moto</a></li>
-				<li><a href="Modificar_motos.jsp"><em class="fa fa-pencil-square-o"></em> Modificar Moto</a></li>
-				<li><a href="Lista_clientes.jsp"><em class="fa fa-table"></em> Lista Cliente</a></li>
-				<li><a href="Alta_clientes.jsp"><em class="fa fa fa-clone"></em> Alta Cliente</a></li>
-				<li><a href="Baja_clientes.jsp"><em class="fa fa-warning"></em> Baja Cliente</a></li>
-				<li><a href="Modificar_clientes.jsp"><em class="fa fa-pencil-square-o"></em> Modificar Cliente</a></li>
-				<li><a href="Lista_alquileres.jsp"><em class="fa fa-table"></em> Lista Alquileres</a></li>
-				<li><a href="Alta_alquiler.jsp"><em class="fa fa fa-clone"></em> Alta Alquiler</a></li>
-				<li><a href="Baja_alquileres.jsp"><em class="fa fa-warning"></em> Baja Alquiler</a></li>
-				<li><a href="Modificar_alquileres.jsp"><em class="fa fa-pencil-square-o"></em> Modificar Alquiler</a></li>
+				<li><a href="Index.jsp"><em class="fa fa-home"></em><i class="bi bi-house"></i> Principal</a></li>
+				<li><a href="Lista_motos.jsp"><em class="fa fa-table"></em><i class="bi bi-list-ul"></i> Lista Motos</a></li>
+				<li><a href="Alta_motos.jsp"><em class="fa fa fa-clone"></em><i class="bi bi-plus-circle"></i> Alta Moto</a></li>
+				<li><a href="Baja_motos.jsp"><em class="fa fa-warning"></em><i class="bi bi-dash-circle"></i> Baja Moto</a></li>
+				<li><a href="Modificar_motos.jsp"><em class="fa fa-pencil-square-o"></em><i class="bi bi-pencil-square"></i> Modificar Moto</a></li>
+				<li><a href="Lista_clientes.jsp"><em class="fa fa-table"></em><i class="bi bi-list-ul"></i> Lista Cliente</a></li>
+				<li><a href="Alta_clientes.jsp"><em class="fa fa fa-clone"></em><i class="bi bi-plus-circle"></i> Alta Cliente</a></li>
+				<li><a href="Baja_clientes.jsp"><em class="fa fa-warning"></em><i class="bi bi-dash-circle"></i> Baja Cliente</a></li>
+				<li><a href="Modificar_clientes.jsp"><em class="fa fa-pencil-square-o"></em><i class="bi bi-pencil-square"></i> Modificar Cliente</a></li>
+				<li><a href="Lista_alquileres.jsp"><em class="fa fa-table"></em><i class="bi bi-list-ul"></i> Lista Alquileres</a></li>
+				<li><a href="Alta_alquiler.jsp"><em class="fa fa fa-clone"></em><i class="bi bi-plus-circle"></i> Alta Alquiler</a></li>
+				<li><a href="Baja_alquileres.jsp"><em class="fa fa-warning"></em><i class="bi bi-dash-circle"></i> Baja Alquiler</a></li>
+				<li><a href="Modificar_alquileres.jsp"><em class="fa fa-pencil-square-o"></em><i class="bi bi-pencil-square"></i> Modificar Alquiler</a></li>
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">

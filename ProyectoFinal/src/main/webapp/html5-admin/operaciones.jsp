@@ -81,7 +81,7 @@
 				int id_moto = cont.lastid_motos() + 1;
 				double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
 				cont.altamoto(id_moto, matricula,marca,modelo, cv, cc, num_plazas,precio_hora);
-				mensaje="Alta moto realizada satisfactoriamente.";
+				response.sendRedirect("Lista_motos.jsp?alta=true");
 			}
 			break;
 		case "alta_cliente":
@@ -96,7 +96,7 @@
 				String provincia = request.getParameter("provincia");
 				int id_cliente = cont.lastid_clientes() + 1;
 				cont.altacliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
-				mensaje="Alta de cliente realizada con exito";
+				response.sendRedirect("Lista_clientes.jsp?alta=true");
 			}
 			break;
 		case "baja_moto":
@@ -108,7 +108,7 @@
 					cont.bajaalquilerfrommoto(id_moto);
 				}
 				cont.bajamoto(id_moto);
-				mensaje="Baja moto realizada con exito";
+				response.sendRedirect("Lista_motos.jsp?baja=true");
 			}
 			break;
 		case "baja_cliente":
@@ -120,7 +120,7 @@
 					cont.bajaalquilerfromcliente(id_cliente);
 				}
 				cont.bajacliente(id_cliente);
-				mensaje="Baja cliente realizada con exito";
+				response.sendRedirect("Lista_clientes.jsp?baja=true");
 			}
 			break;
 		case "baja_alquileres":
@@ -134,9 +134,9 @@
 				String myfecha = fecha +" " +hora_inicio+":00:0";
 				if (cont.existealquilerfromall(id_cliente, id_moto,myfecha)){
 					cont.bajaalquilerfromall(id_moto, id_cliente,myfecha);
-					mensaje="Baja alquiler realizada satisfactoriamente";
+					response.sendRedirect("Lista_alquileres.jsp?baja=true");
 				} else {
-					mensaje="Error no se puede realizar la baja porque no existe ningun alquiler con esos valores";
+					response.sendRedirect("Baja_alquileres.jsp?error2=true");
 				}
 			}
 			break;
@@ -154,7 +154,7 @@
 				int id_moto = Integer.parseInt(request.getParameter("id_moto"));
 				double precio_hora = Double.parseDouble(request.getParameter("precio_hora"));
 				cont.updatemoto(id_moto, matricula, marca, modelo, cv, cc, num_plazas, precio_hora);
-				mensaje="Moto modificada satisfactoriamente";
+				response.sendRedirect("Lista_motos.jsp?modificar=true");
 			}
 			break;
 		case "modificar_cliente":
@@ -170,7 +170,7 @@
 				int cp = Integer.parseInt(request.getParameter("cp"));
 				String provincia = request.getParameter("provincia");
 				cont.updatecliente(id_cliente, dni, nombre, apellidos, direccion, cp, provincia);
-				mensaje="Cliente modificao correctamete";
+				response.sendRedirect("Lista_clientes.jsp?modificar=true");
 			}
 			break;
 		case "modificar_alquileres":
@@ -228,7 +228,7 @@
 			if (error==false) {
 				String myfecha = fecha +" " +hora_inicio+":00:0";
 				cont.altaalquiler(id_moto, id_cliente, myfecha, Integer.parseInt(num_horas), preciototal);
-				mensaje="Alta realizada exitosamente";
+				response.sendRedirect("Lista_alquileres.jsp?alta=true");
 			}
 			break;
 		case "modificar_alquileres2":
@@ -289,7 +289,7 @@
 					if (error_new==false) {
 						String myfecha_new = fecha_new +" " +hora_inicio_new+":00:00.0";
 						cont.updatealquiler(id_moto_new, id_cliente_new, myfecha_new, Integer.parseInt(num_horas_new), precio_total_new, id_moto_old, id_cliente_old, myfecha_old);
-						// TODO mensaje de exito
+						response.sendRedirect("Lista_alquileres.jsp?modificar=true");
 					}
 				}
 			}

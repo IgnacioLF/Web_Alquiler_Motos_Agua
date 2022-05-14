@@ -1,36 +1,24 @@
+<%@ page import="tiendamotos.*" %>
+<%@ page import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Panel de administrador</title>
+	<title>Panel de administrador - Principal</title>
 	<link href="../images/favicon.png" rel="icon">
-	
-	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	
-	<!-- Template Styles -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<!-- CSS Reset -->
 	<link rel="stylesheet" href="css/normalize.css">
-	
-	<!-- Milligram CSS minified -->
 	<link rel="stylesheet" href="css/milligram.min.css">
-	
-	<!-- Main Styles -->
 	<link rel="stylesheet" href="css/styles.css">
-
-	
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 </head>
-
 <body>
 	<div class="navbar" style="background-color:#00a690; height: 90px; padding:0px;">
 		<div style="display:flex; justify-content: center; margin-top:1rem;">
-			 <a href="index.jsp"><img src="../images/logo.png" style="width: 11rem; height:7rem;"></a>
+			 <a href="Index.jsp"><img src="../images/logo.png" style="width: 11rem; height:7rem;"></a>
 		</div>
 	</div>
 	<div class="row">
