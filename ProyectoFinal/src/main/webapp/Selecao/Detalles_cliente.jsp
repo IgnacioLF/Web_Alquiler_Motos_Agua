@@ -130,7 +130,7 @@
             	  Motos currentalquilermoto = cont.damemotoformidmoto(listalquiler_cliente.get(i).getId_moto());
               %>
               <tr>
-                <td><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></td>
+                <td><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></a></td>
                 <td><%=currentalquilermoto.getMarca() %></td>
                 <td><%=currentalquilermoto.getModelo() %></td>
                 <td><%=currentalquilermoto.getMatricula() %></td>
@@ -154,7 +154,7 @@
     <div class="container">
       <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>

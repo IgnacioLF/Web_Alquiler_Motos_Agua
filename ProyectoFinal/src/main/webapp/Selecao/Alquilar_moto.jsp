@@ -47,18 +47,18 @@
     <div class="container d-flex align-items-center " style="justify-content: space-between!important; ">
 
       <div class="logo" style="display: block !important;">
-        <a href="index.html"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
+        <a href="index.jsp"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto colorwhite" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#about">Quienes somos</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#motosagua">Motos de agua</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#clientes">Todos los clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podiomotos">Motos más alquiladas</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podioclientes">Mejores clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#contact">Contacto</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#hero">Home</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#about">Quienes somos</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#motosagua">Motos de agua</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#clientes">Todos los clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podiomotos">Motos más alquiladas</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podioclientes">Mejores clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -75,7 +75,7 @@
           <h1 style="font-size: 2rem; font-weight: bold;">Alquilar Moto</h1>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></a></li>
+            <li><a href="Detalles_moto.jsp?id_moto=<%=currentmoto.getId()%>"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></a></li>
             <li>Alquilar</li>
           </ol>
         </div>
@@ -196,9 +196,9 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <a href="index.html"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
+      <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>

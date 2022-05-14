@@ -136,11 +136,10 @@
               for (int i = 0;i<listalquileres.size();i++){
               %>
               <tr>
-                <td><div style="display:flex; flex-direction: column; align-items: center;">
-                <img src="assets/img/clientes/<%=listalquileres.get(i).getId_cliente()%>.png" alt="" style="width:80px;height:80px; margin-bottom: 0.2rem;">
-                
+                <td><div style="display:flex; flex-direction: column; align-items: center;"><a style="display:flex; flex-direction: column; align-items: center; color:black;" href="Detalles_cliente.jsp?id_cliente=<%=listalquileres.get(i).getId_cliente() %>">
+                <img src="assets/img/clientes/<%=listalquileres.get(i).getId_cliente()%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
                 <%Clientes alquiler_cliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente()); %>
-                 <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %>
+                 <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %></a>
                 </div></td>
                 <td><%=listalquileres.get(i).getFecha() %></td>
                 <td><%=listalquileres.get(i).getNum_horas() %> horas</td>
@@ -164,7 +163,7 @@
     <div class="container">
       <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>

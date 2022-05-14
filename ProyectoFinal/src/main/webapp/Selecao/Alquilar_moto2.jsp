@@ -47,18 +47,18 @@
     <div class="container d-flex align-items-center " style="justify-content: space-between!important; ">
 
       <div class="logo" style="display: block !important;">
-        <a href="index.html"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
+        <a href="index.jsp"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto colorwhite" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#about">Quienes somos</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#motosagua">Motos de agua</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#clientes">Todos los clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podiomotos">Motos más alquiladas</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podioclientes">Mejores clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#contact">Contacto</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#hero">Home</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#about">Quienes somos</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#motosagua">Motos de agua</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#clientes">Todos los clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podiomotos">Motos más alquiladas</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podioclientes">Mejores clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -75,8 +75,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h1 style="font-size: 2rem; font-weight: bold;">Alquilar Moto</h1>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="Detalles_moto.jsp?id_moto=<%=currentmoto.getId()%>"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></a></li>
             <li>Alquilar moto</li>
           </ol>
         </div>
@@ -93,7 +93,7 @@
 			<%}%>
           <div style="display:flex ; align-items: center; margin-bottom: 0.2rem;">
             <h2 style="margin-left:1rem ; color:#00a690; margin-right: 1.5rem;">Datos Seleccionados</h2>
-            <button href="#" class="btn-verdetalles" style="padding-right: 1rem !important; padding-left: 1rem !important; padding-top: 0.3rem;padding-bottom: 0.3rem;font-size: 1.2rem;border: 2px solid #00a690; background-color: #00a690; " >Volver a seleccionar</button>
+            <a href="Alquilar_moto.jsp?id_moto=<%=currentmoto.getId() %>" class="btn-verdetalles" style="padding-right: 1rem !important; padding-left: 1rem !important; padding-top: 0.3rem;padding-bottom: 0.3rem;font-size: 1.2rem;border: 2px solid #00a690; background-color: #00a690; " >Volver a seleccionar</a>
          </div>
          <%
          	if (request.getParameter("nombre_cliente")==""||request.getParameter("apellidos_cliente")==""||request.getParameter("dni_cliente")==""||request.getParameter("cp_cliente")==""||request.getParameter("provincia_cliente")==""||request.getParameter("fecha")==""||request.getParameter("num_horas")==""||request.getParameter("direccion_cliente")==""){
@@ -212,9 +212,9 @@
 						<%}
 					} else {
 						if (ocupado==true){ %>
-						<td style="background-color: red; text-align: center; border-radius: 0px 0px 15px 0px;"><strong style="color:black !important;">Ocupado</strong></td>
+						<td style="background-color: red; text-align: center; border-radius: 0px 0px 19px 0px;"><strong style="color:black !important;">Ocupado</strong></td>
 					<%}else{ %>
-						<td style="background-color: greenyellow; text-align: center; border-radius: 0px 0px 15px 0px;"><a href="Alquilar_moto3.jsp?id_moto=<%=id_moto%>&nombre_cliente=<%=nombre_cliente%>&apellidos_cliente=<%=apellidos_cliente%>&dni_cliente=<%=dni_cliente%>&cp_cliente=<%=cp_cliente%>&provincia_cliente=<%=provincia_cliente%>&fecha=<%=fecha%>&num_horas=<%=num_horas%>&hora_inicio=<%=hora_tabla%>&direccion_cliente=<%=direccion_cliente%>"><strong style="color:black !important;">Disponible</strong></a></td>
+						<td style="background-color: greenyellow; text-align: center; border-radius: 0px 0px 19px 0px;"><a href="Alquilar_moto3.jsp?id_moto=<%=id_moto%>&nombre_cliente=<%=nombre_cliente%>&apellidos_cliente=<%=apellidos_cliente%>&dni_cliente=<%=dni_cliente%>&cp_cliente=<%=cp_cliente%>&provincia_cliente=<%=provincia_cliente%>&fecha=<%=fecha%>&num_horas=<%=num_horas%>&hora_inicio=<%=hora_tabla%>&direccion_cliente=<%=direccion_cliente%>"><strong style="color:black !important;">Disponible</strong></a></td>
 					<%}
 					}
 					%>
@@ -235,9 +235,9 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <a href="index.html"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
+      <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>

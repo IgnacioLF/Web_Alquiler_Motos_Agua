@@ -33,13 +33,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/podiumstyle.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Selecao - v4.7.0
-  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -49,7 +42,7 @@
     <div class="container d-flex align-items-center myjustifycontentbetwen">
 
       <div class="logo">
-        <a href="index.html"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
+        <a href="index.jsp"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -363,7 +356,7 @@
     <div class="container">
       <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>
