@@ -80,7 +80,7 @@
 									Motos tempmoto = cont.damemotoformidmoto(listalquileres.get(i).getId_moto());
 									Clientes tempcliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente());
 								%>
-									<tr>
+									<tr id="topdf">
 										<td ><div style="align-items: center;display: flex;"><img src="../images/motos/<%=listalquileres.get(i).getId_moto()%>.png" alt="" style="width:70px;height:60px;"><span style="margin-left: 2rem; text-align: center;"><%=tempmoto.getMarca()%> <%=tempmoto.getModelo()%> (<%=tempmoto.getMatricula()%>)</span></div></td>
 										<td ><div style="align-items: center;display: flex;"><img src="../images/clientes/<%=tempcliente.getId()%>.png" alt="" style="width:60px;height:60px;"><span style="margin-left: 2rem; text-align: center;" ><%=tempcliente.getNombre()%> <%=tempcliente.getApellidos()%></span></div></td>
 										<td><%=listalquileres.get(i).getFecha()%></td>
@@ -90,6 +90,7 @@
 									<%} %>
 								</tbody>
 							</table>
+							<input type="button" id="btnExport" value="Export" onclick="Export()" />
 						</div>
 					</div>
 				</div>
@@ -103,11 +104,37 @@
 <!-- jQuery UI -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/paging.js"></script> 
+
+ 
+
+    
+    
 <script type="text/javascript">
             $(document).ready(function() {
                 $('#tableData').paging({limit:6});
             });
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    
+   <script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('tableData'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    }; 
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+    </script>
+  
+    
 
 	<script>
 	window.onload = function () {
