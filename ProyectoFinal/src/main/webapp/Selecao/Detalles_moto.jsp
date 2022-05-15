@@ -125,29 +125,33 @@
             <%
             	ArrayList<Alquiler> listalquileres = cont.damealquileresfromidmoto(currentmoto.getId());
             %>
-            <table class="roundedCorners" style="display: flex;">
-              <tr>
-                <th>Cliente</th>
-                <th>Fecha y hora</th>
-                <th>Numero de horas</th>
-                <th>Precio total</th>
-              </tr>
+            <table class="roundedCorners table-striped" style="display: block;" id="tableData" >
+            <thead>
+	              <tr>
+	                <th style="border:0px !important; color:#ef6603;">Cliente</th>
+	                <th style="border:0px !important; color:#ef6603;">Fecha y hora</th>
+	                <th style="border:0px !important; color:#ef6603;">Numero de horas</th>
+	                <th style="border:0px !important; color:#ef6603;">Precio total</th>
+	              </tr>
+              </thead>
+              <tbody style="border-top: 1px solid #ef6603;">
               <%
               for (int i = 0;i<listalquileres.size();i++){
               %>
               <tr>
-                <td><div style="display:flex; flex-direction: column; align-items: center;"><a style="display:flex; flex-direction: column; align-items: center; color:black;" href="Detalles_cliente.jsp?id_cliente=<%=listalquileres.get(i).getId_cliente() %>">
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><div style="display:flex; flex-direction: column; align-items: center;"><a style="display:flex; flex-direction: column; align-items: center; color:black;" href="Detalles_cliente.jsp?id_cliente=<%=listalquileres.get(i).getId_cliente() %>">
                 <img src="assets/img/clientes/<%=listalquileres.get(i).getId_cliente()%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
                 <%Clientes alquiler_cliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente()); %>
                  <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %></a>
                 </div></td>
-                <td><%=listalquileres.get(i).getFecha() %></td>
-                <td><%=listalquileres.get(i).getNum_horas() %> horas</td>
-                <td><%=listalquileres.get(i).getPrecio_total() %>&euro;</td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getFecha() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getNum_horas() %> horas</td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getPrecio_total() %>&euro;</td>
               </tr>
               <%
               }
               %>
+              </tbody>
             </table>
           </div>
 
@@ -187,6 +191,17 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <!-- jQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<!-- jQuery UI -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/js/paging.js"></script> 
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#tableData').paging({limit:3});
+            });
+</script>
 
 </body>
 

@@ -62,7 +62,7 @@
 							<div class="alert background-success"><em class="fa fa-thumbs-up"></em><i class="bi bi-check-circle"></i> Modificación realizada con exito <i class="bi bi-check-circle"></i></div>
 						<%} %>
 						<div class="card-block">
-							<table>
+							<table id="tableData" class="table-striped">
 								<thead>
 									<tr>
 										<th>Imagen</th>
@@ -102,6 +102,16 @@
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
+		<!-- jQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<!-- jQuery UI -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/paging.js"></script> 
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#tableData').paging({limit:6});
+            });
+</script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

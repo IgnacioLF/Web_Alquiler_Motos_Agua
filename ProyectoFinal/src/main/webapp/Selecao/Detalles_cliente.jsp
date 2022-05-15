@@ -114,31 +114,35 @@
           </div>
           <div class="portfolio-description" style="display: flex;flex-direction: column;align-items: center;">
             <h2>Historial de alquileres</h2>
-            <table class="roundedCorners" style="display: flex;">
-              <tr>
-                <th>Moto</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Matricula</th>
-                <th>Fecha_hora</th>
-                <th>Numero de horas</th>
-                <th>Precio total</th>
-              </tr>
+            <table class="roundedCorners table-striped" style="display: block;" id="tableData">
+            <thead>
+	              <tr>
+	                <th style="border:0px !important; color:#ef6603;">Moto</th>
+	                <th style="border:0px !important; color:#ef6603;">Marca</th>
+	                <th style="border:0px !important; color:#ef6603;">Modelo</th>
+	                <th style="border:0px !important; color:#ef6603;">Matricula</th>
+	                <th style="border:0px !important; color:#ef6603;">Fecha_hora</th>
+	                <th style="border:0px !important; color:#ef6603;">Numero de horas</th>
+	                <th style="border:0px !important; color:#ef6603;">Precio total</th>
+	              </tr>
+              </thead>
+              <tbody style="border-top: 1px solid #ef6603;">
               <%
               ArrayList<Alquiler> listalquiler_cliente = cont.damealquileresfromidcliente(currentcliente.getId());
               for (int i = 0;i<listalquiler_cliente.size();i++){
             	  Motos currentalquilermoto = cont.damemotoformidmoto(listalquiler_cliente.get(i).getId_moto());
               %>
               <tr>
-                <td><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></a></td>
-                <td><%=currentalquilermoto.getMarca() %></td>
-                <td><%=currentalquilermoto.getModelo() %></td>
-                <td><%=currentalquilermoto.getMatricula() %></td>
-                <td><%=listalquiler_cliente.get(i).getFecha() %></td>
-                <td><%=listalquiler_cliente.get(i).getNum_horas() %></td>
-                <td><%=listalquiler_cliente.get(i).getPrecio_total() %>&euro;</td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></a></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMarca() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getModelo() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMatricula() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getFecha() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getNum_horas() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getPrecio_total() %>&euro;</td>
               </tr>
               <%} %>
+              </tbody>
             </table>
           </div>
 
@@ -178,6 +182,16 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+    <!-- jQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<!-- jQuery UI -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/js/paging.js"></script> 
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#tableData').paging({limit:3});
+            });
+</script>
 
 </body>
 

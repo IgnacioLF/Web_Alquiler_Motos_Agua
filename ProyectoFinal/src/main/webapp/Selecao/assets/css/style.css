@@ -1,9 +1,31 @@
-/**
-* Template Name: Selecao - v4.7.0
-* Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
+.paging-nav {
+  text-align: right;
+  padding-top: 1rem;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #00a690;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #ef6603;
+  color: white;
+  font-weight: bold;
+}
+.paging-nav a:hover {
+	color:#ef6603;
+}
+.paging-nav .selected-page:hover {
+  color: white;
+}
+
 
 /*--------------------------------------------------------------
 # General
@@ -150,7 +172,6 @@ table.roundedCorners {
   border: 1px solid DarkOrange;
   border-radius: 20px; 
   border-spacing: 0;
-  display: flex;
   align-content: center;
   justify-content: center;
   }
@@ -167,7 +188,7 @@ table th,td{
   text-align: center;
 }
 table th{
-  color: #ef6603;
+ /* color: #ef6603;*/
   border-radius: 20px; 
 }
 

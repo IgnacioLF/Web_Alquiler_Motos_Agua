@@ -1,3 +1,30 @@
+.paging-nav {
+  text-align: right;
+  padding-top: 2px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #00a690;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #ef6603;
+  color: white;
+  font-weight: bold;
+}
+.paging-nav a:hover {
+	color:#ef6603;
+}
+.paging-nav .selected-page:hover {
+  color: white;
+}
+
 body {
   background: #f9f9f9;
   height: 100%;

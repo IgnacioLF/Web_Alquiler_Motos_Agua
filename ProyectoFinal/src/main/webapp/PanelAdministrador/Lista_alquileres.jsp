@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/milligram.min.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<!-- Bootstrap CSS --> 
+<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  -->
 </head>
 <body>
 	<div class="navbar" style="background-color:#00a690; height: 90px; padding:0px;">
@@ -61,8 +63,8 @@
 						<%} else if (request.getParameter("modificar")!=null){ %>
 							<div class="alert background-success"><em class="fa fa-thumbs-up"></em><i class="bi bi-check-circle"></i> Modificación realizada con exito <i class="bi bi-check-circle"></i></div>
 						<%} %>
-						<div class="card-block">
-							<table>
+						<div >
+							<table id="tableData" class="table-striped">
 								<thead>
 									<tr>
 										<th>Moto</th>
@@ -72,7 +74,7 @@
 										<th>Precio total</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody >
 								<%
 								for (int i = 0;i<listalquileres.size();i++){
 									Motos tempmoto = cont.damemotoformidmoto(listalquileres.get(i).getId_moto());
@@ -96,6 +98,17 @@
 	</div>
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
+	<!-- jQuery -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<!-- jQuery UI -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/paging.js"></script> 
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#tableData').paging({limit:6});
+            });
+</script>
+
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");
