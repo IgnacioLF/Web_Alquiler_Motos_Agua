@@ -50,7 +50,8 @@
 						<div class="card-title">
 						<%
 						BDController cont = new BDController();
-						ArrayList<Motos> listmotos = cont.damemotos();
+						Map<Integer,Motos> listmotos = cont.damemotoshashmap();
+
 						%>
 							<h3>Lista de Motos</h3>
 						</div>
@@ -78,20 +79,23 @@
 								</thead>
 								<tbody>
 								<%
-								for (int i = 0;i<listmotos.size();i++){
-								%>
-									<tr>
-										<td><img src="../images/motos/<%=listmotos.get(i).getId()%>.png" alt="" style="width:80px;height:60px;"></td>
-										<td><%=listmotos.get(i).getId()%></td>
-										<td><%=listmotos.get(i).getMatricula()%></td>
-										<td><%=listmotos.get(i).getMarca()%></td>
-										<td><%=listmotos.get(i).getModelo()%></td>
-										<td><%=listmotos.get(i).getCv()%></td>
-										<td><%=listmotos.get(i).getCc()%></td>
-										<td><%=listmotos.get(i).getNum_plazas()%></td>
-										<td><%=listmotos.get(i).getPrecio_hora()%></td>
+									Iterator<Map.Entry<Integer, Motos>> entries = listmotos.entrySet().iterator();
+									while (entries.hasNext()) {
+									Map.Entry<Integer, Motos> entry = entries.next();
+									  Motos currentmoto = entry.getValue();
+									  %>
+						 			<tr>
+										<td><img src="../images/motos/<%=currentmoto.getId()%>.png" alt="" style="width:80px;height:60px;"></td>
+										<td><%=currentmoto.getId()%></td>
+										<td><%=currentmoto.getMatricula()%></td>
+										<td><%=currentmoto.getMarca()%></td>
+										<td><%=currentmoto.getModelo()%></td>
+										<td><%=currentmoto.getCv()%></td>
+										<td><%=currentmoto.getCc()%></td>
+										<td><%=currentmoto.getNum_plazas()%></td>
+										<td><%=currentmoto.getPrecio_hora()%></td>
 									</tr>
-									<%} %>
+									<% }%>
 								</tbody>
 							</table>
 						</div>

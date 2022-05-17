@@ -173,11 +173,11 @@
             <h3>Horas : <strong><%=num_horas %></strong></h3>
             <h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
             <div style="display:flex ; flex-direction:column; align-items: center;">
-              <img class="imagenclientespodio" src="assets/img/cliente_default.png" alt="" style=" width:100px;height:100px; margin-bottom: 0.3rem;">
+              <img class="imagenclientespodio" src="assets/img/cliente_default.png" alt="" style=" width:110px;height:110px; margin-bottom: 0.3rem;">
               <h4><%=nombre_cliente%></h4>
             </div>
             <div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
-              <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="" style="width:120px;height:100px; margin-bottom: 0.3rem;">
+              <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="" style="width:140px;height:110px; margin-bottom: 0.3rem;">
               <h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
             </div>
          </div>

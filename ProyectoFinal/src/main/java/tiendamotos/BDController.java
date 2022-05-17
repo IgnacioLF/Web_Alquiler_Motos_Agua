@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
 
 public class BDController {
@@ -697,4 +699,24 @@ public class BDController {
 		}
 		return resp;
 	}
+	
+	public Hashtable<Integer,Motos> damemotoshashmap(){
+		Hashtable<Integer,Motos> listmotos=new Hashtable<Integer,Motos>(); 
+		try {
+			Statement miStatement = this.conexion.createStatement();
+			ResultSet rs = miStatement.executeQuery("Select * from motos");
+			while (rs.next()==true) {
+				Motos currentmoto = new Motos(rs.getInt("id_moto"),rs.getString("matricula"),rs.getString("marca"),rs.getString("modelo"),rs.getInt("cv"),rs.getInt("cc"),rs.getInt("num_plazas"),rs.getDouble("precio_hora"));
+				listmotos.put(rs.getInt("id_moto"),currentmoto);
+			}
+			miStatement.close();
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdcontroler metodo damemotoshashmap");
+		}
+		return listmotos;
+	}
+	
 }

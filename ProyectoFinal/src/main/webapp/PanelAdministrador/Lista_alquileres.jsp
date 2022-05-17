@@ -63,7 +63,7 @@
 						<%} else if (request.getParameter("modificar")!=null){ %>
 							<div class="alert background-success"><em class="fa fa-thumbs-up"></em><i class="bi bi-check-circle"></i> Modificación realizada con exito <i class="bi bi-check-circle"></i></div>
 						<%} %>
-						<div >
+						<div style="margin:2rem;">
 							<table id="tableData" class="table-striped">
 								<thead>
 									<tr>
@@ -90,7 +90,7 @@
 									<%} %>
 								</tbody>
 							</table>
-							<input type="button" id="btnExport" value="Export" onclick="Export()" />
+							<input type="button" id="btnExport" value="Descargar en pdf" onclick="Export()" />
 						</div>
 					</div>
 				</div>

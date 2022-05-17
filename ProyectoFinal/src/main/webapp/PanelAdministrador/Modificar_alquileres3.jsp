@@ -151,7 +151,7 @@
 										<h4><%=currentcliente.getNombre() %></h4>
 									</div>
 									<div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
-										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:120px;height:100px; margin-bottom: 0.2rem;">
+										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:135px;height:100px; margin-bottom: 0.2rem;">
 										<h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
 									</div>
 								</div>
