@@ -151,12 +151,9 @@
 						<%}else {
 							response.sendRedirect("Modificar_clientes.jsp?error=true");
 							}%>
-						
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

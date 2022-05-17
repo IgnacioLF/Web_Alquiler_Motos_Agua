@@ -1,22 +1,23 @@
+<%@ page import="tiendamotos.*" %>
+<%@ page import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Alquiler moto - Marca Modelo</title>
+  <%
+	BDController cont = new BDController();
+	int id_moto = Integer.parseInt(request.getParameter("id_moto"));
+	Motos currentmoto = cont.damemotoformidmoto(id_moto);
+	%>
+  <title>Alquiler - <%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,50 +26,40 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/podiumstyle.css" rel="stylesheet">
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center  header-transparent " style="background: #00a690 !important;">
     <div class="container d-flex align-items-center " style="justify-content: space-between!important; ">
-
       <div class="logo" style="display: block !important;">
-        <a href="index.html"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
+        <a href="index.jsp"><img src="assets/img/logo.png" style="width: 9rem; height:9rem;"></a>
       </div>
-
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto colorwhite" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#about">Quienes somos</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#motosagua">Motos de agua</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#clientes">Todos los clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podiomotos">Motos m√°s alquiladas</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#podioclientes">Mejores clientes</a></li>
-          <li><a class="nav-link scrollto colorwhite" href="#contact">Contacto</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#hero">Home</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#about">Quienes somos</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#motosagua">Motos de agua</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#clientes">Todos los clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podiomotos">Motos m·s alquiladas</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#podioclientes">Mejores clientes</a></li>
+          <li><a class="nav-link scrollto colorwhite" href="index.jsp#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
     </div>
-  </header><!-- End Header -->
-
+  </header>
   <main id="main" style="margin-top:6rem ;">
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
           <h1 style="font-size: 2rem; font-weight: bold;">Alquilar Moto</h1>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">Marca Modelo</a></li>
-            <li>Alquilar moto</li>
+            <li><a href="Detalles_moto.jsp?id_moto=<%=currentmoto.getId()%>"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></a></li>
+            <li>Alquilar</li>
           </ol>
         </div>
 
@@ -78,41 +69,47 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <form action="#" method="post" role="form" class="php-email-form">
+        <form action="Alquilar_moto2.jsp?id_moto=<%=id_moto %>" method="post">
+          <%if(request.getParameter("error")!=null){ %>
+						<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Oops, ocurrio un error debe rellenar todos los campos para poder realizar el pedido <i class="bi bi-exclamation-triangle"></i></div>
+						<%} %>
+		<%if(request.getParameter("error2")!=null){ %>
+			<div class="alert background-danger"><em class="fa"></em> <i class="bi bi-exclamation-triangle"></i> Error los datos introducidos no coinciden con los que estan asociados al dni <i class="bi bi-exclamation-triangle"></i></div>
+		<%} %>
           <h2 style="margin-left:1rem ; color:#ef6603;">Cliente</h2>
           <div style="border:2px solid #ef6603 ; padding: 1rem; border-radius: 20px;">
             <div style="display: flex; ">
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Nombre:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="subject" id="subject" placeholder="" required>
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="nombre_cliente" id="nombre_cliente" maxlength="9" required>
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Apellidos:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="subject" id="subject" placeholder="" required>
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="apellidos_cliente" id="apellidos_cliente" maxlength="15" required>
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Dni:</h4>
-              <input style="padding-left:0.5rem ;" type="text"  name="subject" id="subject" placeholder="" required>
+              <input style="padding-left:0.5rem ;" type="text"  name="dni_cliente" id="dni_cliente" maxlength="9" required>
             </div>
             <div style="display: flex; margin-top: 1rem;">
-              <h4 style="margin-right:1rem; margin-top: 0.5rem;">C√≥digo Postal:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="number" placeholder="" id="cp" name="cp" maxlength="5" min="0">
+              <h4 style="margin-right:1rem; margin-top: 0.5rem;">CÛdigo Postal:</h4>
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="number" placeholder="" id="cp_cliente" name="cp_cliente" max="99999" min="1">
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Provincia:</h4>
-              <select style="padding-left:0.5rem ; margin-right:1rem;" id="provincia" name="provincia">
+              <select style="padding-left:0.5rem ; margin-right:1rem;" id="provincia_cliente" name="provincia_cliente">
                 <option value="">Seleccione Provincia</option>
-                <option value="A Coru√±a">A Coru√±a</option>
+                <option value="A CoruÒa">A CoruÒa</option>
                 <option value="Alacant">Alacant</option>
                 <option value="Albacete">Albacete</option>
-                <option value="Almer√≠a">Almer√≠a</option>
+                <option value="AlmerÌa">AlmerÌa</option>
                 <option value="Araba">Araba</option>
                 <option value="Asturias">Asturias</option>
-                <option value="√Åvila">√Åvila</option>
+                <option value="¡vila">¡vila</option>
                 <option value="Badajoz">Badajoz</option>
                 <option value="Barcelona">Barcelona</option>
                 <option value="Bizkaia">Bizkaia</option>
                 <option value="Burgos">Burgos</option>
-                <option value="C√°ceres">C√°ceres</option>
-                <option value="C√°diz">C√°diz</option>
+                <option value="C·ceres">C·ceres</option>
+                <option value="C·diz">C·diz</option>
                 <option value="Cantabria">Cantabria</option>
-                <option value="Castell√≥">Castell√≥</option>
+                <option value="CastellÛ">CastellÛ</option>
                 <option value="Ceuta">Ceuta</option>
                 <option value="Ciudad Real">Ciudad Real</option>
-                <option value="C√≥rdoba">C√≥rdoba</option>
+                <option value="CÛrdoba">CÛrdoba</option>
                 <option value="Cuenca">Cuenca</option>
                 <option value="Gipuzcoa">Gipuzcoa</option>
                 <option value="Girona">Girona</option>
@@ -121,14 +118,14 @@
                 <option value="Huelva">Huelva</option>
                 <option value="Huesca">Huesca</option>
                 <option value="Islas Baleares">Islas Baleares</option>
-                <option value="Ja√©n">Ja√©n</option>
+                <option value="JaÈn">JaÈn</option>
                 <option value="La Rioja">La Rioja</option>
                 <option value="Las Palmas">Las Palmas</option>
-                <option value="Le√≥n">Le√≥n</option>
+                <option value="LeÛn">LeÛn</option>
                 <option value="Lleida">Lleida</option>
                 <option value="Lugo">Lugo</option>
                 <option value="Madrid">Madrid</option>
-                <option value="M√°laga">M√°laga</option>
+                <option value="M·laga">M·laga</option>
                 <option value="Melilla">Melilla</option>
                 <option value="Murcia">Murcia</option>
                 <option value="Navarra">Navarra</option>
@@ -148,6 +145,8 @@
                 <option value="Zamora">Zamora</option>
                 <option value="Zaragoza">Zaragoza</option>
               </select>
+              <h4 style="margin-right:1rem; margin-top: 0.5rem;">DirecciÛn:</h4>
+              <input style="padding-left:0.5rem ;" type="text"  name="direccion_cliente" id="direccion_cliente" maxlength="15" required>
             </div>
           </div>
           <h2 style="margin-left:1rem ; color:#ef6603; margin-top: 1rem;">Pedido</h2>
@@ -156,19 +155,23 @@
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Fecha:</h4>
               <input style="margin-right:1rem ; padding-left:0.5rem ;" type="date" placeholder="00/00/0000" id="fecha" name="fecha" maxlength="10" >
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Numero de horas:</h4>
-              <input style="margin-right:1rem ; padding-left:0.5rem ; "type="number" id="num_horas" name="num_horas" maxlength="1" min="0">
+              <input style="margin-right:1rem ; padding-left:0.5rem ; "type="number" id="num_horas" name="num_horas" max="9" min="1">
             </div>
             <div style="display: flex; align-items: center; margin-top: 1rem;">
-             <h4 style="margin-right:1rem; margin-top: 0.5rem;">Moto seleccionada:</h4>
+            <h4 style="margin-right:1rem; margin-top: 0.6rem;">Precio por hora: </h4> <strong style="font-size: 40px !important; color: #00a690; margin-right:2rem;"><%=currentmoto.getPrecio_hora() %>&euro;</strong>
+             <h4 style="margin-right:1rem; margin-top: 0.6rem;">Moto seleccionada:</h4>
              <div style="display:flex ; flex-direction:column; margin-right: 1rem; align-items: center;">
-              <img src="assets/img/motos/1.png" alt="" style="width: 120px; height: 100px; ">
-              <p>Marca Modelo </p>
+              <img src="assets/img/motos/<%if (currentmoto.getId()>6){
+              out.print("00");
+              } else {
+            	  out.print(currentmoto.getId());
+              }%>.png" alt="" style="width: 120px; height: 100px; ">
+              <p><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></p>
              </div>
-             <h4 style="margin-right:1rem; margin-top: 0.5rem;">Precio por hora: </h4> <strong style="font-size: 40px !important; color: #00a690;">333</strong>
             </div>
           </div>
           <div style="display: flex; align-items: center; justify-content: center;">
-           <button href="#" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem; border: 2px solid #ef6603;" >Realizar Pedido</button>
+           <input type="submit" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem; border: 2px solid #ef6603;" value="Realizar Pedido"></input>
           </div>
         </form>
         
@@ -180,9 +183,9 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <a href="index.html"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
+      <a href="index.jsp"><img src="assets/img/logo.png" style="width: 8rem; height:5rem;"></a>
       <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Alquiler de motos de agua en Elche.</p>
-      <a href="#" class="colororange">Entrar como administrador</a>
+      <a href="../PanelAdministrador/Index.jsp" class="colororange">Entrar como administrador</a>
       <div class="social-links" style="margin-top:1rem ;">
         <a href="#" class="twitter colorblue"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook colorblue"><i class="bx bxl-facebook"></i></a>
@@ -210,5 +213,4 @@
   <script src="assets/js/myjs.js"></script>
 
 </body>
-
 </html>

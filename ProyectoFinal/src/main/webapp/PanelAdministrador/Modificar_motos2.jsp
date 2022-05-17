@@ -42,7 +42,6 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Forms-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
@@ -89,8 +88,6 @@
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

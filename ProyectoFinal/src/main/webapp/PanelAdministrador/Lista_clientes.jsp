@@ -42,7 +42,6 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Tables-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
@@ -133,7 +132,6 @@
             });
         }
     </script>
-	
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

@@ -5,7 +5,6 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -17,15 +16,9 @@
   <title>Alquiler moto - <%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,12 +27,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/podiumstyle.css" rel="stylesheet">
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
@@ -114,7 +104,6 @@
          			int id_cliente = cont.lastid_clientes() + 1;
          			cont.altacliente(id_cliente, dni_cliente, nombre_cliente, apellidos_cliente, direccion_cliente, Integer.parseInt(cp_cliente), provincia_cliente);
          		}
-         		
          		int num_horas = Integer.parseInt(request.getParameter("num_horas"));
          		Date thedate = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
 				SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE");
@@ -167,7 +156,6 @@
 						listalquiledemoto_currentfecha.add(listalquiledemoto.get(i));
 					}
 				}
-         
          %>
          <div style="border:2px solid #00a690 ; padding: 1rem; border-radius: 20px; display:flex; align-items: center; gap: 3rem;justify-content: center;">
             <h3>Horas : <strong><%=num_horas %></strong></h3>
@@ -233,7 +221,6 @@
         <%} %>
       </div>
     </section><!-- End Portfolio Details Section -->
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -269,5 +256,4 @@
   <script src="assets/js/myjs.js"></script>
 
 </body>
-
 </html>

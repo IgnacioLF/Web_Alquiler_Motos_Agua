@@ -46,15 +46,13 @@
 			<div class="row grid-responsive">
 				<div class="column page-heading">
 					<div class="large-card">
-						<h1>Hey bienvenido al panel de administracion !</h1>
+						<h1>Hey bienvenido al panel de administración !</h1>
 						<p class="text-large">Aqui tendras acceso a realizar todas las modificaciones a la base de datos que necesites</em></p>																																																														
 					</div>
 				</div>
-			</div>
-			
+			</div>	
 		</section>
 	</div>
-	
 	<script src="js/chart.min.js"></script>
 	<script src="js/chart-data.js"></script>
 	<script>
@@ -92,6 +90,5 @@
 		});
 	};
 	</script>			
-
 </body>
 </html> 

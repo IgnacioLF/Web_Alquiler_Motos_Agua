@@ -50,7 +50,6 @@
 					<div class="card">
 						<div class="card-title">
 							<h3>Modificar Cliente</h3>
-							
 							<%
 						BDController cont = new BDController();
 						ArrayList<Clientes> listclientes = cont.dameclientes();
@@ -80,8 +79,6 @@
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

@@ -76,8 +76,6 @@
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

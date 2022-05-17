@@ -43,7 +43,6 @@
 			</ul>
 		</div>
 		<section id="main-content" class="column column-offset-20">
-			<!--Tables-->
 			<div class="row grid-responsive">
 				<div class="column ">
 					<div class="card">
@@ -51,7 +50,6 @@
 						<%
 						BDController cont = new BDController();
 						Map<Integer,Motos> listmotos = cont.damemotoshashmap();
-
 						%>
 							<h3>Lista de Motos</h3>
 						</div>

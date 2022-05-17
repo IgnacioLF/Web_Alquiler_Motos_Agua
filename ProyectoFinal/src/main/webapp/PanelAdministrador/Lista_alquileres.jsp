@@ -13,8 +13,6 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/milligram.min.css">
 	<link rel="stylesheet" href="css/styles.css">
-	<!-- Bootstrap CSS --> 
-<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  -->
 </head>
 <body>
 	<div class="navbar" style="background-color:#00a690; height: 90px; padding:0px;">
@@ -114,11 +112,6 @@
 <!-- jQuery UI -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/paging.js"></script> 
-
- 
-
-    
-    
 <script type="text/javascript">
             $(document).ready(function() {
                 $('#tableData').paging({limit:6});
@@ -143,9 +136,6 @@
             });
         }
     </script>
-  
-    
-
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

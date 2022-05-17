@@ -118,9 +118,7 @@
 							}
 						}
 						%>
-							
-								<fieldset >
-								
+								<fieldset >	
 								<h2>Datos seleccionados:</h2>
 								<a href="Alta_alquiler.jsp"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
 								<div style="display:flex; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
@@ -187,9 +185,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			
+			</div>	
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>

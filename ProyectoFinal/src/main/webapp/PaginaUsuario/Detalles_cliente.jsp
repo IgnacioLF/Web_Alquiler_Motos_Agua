@@ -4,27 +4,20 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<%
+<%
 	BDController cont = new BDController();
-	String id_moto = request.getParameter("id_moto");
-	Motos currentmoto = cont.damemotoformidmoto(Integer.parseInt(id_moto));
+	String id_cliente = request.getParameter("id_cliente");
+	Clientes currentcliente = cont.dameclientefromid(Integer.parseInt(id_cliente));
 	%>
-  <title>Detalles - <%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></title>
+  <title>Detalles - <%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,11 +26,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/podiumstyle.css" rel="stylesheet">
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
@@ -71,10 +62,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h1 style="font-size: 2rem; font-weight: bold;">Detalles de la Moto</h1>
+          <h1 style="font-size: 2rem; font-weight: bold;">Detalles del cliente</h1>
           <ol>
             <li><a href="index.jsp">Home</a></li>
-            <li><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></li>
+            <li><%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></li>
           </ol>
         </div>
 
@@ -87,98 +78,68 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-7">
+          <div class="col-lg-6">
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div class="align-items-center">
 
-                <div class="swiper-slide">
-                  <img src="assets/img/motos/<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>.png" alt="">
+                <div class="swiper-slide " style="display: flex;align-items: center;justify-content: center;">
+                  <img class="imagenclientespodio" src="assets/img/clientes/<%if (currentcliente.getId()>10){
+              			out.print("00");
+      		} else {
+      			out.print(currentcliente.getId());
+      		}%>.png" alt="" style="border: 7px solid #ef6603; width: 356px; height: 365px; ">
                 </div>
-
-                <div class="swiper-slide" style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>_<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>.png" alt="">
-                </div>
-
-                <div class="swiper-slide " style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>_<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>_<%if (currentmoto.getId()>6){
-          				out.print("00");
-  			} else {
-  				out.print(currentmoto.getId());
-  			}%>.png" alt="">
-                </div>
-
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
 
-          <div class="col-lg-5">
-            <div class="portfolio-info detalles">
-              <h2><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h2>
+          <div class="col-lg-6">
+            <div class="portfolio-info detalles" style="align-items: start;">
+              <h2><%=currentcliente.getNombre() %> <%=currentcliente.getApellidos() %></h2>
               <ul>
-                <li><strong>CV</strong>: <%=currentmoto.getCv() %></li>
-                <li><strong>CC</strong>: <%=currentmoto.getCc() %></li>
-                <li><strong>Número de plazas</strong>: <%=currentmoto.getNum_plazas() %></li>
-                <li class="masgrande"><h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=currentmoto.getPrecio_hora() %><span class="motoaguahorasindetails"> / Hora</span></h4></li>
-                <li><a href="Alquilar_moto.jsp?id_moto=<%=currentmoto.getId() %>" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a></li>
+                <li><strong>DNI</strong>: <%=currentcliente.getDni() %></li>
+                <li><strong>Dirección</strong>: <%=currentcliente.getDireccion() %></li>
+                <li><strong>Código postal</strong>: <%=currentcliente.getCp() %></li>
+                <li><strong>Provincia</strong>: <%=currentcliente.getProvincia() %></li>
+                
               </ul>
             </div>
           </div>
           <div class="portfolio-description" style="display: flex;flex-direction: column;align-items: center;">
-            <h2>Historial de clientes</h2>
-            <%
-            	ArrayList<Alquiler> listalquileres = cont.damealquileresfromidmoto(currentmoto.getId());
-            %>
-            <table class="roundedCorners table-striped" style="display: block;" id="tableData" >
+            <h2>Historial de alquileres</h2>
+            <table class="roundedCorners table-striped" style="display: block;" id="tableData">
             <thead>
 	              <tr>
-	                <th style="border:0px !important; color:#ef6603;">Cliente</th>
-	                <th style="border:0px !important; color:#ef6603;">Fecha y hora</th>
+	                <th style="border:0px !important; color:#ef6603;">Moto</th>
+	                <th style="border:0px !important; color:#ef6603;">Marca</th>
+	                <th style="border:0px !important; color:#ef6603;">Modelo</th>
+	                <th style="border:0px !important; color:#ef6603;">Matricula</th>
+	                <th style="border:0px !important; color:#ef6603;">Fecha_hora</th>
 	                <th style="border:0px !important; color:#ef6603;">Numero de horas</th>
 	                <th style="border:0px !important; color:#ef6603;">Precio total</th>
 	              </tr>
               </thead>
               <tbody style="border-top: 1px solid #ef6603;">
               <%
-              for (int i = 0;i<listalquileres.size();i++){
+              ArrayList<Alquiler> listalquiler_cliente = cont.damealquileresfromidcliente(currentcliente.getId());
+              for (int i = 0;i<listalquiler_cliente.size();i++){
+            	  Motos currentalquilermoto = cont.damemotoformidmoto(listalquiler_cliente.get(i).getId_moto());
               %>
               <tr>
-                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><div style="display:flex; flex-direction: column; align-items: center;"><a style="display:flex; flex-direction: column; align-items: center; color:black;" href="Detalles_cliente.jsp?id_cliente=<%=listalquileres.get(i).getId_cliente() %>">
-                <img src="assets/img/clientes/<%if (listalquileres.get(i).getId_cliente()>10){
-      			out.print("00");
-		} else {
-			out.print(listalquileres.get(i).getId_cliente());
-		}%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
-                <%Clientes alquiler_cliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente()); %>
-                 <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %></a>
-                </div></td>
-                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getFecha() %></td>
-                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getNum_horas() %> horas</td>
-                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquileres.get(i).getPrecio_total() %>&euro;</td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%if (listalquiler_cliente.get(i).getId_moto()>6){
+				out.print("00");
+			} else {
+				out.print(listalquiler_cliente.get(i).getId_moto());
+			}%>.png" alt="" style="with:100px; height:100px;"></a></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMarca() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getModelo() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMatricula() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getFecha() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getNum_horas() %></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=listalquiler_cliente.get(i).getPrecio_total() %>&euro;</td>
               </tr>
-              <%
-              }
-              %>
+              <%} %>
               </tbody>
             </table>
           </div>
@@ -203,7 +164,6 @@
         <a href="#" class="google-plus colorblue"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin colorblue"><i class="bx bxl-linkedin"></i></a>
       </div>
-  
     </div>
   </footer><!-- End Footer -->
 
@@ -219,8 +179,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  
-  <!-- jQuery -->
+    <!-- jQuery -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
 <!-- jQuery UI -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -230,7 +189,5 @@
                 $('#tableData').paging({limit:3});
             });
 </script>
-
 </body>
-
 </html>

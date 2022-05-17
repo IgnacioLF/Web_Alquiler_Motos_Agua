@@ -138,9 +138,7 @@
 							}
 						}
 						%>
-							
-								<fieldset >
-								
+								<fieldset>
 								<h2>Datos seleccionados:</h2>
 								<a href="Modificar_alquileres2.jsp?id_cliente=<%=id_cliente%>&id_moto=<%=id_moto%>&fecha=<%=fecha%>&hora_inicio=<%=hora_inicio %>&hora_inicio_old=<%=hora_inicio_old%>&num_horas=<%=num_horas%>&id_cliente_old=<%=id_cliente_old%>&id_moto_old=<%=id_moto_old%>&fecha_old=<%=fecha_old%>"><button class="button button-outline" style="margin-right:1rem;" type="button" >Volver a seleccionar</button></a>
 								<div style="display:flex; align-items: center; gap: 3rem;justify-content: center;border-radius: 29px;border: 3px solid #35cebe; margin-bottom:2rem; padding-top:2rem; width: 90rem;">
@@ -197,19 +195,15 @@
 									%>
 								</tbody>
 							</table>
-							
 							<%
 							double preciototal = currentmoto.getPrecio_hora() * Double.parseDouble(num_horas);
 							%>
 							<h2>Precio Total : <strong style="color:#35cebe;"><%=preciototal %>  &euro;</strong></h2>
-							
 							</fieldset>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
 		</section>
 	</div>
 	<script src="js/chart.min.js"></script>
