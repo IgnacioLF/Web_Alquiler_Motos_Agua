@@ -94,7 +94,6 @@
 	<script src="js/chart-data.js"></script>
 	<script src="../assets/js/dropdown.js"></script>
 	<script src="../assets/js/dd.min.js?ver=4.0"></script>
-	<script src="../assets/js/myjs.js"></script>
 	<script>
 	window.onload = function () {
 		var chart1 = document.getElementById("line-chart").getContext("2d");

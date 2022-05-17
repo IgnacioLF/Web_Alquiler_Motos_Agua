@@ -128,7 +128,7 @@
                             width: 500
                         }]
                     }; 
-                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                    pdfMake.createPdf(docDefinition).download("Lista_alquileres.pdf");
                 }
             });
         }
