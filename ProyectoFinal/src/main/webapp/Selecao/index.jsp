@@ -103,8 +103,8 @@
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6">
             <p>
-              Somos una empresa que se dedica al alquiler de motos acuatias en la zona de  Elche.
-              Realizando esta actividad podras:
+              Somos una empresa que se dedica al alquiler de motos acuatias en la zona de  Elche. Nuestro horario es de 11:00-20:00.
+               Realizando esta actividad podras:
             </p>
             <ul>
               <li><i class="ri-check-double-line"></i> Observar la naturaleza marina</li>
@@ -140,7 +140,11 @@
 			%>
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/motos/<%=listmotos.get(i).getId()%>.png"  alt="" style="width: 200px;">
+                <img src="assets/img/motos/<%if (listmotos.get(i).getId()>6){
+				out.print("00");
+			} else {
+				out.print(listmotos.get(i).getId());
+			}%>.png"  alt="" style="width: 200px; height:145px;">
                 <h3><%=listmotos.get(i).getMarca()%></h3>
                 <h4 style="margin-bottom: 1rem;"><%=listmotos.get(i).getModelo()%></h4>
                 <h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=listmotos.get(i).getPrecio_hora()%><span class="motoaguahoras"> / Hora</span></h4>
@@ -174,7 +178,11 @@
         %>
         <div class="swiper-slide">
           <div class="testimonial-item">
-            <img src="assets/img/clientes/<%=listclientes.get(i).getId()%>.png" class="testimonial-img" alt="" style="width: 200px;">
+            <img src="assets/img/clientes/<%if (listclientes.get(i).getId()>10){
+			out.print("00");
+		} else {
+			out.print(listclientes.get(i).getId());
+		}%>.png" class="testimonial-img" alt="" style="width: 200px;">
             <h3 style="margin-top: 1.5rem;"><%=listclientes.get(i).getNombre()%></h3>
             <h4 style="margin-bottom: 1.5rem;"><%=listclientes.get(i).getApellidos()%></h4>
             <a href="Detalles_cliente.jsp?id_cliente=<%=listclientes.get(i).getId() %>" class="btn-verdetalles" >Ver más</a>
@@ -205,7 +213,11 @@
     <div class="cards" style="margin-top: 3rem;">
       <div class="card silver shadow">
         <ul>
-          <img src="assets/img/motos/<%=top2moto.getId()%>.png"  alt="" style="width: 200px;">
+          <li><img src="assets/img/motos/<%if (top2moto.getId()>6){
+  				out.print("00");
+  			} else {
+  				out.print(top2moto.getId());
+  			}%>.png"  alt="" style="width: 200px;"></li>
           <li class="pack marca"><%=top2moto.getMarca() %></li>
           <li class="pack modelo bottom-bar"><%=top2moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top2moto.getMatricula() %></li>
@@ -215,7 +227,11 @@
       </div>
       <div class="card gold">
         <ul>
-          <img src="assets/img/motos/<%=top1moto.getId()%>.png"  alt="" style="width: 200px;">
+          <li><img src="assets/img/motos/<%if (top1moto.getId()>6){
+  				out.print("00");
+  			} else {
+  				out.print(top1moto.getId());
+  			}%>.png"  alt="" style="width: 200px;"></li>
           <li class="pack marca"><%=top1moto.getMarca() %></li>
           <li class="pack modelo bottom-bar"><%=top1moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top1moto.getMatricula() %></li>
@@ -225,7 +241,11 @@
       </div>
       <div class="card bronce shadow">
         <ul>
-          <img src="assets/img/motos/<%=top3moto.getId()%>.png"  alt="" style="width: 200px;">
+         <li> <img src="assets/img/motos/<%if (top3moto.getId()>6){
+  				out.print("00");
+  			} else {
+  				out.print(top3moto.getId());
+  			}%>.png"  alt="" style="width: 200px;"></li>
           <li class="pack marca"><%=top3moto.getMarca() %></li>
           <li class="pack modelo bottom-bar"><%=top3moto.getModelo() %></li>
           <li class="bottom-bar">Matricula : <%=top3moto.getMatricula() %></li>
@@ -253,7 +273,11 @@
     <div class="cards" style="margin-top: 3rem;">
       <div class="card silver shadow">
         <ul>
-          <img src="assets/img/clientes/<%=top2cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+         <li> <img src="assets/img/clientes/<%if (top2cliente.getId()>10){
+			out.print("00");
+		} else {
+			out.print(top2cliente.getId());
+		}%>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;"></li>
           <li class="pack marca"><%=top2cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top2cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top2cliente.getId()) %></li>
@@ -262,7 +286,11 @@
       </div>
       <div class="card gold">
         <ul>
-          <img src="assets/img/clientes/<%=top1cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+          <li><img src="assets/img/clientes/<%if (top1cliente.getId()>10){
+			out.print("00");
+		} else {
+			out.print(top1cliente.getId());
+		}%>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;"></li>
           <li class="pack marca"><%=top1cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top1cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top1cliente.getId()) %></li>
@@ -271,7 +299,11 @@
       </div>
       <div class="card bronce shadow">
         <ul>
-          <img src="assets/img/clientes/<%=top3cliente.getId() %>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;">
+          <li><img src="assets/img/clientes/<%if (top3cliente.getId()>10){
+			out.print("00");
+		} else {
+			out.print(top3cliente.getId());
+		}%>.png" class="imagenclientespodio" alt="" style="width: 200px;height: 184px;"></li>
           <li class="pack marca"><%=top3cliente.getNombre() %></li>
           <li class="pack modelo bottom-bar"><%=top3cliente.getApellidos() %></li>
           <li class="bottom-bar">Alquileres realizados : <%=cont.dametotalalquilerescliente(top3cliente.getId()) %></li>

@@ -60,7 +60,11 @@
 							<div class="card-block">
 								<form action="operaciones.jsp?tipo=modificar_moto&id_moto=<%=moto.getId()%>" method="post">
 									<fieldset>
-										<img src="../images/motos/<%=moto.getId()%>.png" alt="" style="width:180px;height:150px;">
+										<img src="../images/motos/<%if (moto.getId()>6){
+										out.print("00");
+									} else {
+										out.print(moto.getId());
+									}%>.png" alt="" style="width:180px;height:150px;">
 										<label for="nameField">Matricula</label>
 										<input type="text" value="<%=moto.getMatricula()%>" id="matricula" name="matricula" maxlength="7">
 										<label for="nameField">Marca</label>
@@ -68,13 +72,13 @@
 										<label for="nameField">Modelo</label>
 										<input type="text" value="<%=moto.getModelo()%>" id="modelo" name="modelo" maxlength="10">
 										<label for="nameField">CV</label>
-										<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" maxlength="5" min="1">
+										<input type="number" value="<%=moto.getCv()%>" id="cv" name="cv" max="99999" min="1">
 										<label for="nameField">CC</label>
-										<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" maxlength="5" min="1">
+										<input type="number" value="<%=moto.getCc()%>" id="cc" name="cc" max="99999" min="1">
 										<label for="nameField">Numero de plazas</label>
-										<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" maxlength="2" min="1">
+										<input type="number" value="<%=moto.getNum_plazas()%>" id="num_plazas" name="num_plazas" max="4" min="1">
 										<label for="nameField">Precio hora</label>
-										<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
+										<input type="number" value="<%=moto.getPrecio_hora()%>" id="precio_hora" name="precio_hora" max="999" min="1" step="any">
 										<input class="button-primary" type="submit" value="Modificar" style="display:block;" >
 									</fieldset>
 								</form>

@@ -66,7 +66,11 @@
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione un cliente</option>
 										<%for (int i = 0;i<listclientes.size();i++){ %>
-											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%if (listclientes.get(i).getId()>10){
+											out.print("00");
+										} else {
+											out.print(listclientes.get(i).getId());
+										}%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%} %>
 									</select>
 									<input class="button-primary" type="submit" value="Continuar" style="margin-top: 2rem;display:block;" >

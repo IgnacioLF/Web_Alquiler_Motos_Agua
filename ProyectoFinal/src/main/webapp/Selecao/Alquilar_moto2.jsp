@@ -177,7 +177,11 @@
               <h4><%=nombre_cliente%></h4>
             </div>
             <div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
-              <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="" style="width:140px;height:110px; margin-bottom: 0.3rem;">
+              <img src="assets/img/motos/<%if (currentmoto.getId()>6){
+              out.print("00");
+              } else {
+            	  out.print(currentmoto.getId());
+              }%>.png" alt="" style="width:140px;height:110px; margin-bottom: 0.3rem;">
               <h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
             </div>
          </div>

@@ -61,7 +61,11 @@
 						<div class="card-block">
 							<form action="operaciones.jsp?tipo=modificar_cliente&id_cliente=<%=cliente.getId()%>" method="post">
 								<fieldset>
-									<img src="../images/clientes/<%=cliente.getId()%>.png" alt="" style="width:100px;height:100px; margin-bottom: 1rem;">
+									<img src="../images/clientes/<%if (cliente.getId()>10){
+									out.print("00");
+								} else {
+									out.print(cliente.getId());
+								}%>.png" alt="" style="width:100px;height:100px; margin-bottom: 1rem;">
 									<label for="nameField">DNI</label>
 									<input type="text" value="<%=cliente.getDni() %>" id="dni" name="dni" maxlength="9">
 									<label for="nameField">Nombre</label>
@@ -71,7 +75,7 @@
 									<label for="nameField">Dirección</label>
 									<input type="text" value="<%=cliente.getDireccion() %>" id="direccion" name="direccion" maxlength="15">
 									<label for="nameField">Codigo postal</label>
-									<input type="number" value="<%=cliente.getCp() %>" id="cp" name="cp" maxlength="5" min="0">
+									<input type="number" value="<%=cliente.getCp() %>" id="cp" name="cp" max="99999" min="1">
 									<label for="nameField">Provincia</label>
 									<select id="provincia" name="provincia">
 									<%

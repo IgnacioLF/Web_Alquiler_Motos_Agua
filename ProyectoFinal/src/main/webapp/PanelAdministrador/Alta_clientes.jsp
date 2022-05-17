@@ -64,7 +64,7 @@
 									<label for="nameField">Dirección</label>
 									<input type="text" placeholder="Carrera Madrid, 61" id="direccion" name="direccion" maxlength="15">
 									<label for="nameField">Codigo postal</label>
-									<input type="number" placeholder="37799" id="cp" name="cp" maxlength="5" min="0">
+									<input type="number" placeholder="37799" id="cp" name="cp" min="1" max="99999">
 									<label for="nameField">Provincia</label>
 									<select id="provincia" name="provincia">
 										<option value="">Seleccione Provincia</option>

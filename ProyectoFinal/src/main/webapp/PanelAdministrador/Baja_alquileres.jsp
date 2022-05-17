@@ -70,14 +70,22 @@
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione una moto</option>
 										<%for (int i = 0;i<listmotos.size();i++){ %>
-											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
+											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%if (listmotos.get(i).getId()>6){
+											out.print("00");
+										} else {
+											out.print(listmotos.get(i).getId());
+										}%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
 										<%} %>
 									</select>
 									<label for="nameField">Cliente</label>
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione un cliente</option>
 										<%for (int i = 0;i<listclientes.size();i++){ %>
-											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%if (listclientes.get(i).getId()>10){
+											out.print("00");
+										} else {
+											out.print(listclientes.get(i).getId());
+										}%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%} %>
 									</select>
 									<label for="nameField">Fecha</label>

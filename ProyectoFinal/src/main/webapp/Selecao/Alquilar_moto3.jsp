@@ -189,7 +189,11 @@
             <h4 style="margin-right:1rem; margin-top: 0.5rem;">Precio por hora: </h4> <strong style="font-size: 25px !important; color: #00a690; margin-right:2rem;"><%=currentmoto.getPrecio_hora() %>&euro;</strong>
              <h4 style="margin-right:1rem; margin-top: 0.5rem;">Moto seleccionada:</h4>
              <div style="display:flex ; flex-direction:column; margin-right: 1rem; align-items: center;">
-              <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="" style="width: 135px; height: 110px; ">
+              <img src="assets/img/motos/<%if (currentmoto.getId()>6){
+              out.print("00");
+              } else {
+            	  out.print(currentmoto.getId());
+              } %>.png" alt="" style="width: 135px; height: 110px; ">
               <p style="color:#00a690;"><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></p>
              </div>
             </div>

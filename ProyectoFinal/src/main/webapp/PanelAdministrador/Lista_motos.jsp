@@ -85,7 +85,11 @@
 									  Motos currentmoto = entry.getValue();
 									  %>
 						 			<tr>
-										<td><img src="../images/motos/<%=currentmoto.getId()%>.png" alt="" style="width:80px;height:60px;"></td>
+										<td><img src="../images/motos/<%if (currentmoto.getId()>6){
+										out.print("00");
+									} else {
+										out.print(currentmoto.getId());
+									}%>.png" alt="" style="width:80px;height:60px;"></td>
 										<td><%=currentmoto.getId()%></td>
 										<td><%=currentmoto.getMatricula()%></td>
 										<td><%=currentmoto.getMarca()%></td>

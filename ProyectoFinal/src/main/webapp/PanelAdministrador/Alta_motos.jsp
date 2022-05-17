@@ -62,13 +62,13 @@
 									<label for="nameField">Modelo</label>
 									<input type="text" placeholder="gtx00" id="modelo" name="modelo" maxlength="10">
 									<label for="nameField">CV</label>
-									<input type="number" placeholder="000" id="cv" name="cv" maxlength="5" min="1">
+									<input type="number" placeholder="000" id="cv" name="cv" max="99999" min="1">
 									<label for="nameField">CC</label>
-									<input type="number" placeholder="000" id="cc" name="cc" maxlength="5" min="1">
+									<input type="number" placeholder="000" id="cc" name="cc"  max="99999" min="1">
 									<label for="nameField">Numero de plazas</label>
-									<input type="number" placeholder="00" id="num_plazas" name="num_plazas" maxlength="2" min="1">
+									<input type="number" placeholder="00" id="num_plazas" name="num_plazas" max="4" min="1">
 									<label for="nameField">Precio hora</label>
-									<input type="number" placeholder="00" id="precio_hora" name="precio_hora" maxlength="10" min="1" step="any">
+									<input type="number" placeholder="00" id="precio_hora" name="precio_hora" max="999" min="1" step="any">
 									<input class="button-primary" type="submit" value="Dar de alta" style="display:block;" >
 								</fieldset>
 							</form>

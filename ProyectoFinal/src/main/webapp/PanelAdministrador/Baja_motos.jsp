@@ -65,7 +65,11 @@
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
 										    <option value="">Seleccione una moto</option>
 										<%for (int i = 0;i<listmotos.size();i++){ %>
-											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
+											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%if (listmotos.get(i).getId()>6){
+											out.print("00");
+										} else {
+											out.print(listmotos.get(i).getId());
+										}%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
 										<%} %>
 									</select>
 									<input class="button-primary" type="submit" value="Dar de baja" style="margin-top: 2rem;display:block;" >

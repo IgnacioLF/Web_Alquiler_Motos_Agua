@@ -92,15 +92,39 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="">
+                  <img src="assets/img/motos/<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>.png" alt="">
                 </div>
 
                 <div class="swiper-slide" style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%=currentmoto.getId() %>_<%=currentmoto.getId() %>.png" alt="">
+                  <img class="imagenborder" src="assets/img/motos/<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>_<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>.png" alt="">
                 </div>
 
                 <div class="swiper-slide " style="padding-left: 0.5rem; padding-right: 0.5rem;">
-                  <img class="imagenborder" src="assets/img/motos/<%=currentmoto.getId() %>_<%=currentmoto.getId() %>_<%=currentmoto.getId() %>.png" alt="">
+                  <img class="imagenborder" src="assets/img/motos/<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>_<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>_<%if (currentmoto.getId()>6){
+          				out.print("00");
+  			} else {
+  				out.print(currentmoto.getId());
+  			}%>.png" alt="">
                 </div>
 
               </div>
@@ -116,7 +140,7 @@
                 <li><strong>CC</strong>: <%=currentmoto.getCc() %></li>
                 <li><strong>Número de plazas</strong>: <%=currentmoto.getNum_plazas() %></li>
                 <li class="masgrande"><h4 class="motosaguaprecio"><sup class="motosaguaeuros">&euro;</sup><%=currentmoto.getPrecio_hora() %><span class="motoaguahorasindetails"> / Hora</span></h4></li>
-                <a href="Alquilar_moto.jsp?id_moto=<%=currentmoto.getId() %>" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a>
+                <li><a href="Alquilar_moto.jsp?id_moto=<%=currentmoto.getId() %>" class="btn-verdetalles" style="padding-top: 0.5rem;padding-bottom: 0.5rem;font-size: 1.7rem;margin-top: 2rem;" >ALQUILAR</a></li>
               </ul>
             </div>
           </div>
@@ -140,7 +164,11 @@
               %>
               <tr>
                 <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><div style="display:flex; flex-direction: column; align-items: center;"><a style="display:flex; flex-direction: column; align-items: center; color:black;" href="Detalles_cliente.jsp?id_cliente=<%=listalquileres.get(i).getId_cliente() %>">
-                <img src="assets/img/clientes/<%=listalquileres.get(i).getId_cliente()%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
+                <img src="assets/img/clientes/<%if (listalquileres.get(i).getId_cliente()>10){
+      			out.print("00");
+		} else {
+			out.print(listalquileres.get(i).getId_cliente());
+		}%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
                 <%Clientes alquiler_cliente = cont.dameclientefromid(listalquileres.get(i).getId_cliente()); %>
                  <%=alquiler_cliente.getNombre()%> <%=alquiler_cliente.getApellidos() %></a>
                 </div></td>

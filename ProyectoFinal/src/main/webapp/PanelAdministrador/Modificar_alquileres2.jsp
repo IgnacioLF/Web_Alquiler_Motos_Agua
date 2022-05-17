@@ -107,27 +107,43 @@
 								<fieldset>
 									<label for="nameField">Moto</label>
 									<select type="number" name="id_moto" class="estilosSuperior" id="id_moto"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="<%=id_moto%>" data-image="../images/motos/<%=id_moto%>.png"><%=mymoto.getMarca()%> <%=mymoto.getModelo()%> (<%=mymoto.getMatricula()%>)</option>
+										    <option value="<%=id_moto%>" data-image="../images/motos/<%if (id_moto>6){
+													out.print("00");
+												} else {
+													out.print(id_moto);
+												}%>.png"><%=mymoto.getMarca()%> <%=mymoto.getModelo()%> (<%=mymoto.getMatricula()%>)</option>
 										<%for (int i = 0;i<listmotos.size();i++){ 
 										
 										if (listmotos.get(i).getId()!=id_moto){
 										%>
-											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%=listmotos.get(i).getId()%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
+											<option value="<%=listmotos.get(i).getId()%>" data-image="../images/motos/<%if (listmotos.get(i).getId()>6){
+											out.print("00");
+										} else {
+											out.print(listmotos.get(i).getId());
+										}%>.png"><%=listmotos.get(i).getMarca()%> <%=listmotos.get(i).getModelo()%> (<%=listmotos.get(i).getMatricula()%>)</option>
 										<%}} %>
 									</select>
 									<label for="nameField">Cliente</label>
 									<select type="number" name="id_cliente" class="estilosSuperior" id="id_cliente"  is="ms-dropdown" style = "width:400px" data-child-height = "400">
-										    <option value="<%=id_cliente%>" data-image="../images/clientes/<%=id_cliente%>.png"><%=mycliente.getNombre()%> <%=mycliente.getApellidos()%></option>
+										    <option value="<%=id_cliente%>" data-image="../images/clientes/<%if (id_cliente>10){
+													out.print("00");
+												} else {
+													out.print(id_cliente);
+												}%>.png"><%=mycliente.getNombre()%> <%=mycliente.getApellidos()%></option>
 										<%for (int i = 0;i<listclientes.size();i++){
 											if (listclientes.get(i).getId()!=id_cliente){
 											%>
-											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%=listclientes.get(i).getId()%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
+											<option value="<%=listclientes.get(i).getId()%>" data-image="../images/clientes/<%if (listclientes.get(i).getId()>10){
+											out.print("00");
+										} else {
+											out.print(listclientes.get(i).getId());
+										}%>.png"><%=listclientes.get(i).getNombre()%> <%=listclientes.get(i).getApellidos()%></option>
 										<%}} %>
 									</select>	
 									<label for="nameField">Fecha</label>
 									<input type="date" value="<%=fecha%>" id="fecha" name="fecha" maxlength="10">
 									<label for="nameField">Nuemero de horas</label>
-									<input type="number" value="<%=num_horas%>" id="num_horas" name="num_horas" maxlength="3" min="0">
+									<input type="number" value="<%=num_horas%>" id="num_horas" name="num_horas" max="9" min="1">
 									<label for="nameField">Hora de inicio <%=hora_inicio %>:00 <input class="button button-outline" type="submit" style="margin-left:2rem;" value="Cambiar hora inicio" name="cambiar_hora"></input></label>
 									<h3 style="margin-top:1rem">Precio total  <strong style="color:#35cebe;"><%=mymoto.getPrecio_hora()*num_horas %>  &euro;</strong></h3>
 									<input class="button-primary" type="submit" value="Modificar" style="display:block;" name="modificar" >

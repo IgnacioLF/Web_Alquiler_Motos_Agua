@@ -147,11 +147,19 @@
 									<h3>Horas : <strong><%=num_horas %></strong></h3>
 									<h3><%=dianombre %> <%=fechaenpartes[2] %> de <%=mes %> del <%=fechaenpartes[0] %></h3>
 									<div style="display:flex ; flex-direction:column; align-items: center;">
-										<img src="../images/clientes/<%=id_cliente%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
+										<img src="../images/clientes/<%if (Integer.parseInt(id_cliente)>10){
+													out.print("00");
+												} else {
+													out.print(id_cliente);
+												}%>.png" alt="" style="width:100px;height:100px; margin-bottom: 0.2rem;">
 										<h4><%=currentcliente.getNombre() %></h4>
 									</div>
 									<div style="flex-direction: column;display: flex;align-items: center;justify-content: center;">
-										<img src="../images/motos/<%=id_moto%>.png" alt="" style="width:135px;height:100px; margin-bottom: 0.2rem;">
+										<img src="../images/motos/<%if (Integer.parseInt(id_moto)>6){
+													out.print("00");
+												} else {
+													out.print(id_moto);
+												}%>.png" alt="" style="width:135px;height:100px; margin-bottom: 0.2rem;">
 										<h4><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></h4>
 									</div>
 								</div>

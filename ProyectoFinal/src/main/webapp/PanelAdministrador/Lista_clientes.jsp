@@ -79,7 +79,11 @@
 								for (int i = 0;i<listclientes.size();i++){
 								%>
 									<tr>
-										<td><img src="../images/clientes/<%=listclientes.get(i).getId()%>.png" alt="" style="width:60px;height:60px;"></td>
+										<td><img src="../images/clientes/<%if (listclientes.get(i).getId()>10){
+										out.print("00");
+									} else {
+										out.print(listclientes.get(i).getId());
+									}%>.png" alt="" style="width:60px;height:60px;"></td>
 										<td><%=listclientes.get(i).getId()%></td>
 										<td><%=listclientes.get(i).getDni()%></td>
 										<td><%=listclientes.get(i).getNombre()%></td>

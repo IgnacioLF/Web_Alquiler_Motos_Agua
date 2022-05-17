@@ -93,7 +93,11 @@
               <div class="align-items-center">
 
                 <div class="swiper-slide " style="display: flex;align-items: center;justify-content: center;">
-                  <img class="imagenclientespodio" src="assets/img/clientes/<%=currentcliente.getId() %>.png" alt="" style="border: 7px solid #ef6603; width: 356px; height: 365px; ">
+                  <img class="imagenclientespodio" src="assets/img/clientes/<%if (currentcliente.getId()>10){
+              			out.print("00");
+      		} else {
+      			out.print(currentcliente.getId());
+      		}%>.png" alt="" style="border: 7px solid #ef6603; width: 356px; height: 365px; ">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -133,7 +137,11 @@
             	  Motos currentalquilermoto = cont.damemotoformidmoto(listalquiler_cliente.get(i).getId_moto());
               %>
               <tr>
-                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%=listalquiler_cliente.get(i).getId_moto()%>.png" alt="" style="with:100px; height:100px;"></a></td>
+                <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><a href="Detalles_moto.jsp?id_moto=<%=listalquiler_cliente.get(i).getId_moto()%>"><img src="assets/img/motos/<%if (listalquiler_cliente.get(i).getId_moto()>6){
+				out.print("00");
+			} else {
+				out.print(listalquiler_cliente.get(i).getId_moto());
+			}%>.png" alt="" style="with:100px; height:100px;"></a></td>
                 <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMarca() %></td>
                 <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getModelo() %></td>
                 <td style="border-top: 1px solid #ef6603; border-bottom:0px !important;"><%=currentalquilermoto.getMatricula() %></td>

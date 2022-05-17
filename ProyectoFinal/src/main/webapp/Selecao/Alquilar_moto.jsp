@@ -97,15 +97,15 @@
           <div style="border:2px solid #ef6603 ; padding: 1rem; border-radius: 20px;">
             <div style="display: flex; ">
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Nombre:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="nombre_cliente" id="nombre_cliente" placeholder="" required>
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="nombre_cliente" id="nombre_cliente" maxlength="9" required>
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Apellidos:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="apellidos_cliente" id="apellidos_cliente" placeholder="" required>
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="text"  name="apellidos_cliente" id="apellidos_cliente" maxlength="15" required>
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Dni:</h4>
-              <input style="padding-left:0.5rem ;" type="text"  name="dni_cliente" id="dni_cliente" placeholder="" required>
+              <input style="padding-left:0.5rem ;" type="text"  name="dni_cliente" id="dni_cliente" maxlength="9" required>
             </div>
             <div style="display: flex; margin-top: 1rem;">
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Código Postal:</h4>
-              <input style="padding-left:0.5rem ; margin-right:1rem;" type="number" placeholder="" id="cp_cliente" name="cp_cliente" maxlength="5" min="0">
+              <input style="padding-left:0.5rem ; margin-right:1rem;" type="number" placeholder="" id="cp_cliente" name="cp_cliente" max="99999" min="1">
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Provincia:</h4>
               <select style="padding-left:0.5rem ; margin-right:1rem;" id="provincia_cliente" name="provincia_cliente">
                 <option value="">Seleccione Provincia</option>
@@ -163,7 +163,7 @@
                 <option value="Zaragoza">Zaragoza</option>
               </select>
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Dirección:</h4>
-              <input style="padding-left:0.5rem ;" type="text"  name="direccion_cliente" id="direccion_cliente" placeholder="" required>
+              <input style="padding-left:0.5rem ;" type="text"  name="direccion_cliente" id="direccion_cliente" maxlength="15" required>
             </div>
           </div>
           <h2 style="margin-left:1rem ; color:#ef6603; margin-top: 1rem;">Pedido</h2>
@@ -172,13 +172,17 @@
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Fecha:</h4>
               <input style="margin-right:1rem ; padding-left:0.5rem ;" type="date" placeholder="00/00/0000" id="fecha" name="fecha" maxlength="10" >
               <h4 style="margin-right:1rem; margin-top: 0.5rem;">Numero de horas:</h4>
-              <input style="margin-right:1rem ; padding-left:0.5rem ; "type="number" id="num_horas" name="num_horas" maxlength="1" min="0">
+              <input style="margin-right:1rem ; padding-left:0.5rem ; "type="number" id="num_horas" name="num_horas" max="9" min="1">
             </div>
             <div style="display: flex; align-items: center; margin-top: 1rem;">
             <h4 style="margin-right:1rem; margin-top: 0.6rem;">Precio por hora: </h4> <strong style="font-size: 40px !important; color: #00a690; margin-right:2rem;"><%=currentmoto.getPrecio_hora() %>&euro;</strong>
              <h4 style="margin-right:1rem; margin-top: 0.6rem;">Moto seleccionada:</h4>
              <div style="display:flex ; flex-direction:column; margin-right: 1rem; align-items: center;">
-              <img src="assets/img/motos/<%=currentmoto.getId() %>.png" alt="" style="width: 120px; height: 100px; ">
+              <img src="assets/img/motos/<%if (currentmoto.getId()>6){
+              out.print("00");
+              } else {
+            	  out.print(currentmoto.getId());
+              }%>.png" alt="" style="width: 120px; height: 100px; ">
               <p><%=currentmoto.getMarca() %> <%=currentmoto.getModelo() %></p>
              </div>
             </div>
