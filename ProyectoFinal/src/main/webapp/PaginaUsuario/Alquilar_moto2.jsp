@@ -96,8 +96,8 @@
          		String cp_cliente =request.getParameter("cp_cliente");
          		String provincia_cliente = request.getParameter("provincia_cliente");
          		String fecha =request.getParameter("fecha");
-         		if (cont.existeclientefromdni(dni_cliente)&&request.getParameter("from3")==null){
-         			if (cont.existeclientefromdniwithall(dni_cliente, nombre_cliente, apellidos_cliente, direccion_cliente, cp_cliente, provincia_cliente)==false){
+         		if (cont.existeclientefromdni(dni_cliente)){
+         			if (cont.existeclientefromdniwithall(dni_cliente, nombre_cliente, apellidos_cliente, direccion_cliente, cp_cliente, provincia_cliente)==false&&request.getParameter("from3")==null){
          				response.sendRedirect("Alquilar_moto.jsp?id_moto="+id_moto+"&error2=true");
          			}
          		} else {
