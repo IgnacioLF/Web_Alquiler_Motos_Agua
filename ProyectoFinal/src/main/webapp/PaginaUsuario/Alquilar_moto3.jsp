@@ -71,13 +71,13 @@
 	}
 	boolean error = false;
 	if (hora_final>20){
-		response.sendRedirect("Alquilar_moto2.jsp?id_moto="+id_moto+"&nombre_cliente="+nombre_cliente+"&apellidos_cliente="+apellidos_cliente+"&dni_cliente="+dni_cliente+"&cp_cliente="+cp_cliente+"&provincia_cliente="+provincia_cliente+"&fecha="+fecha+"&num_horas="+num_horas+"&error=true&direccion_cliente="+direccion_cliente);
+		response.sendRedirect("Alquilar_moto2.jsp?id_moto="+id_moto+"&nombre_cliente="+nombre_cliente+"&apellidos_cliente="+apellidos_cliente+"&dni_cliente="+dni_cliente+"&cp_cliente="+cp_cliente+"&provincia_cliente="+provincia_cliente+"&fecha="+fecha+"&num_horas="+num_horas+"&error=true&from3=true&direccion_cliente="+direccion_cliente);
 		error=true;
 	}
 	for (int i = 0;i<listalquiledemoto.size();i++){
 		if (listalquiledemoto.get(i).damesolofecha().equals(fecha)){
 			if (hora_inicio<listalquiledemoto.get(i).damehoraentrada()&&hora_final>listalquiledemoto.get(i).damehoraentrada()){
-				response.sendRedirect("Alquilar_moto2.jsp?id_moto="+id_moto+"&nombre_cliente="+nombre_cliente+"&apellidos_cliente="+apellidos_cliente+"&dni_cliente="+dni_cliente+"&cp_cliente="+cp_cliente+"&provincia_cliente="+provincia_cliente+"&fecha="+fecha+"&num_horas="+num_horas+"&error=true&direccion_cliente="+direccion_cliente);
+				response.sendRedirect("Alquilar_moto2.jsp?id_moto="+id_moto+"&nombre_cliente="+nombre_cliente+"&apellidos_cliente="+apellidos_cliente+"&dni_cliente="+dni_cliente+"&cp_cliente="+cp_cliente+"&provincia_cliente="+provincia_cliente+"&fecha="+fecha+"&num_horas="+num_horas+"&error=true&from3=true&direccion_cliente="+direccion_cliente);
 				error=true;
 			}
 		}
