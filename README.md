@@ -18,14 +18,18 @@ un ranking de los clientes con más alquileres y un formulario de contacto.
 Cada moto o cliente, si hacen click en ver más o ver detalles les redirige a una página con todos los detalles y el historial de alquileres. Las motos ofrecen una opción de ser alquiladas
 en la que tras rellenar un formulario se le muestra los distintos horarios y si está disponible la moto hasta que finalmente realiza el pedido.
 
-
-TODO(CAPTURAS)
+<img src="https://i.imgur.com/hQJyMVT.png" width="400"> <img src="https://i.imgur.com/XcSI59W.png" width="400">
+<img src="https://i.imgur.com/zlz2zlR.png" width="400"> <img src="https://i.imgur.com/kCjtEJ1.png" width="400">
+<img src="https://i.imgur.com/VZfFP0f.png" width="400"> <img src="https://i.imgur.com/AmuFbkm.png" width="400">
+<img src="https://i.imgur.com/XBTNkIf.png" width="400"> <img src="https://i.imgur.com/rJVkm7L.png" width="400">
+<img src="https://i.imgur.com/N7QgtDp.png" width="400"> <img src="https://i.imgur.com/qrtKZ8q.png" width="400">
+<img src="https://i.imgur.com/x9GHqEf.png" width="400"> <img src="https://i.imgur.com/BAZWHp8.png" width="400">
 
 
 ### Panel de administracion:
-En esta página se muestra a la izquierda un menú que permite visualizar un listado de todas las tablas de la base de datos y las opciones de efectuar altas, bajas o modificaciones de cada una de ellas.
+En esta página se muestra a la izquierda un menú que permite visualizar un listado de todas las tablas de la base de datos y realizar altas, bajas o modificaciones de cada una de ellas.
 
-
-TODO(CAPTURAS)
+<img src="https://i.imgur.com/O1GPTFv.png" width="400"> <img src="https://i.imgur.com/2REYwEb.png" width="400">
+<img src="https://i.imgur.com/crg97La.png" width="400"> <img src="https://i.imgur.com/Y0NNO0N.png" width="400">
 
 
